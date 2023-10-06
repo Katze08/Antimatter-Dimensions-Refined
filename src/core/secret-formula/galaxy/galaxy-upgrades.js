@@ -48,7 +48,7 @@ export const galaxyUpgrades = {
     id: "moreAM",
     cost: 1e70,
     description: () => `Start with ${format(9, 0, 0)} more antimatter`,
-    effect: 10
+    effect: 10.0
   },
   removeMultiplier: {
     id: "removeMultiplier",

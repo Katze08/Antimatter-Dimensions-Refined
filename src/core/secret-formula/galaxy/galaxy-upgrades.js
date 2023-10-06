@@ -45,6 +45,7 @@ export const galaxyUpgrades = {
     description: "Start out each galaxy reset with one more Dimension Boost per galaxy"
   },
   moreAM: {
+    //test line
     id: "moreAM",
     cost: 1e70,
     description: () => `Start with ${format(9, 0, 0)} more antimatter`,

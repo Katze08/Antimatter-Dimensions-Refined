@@ -1,4 +1,5 @@
 import { PlayerProgress } from "@/core/player-progress";
+import { galaxyUpgrades } from "@/core/secret-formula/galaxy/galaxy-upgrades";
 
 export const tabs = [
   {
@@ -207,15 +208,33 @@ export const tabs = [
     condition: () =>
       PlayerProgress.realityUnlocked() ||
       PlayerProgress.eternityUnlocked() ||
-      PlayerProgress.infinityUnlocked(),
+      PlayerProgress.infinityUnlocked() ||
+      PlayerProgress.galaxyChallengeUnlocked(),
     id: 5,
     hidable: true,
     subtabs: [
+      {
+        key: "galaxy",
+        name: "Galaxy Challenges",
+        symbol: "🌀",
+        component: "GalaxyChallengesTab",
+        condition: () => {
+          if (player.galaxyUpgrades.has("unlockChallenges")) {
+            player.galaxyChallengesUnlocked = true;
+            return true;
+          }
+          return player.galaxyChallengesUnlocked;
+
+        },
+        id: 3,
+        hidable: true
+      },
       {
         key: "normal",
         name: "Challenges",
         symbol: "Ω",
         component: "NormalChallengesTab",
+        condition: () => PlayerProgress.infinityUnlocked() || PlayerProgress.eternityUnlocked() || PlayerProgress.realityUnlocked(),
         id: 0,
         hidable: true
       },
@@ -505,7 +524,12 @@ export const tabs = [
     hideAt: 2.9,
     UIClass: "o-tab-btn--galaxy",
     id: 11,
-    condition: () => (player.wasOnceIntergalactical || (player.dimensionBoosts >= 4)),
+    condition: () => {
+      if (player.dimensionBoosts >= 4) {
+        player.wasOnceIntergalactical = true;
+      }
+      return player.wasOnceIntergalactical;
+    },
     hidable: true,
     subtabs: [
       {

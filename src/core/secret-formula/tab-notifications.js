@@ -55,6 +55,17 @@ export const tabNotifications = {
     condition: () => !PlayerProgress.realityUnlocked() &&
       !PlayerProgress.eternityUnlocked()
   },
+  GCUnlock: {
+    id: 17,
+    tabsToHighLight: [
+      {
+        parent: "challenges",
+        tab: "galaxy"
+      }
+    ],
+    condition: () => !PlayerProgress.realityUnlocked() &&
+      !PlayerProgress.eternityUnlocked()
+  },
   replicanti: {
     id: 4,
     tabsToHighLight: [

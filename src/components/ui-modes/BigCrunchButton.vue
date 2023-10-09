@@ -30,7 +30,7 @@ export default {
         v-if="!smallCrunch"
         class="l-spacing"
       >
-        The world has collapsed due to excess antimatter.
+        The world has collapsed because it can only hold 1.79e308 antimatter.
       </h3>
       <button
         :class="{

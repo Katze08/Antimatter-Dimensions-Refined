@@ -1,5 +1,6 @@
 import { AutomatorPanels } from "@/components/tabs/automator/AutomatorDocs";
 import { GlyphInfo } from "@/components/modals/options/SelectGlyphInfoDropdown";
+import { galaxyUpgrades } from "@/core/secret-formula/galaxy/galaxy-upgrades";
 
 import { AUTOMATOR_MODE, AUTOMATOR_TYPE } from "./automator/automator-backend";
 import { DC } from "./constants";
@@ -35,6 +36,7 @@ window.player = {
   secretAchievementBits: Array.repeat(0, 4),
   infinityUpgrades: new Set(),
   galaxyUpgrades: new Set(),
+  galaxyChallengesUnlocked: false,
   infinityRebuyables: [0, 0, 0],
   galaxyRebuyables: [0, 0, 0, 0],
   challenge: {
@@ -46,6 +48,11 @@ window.player = {
     infinity: {
       current: 0,
       bestTimes: Array.repeat(Number.MAX_VALUE, 8),
+      completedBits: 0,
+    },
+    galaxy: {
+      current: 0,
+      bestTimes: Array.repeat(Number.MAX_VALUE, 24),
       completedBits: 0,
     },
     eternity: {

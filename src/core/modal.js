@@ -5,6 +5,7 @@ import CloudInvalidDataModal from "@/components/modals/cloud/CloudInvalidDataMod
 import CloudLoadConflictModal from "@/components/modals/cloud/CloudLoadConflictModal";
 import CloudSaveConflictModal from "@/components/modals/cloud/CloudSaveConflictModal";
 import EternityChallengeStartModal from "@/components/modals/challenges/EternityChallengeStartModal";
+import GalaxyChallengeStartModal from "@/components/modals/challenges/GalaxyChallengeStartModal";
 import InfinityChallengeStartModal from "@/components/modals/challenges/InfinityChallengeStartModal";
 import MessageModal from "@/components/modals/MessageModal";
 import NormalChallengeStartModal from "@/components/modals/challenges/NormalChallengeStartModal";
@@ -197,6 +198,7 @@ class TimeModal extends Modal {
 
 Modal.startEternityChallenge = new ChallengeConfirmationModal(EternityChallengeStartModal);
 Modal.startInfinityChallenge = new ChallengeConfirmationModal(InfinityChallengeStartModal);
+Modal.startGalaxyChallenge = new ChallengeConfirmationModal(GalaxyChallengeStartModal);
 Modal.startNormalChallenge = new ChallengeConfirmationModal(NormalChallengeStartModal);
 
 Modal.catchup = new TimeModal(CatchupModal, -1);

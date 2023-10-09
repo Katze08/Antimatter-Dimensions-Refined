@@ -18,14 +18,14 @@ export default {
     grid() {
       return [
         [
-          GalaxyUpgrade.dimBoostFixed,
+          GalaxyUpgrade.unlockChallenges,
           GalaxyUpgrade.dimBoostGalaxy,
           GalaxyUpgrade.decreaseDimBoost
         ],
         [
           GalaxyUpgrade.moreAM,
           GalaxyUpgrade.removeMultiplier,
-          GalaxyUpgrade.decreaseGalaxy
+          GalaxyUpgrade.increaseTickspeedMultiplier
         ],
         [
           GalaxyUpgrade.decreaseDelay,
@@ -61,7 +61,7 @@ export default {
   <div class="l-break-infinity-tab">
     <div v-if="!isUnlocked">
       Reach
-      {{ format(1e70, 2, 0) }} antimatter to become intergalactic.
+      {{ format(1e70, 2, 0) }} antimatter to become intergalactic (NYI, only the first 6 / 12 upgrades work as for now).
     </div>
     <IntergalacticButton class="l-break-infinity-tab__break-btn" />
     <div

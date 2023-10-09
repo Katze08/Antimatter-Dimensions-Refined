@@ -96,7 +96,7 @@ export const pelleUpgrades = {
   },
   keepInfinityUpgrades: {
     id: 6,
-    description: "Infinity Upgrades no longer reset on Armageddon",
+    description: "Infinity + Galaxy Upgrades no longer reset on Armageddon",
     cost: 1e10,
     formatCost,
   },

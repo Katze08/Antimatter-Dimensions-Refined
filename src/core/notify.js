@@ -36,6 +36,7 @@ export const notify = (function() {
     error: (text, duration) => showNotification(text, "o-notification--error", duration),
     info: (text, duration) => showNotification(text, "o-notification--info", duration),
     infinity: (text, duration) => showNotification(text, "o-notification--infinity", duration),
+    galaxy: (text, duration) => showNotification(text, "o-notification--galaxy", duration),
     eternity: (text, duration) => showNotification(text, "o-notification--eternity", duration),
     reality: (text, duration) => showNotification(text, "o-notification--reality", duration),
     automator: (text, duration) => showNotification(text, "o-notification--automator", duration),

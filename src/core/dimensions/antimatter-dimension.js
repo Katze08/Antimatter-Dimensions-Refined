@@ -109,7 +109,9 @@ function applyNDMultipliers(mult, tier) {
   multiplier = multiplier.times(infinitiedMult);
 
   if (tier === 1) {
-    multiplier = multiplier.dividedBy(10);
+    if (!(player.galaxyUpgrades.has("removeMultiplier"))) {
+      multiplier = multiplier.dividedBy(10);
+    }
     multiplier = multiplier
       .timesEffectsOf(
         InfinityUpgrade.unspentIPMult,

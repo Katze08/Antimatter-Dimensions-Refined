@@ -64,14 +64,15 @@ export default {
       class="game-container"
       :style="topMargin"
     >
-      <NewsTicker
-        v-if="news"
-      />
+
       <BigCrunchButton />
       <div
         v-if="!bigCrunch"
         class="tab-container"
       >
+        <NewsTicker
+          v-if="news"
+        />
         <HeaderPrestigeGroup />
         <div class="information-header">
           <HeaderChallengeDisplay />

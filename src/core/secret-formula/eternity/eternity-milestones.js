@@ -43,7 +43,7 @@ export const eternityMilestones = {
   },
   autoIC: {
     eternities: 7,
-    reward: `You complete Infinity Challenges as soon as you unlock them,
+    reward: `You complete Infinity + Galaxy Challenges as soon as you unlock them,
       and keep the Dimensional Sacrifice Autobuyer`,
     pelleUseless: true
   },

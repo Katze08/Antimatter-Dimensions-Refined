@@ -1,9 +1,9 @@
 import { DC } from "../../constants";
 
 const decreaseDimBoostMaxUpgrades = 5;
-const decreaseGalaxyMaxUpgrades = 20;
+const increaseTickspeedMultiplierUpgrades = 5;
 const decreaseDimBoostBase = 15;
-const decreaseGalaxyBase = 60;
+const increaseTickspeedMultiplierBase = 1.1245;
 const increaseLyBase = 10;
 const extendUniverseBase = 30;
 
@@ -34,10 +34,10 @@ function rebuyable(config) {
 }
 
 export const galaxyUpgrades = {
-  dimBoostFixed: {
-    id: "dimBoostFixed",
+  unlockChallenges: {
+    id: "unlockChallenges",
     cost: 1e80,
-    description: () => `Start out each galaxy reset with ${format(4, 0, 0)} Dimension Boosts`
+    description: "Unlock Galaxy Challenges"
   },
   dimBoostGalaxy: {
     id: "dimBoostGalaxy",
@@ -47,7 +47,7 @@ export const galaxyUpgrades = {
   moreAM: {
     id: "moreAM",
     cost: 1e70,
-    description: () => `Start with ${format(9, 0, 0)} more antimatter`,
+    description: () => `Start every reset with ${format(10, 0, 0)} antimatter`,
     effect: 10.0
   },
   removeMultiplier: {
@@ -58,22 +58,22 @@ export const galaxyUpgrades = {
   decreaseDelay: {
     id: "decreaseDelay",
     cost: 1e200,
-    description: () => `Decrease operation delay for far galaxies by ${formatPercents(0.2)}`
+    description: () => `Decrease operation delay for far galaxies by ${formatPercents(0.2)} (NYI)`
   },
   extensibility: {
     id: "extensibility",
     cost: 1e250,
-    description: "Enable galaxy extensibility"
+    description: "Enable galaxy extensibility (NYI)"
   },
   fusibility: {
     id: "fusibility",
     cost: 1e300,
-    description: "Enable galaxy fusibility"
+    description: "Enable galaxy fusibility (NYI)"
   },
   decreaseDistance: {
     id: "decreaseDistance",
     cost: DC.E500,
-    description: "Decrease the minimum distance between two galaxies"
+    description: "Decrease the minimum distance between two galaxies (NYI)"
   },
   decreaseDimBoost: rebuyable({
     id: 0,
@@ -90,26 +90,26 @@ export const galaxyUpgrades = {
       return `Currently: ${format(decreaseDimBoostBase - value, 0, 0)} | Next: ${format(decreaseDimBoostBase - value - 1, 0, 0)}`;
     })
   }),
-  decreaseGalaxy: rebuyable({
+  increaseTickspeedMultiplier: rebuyable({
     id: 1,
     initialCost: DC.E120,
     costIncrease: DC.E30,
-    maxUpgrades: decreaseGalaxyMaxUpgrades,
-    description: () => `Decrease the difference of 8th Antimatter Dimensions by ${format(1, 0, 0)} between Galaxies`,
+    maxUpgrades: increaseTickspeedMultiplierUpgrades,
+    description: "Increase the Tickspeed multiplier",
     noLabel: true,
     onPurchased: () => GameCache.tickSpeedMultDecrease.invalidate(),
     formatEffect: (value => {
-      if (value === decreaseGalaxyMaxUpgrades) {
-        return `Currently: ${format(decreaseGalaxyBase - value, 0, 0)}`;
+      if (value === increaseTickspeedMultiplierUpgrades) {
+        return `Currently: ${formatX(increaseTickspeedMultiplierBase + (value * 0.005), 4, 4)}`;
       }
-      return `Currently: ${format(decreaseGalaxyBase - value, 0, 0)} | Next: ${format(decreaseGalaxyBase - value - 1, 0, 0)}`;
+      return `Currently: ${formatX(increaseTickspeedMultiplierBase + (value * 0.005), 4, 4)} | Next: ${formatX(increaseTickspeedMultiplierBase + ((value + 1) * 0.005), 4, 4)}`;
     })
   }),
   increaseLy: rebuyable({
     id: 2,
     initialCost: DC.E150,
     costIncrease: DC.E50,
-    description: () => `Increase the near galaxy lightyear limit by ${format(2e6, 0, 0)} Ly`,
+    description: () => `Increase the near galaxy lightyear limit by ${format(2e6, 0, 0)} Ly (NYI)`,
     noLabel: true,
     onPurchased: () => GameCache.dimensionMultDecrease.invalidate(),
     formatEffect: (value => {
@@ -120,7 +120,7 @@ export const galaxyUpgrades = {
     id: 3,
     initialCost: DC.E225,
     costIncrease: DC.E75,
-    description: () => `Extend the observable universe by ${format(5e6, 0, 0)} Ly`,
+    description: () => `Extend the observable universe by ${format(5e6, 0, 0)} Ly (NYI)`,
     noLabel: true,
     onPurchased: () => GameCache.dimensionMultDecrease.invalidate(),
     formatEffect: (value => {

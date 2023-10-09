@@ -15,6 +15,7 @@ import EternityUpgradesTab from "./eternity-upgrades/EternityUpgradesTab";
 import GlyphSetRecordsTab from "./glyph-set-records/GlyphSetRecordsTab";
 import GlyphsTab from "./glyphs/GlyphsTab";
 import GalaxyTab from "./galaxy/GalaxyTab";
+import GalaxyChallengesTab from "./galaxy-challenges/GalaxyChallengesTab";
 import ImaginaryUpgradesTab from "./imaginary-upgrades/ImaginaryUpgradesTab";
 import InfinityChallengesTab from "./infinity-challenges/InfinityChallengesTab";
 import InfinityDimensionsTab from "./infinity-dimensions/InfinityDimensionsTab";
@@ -86,7 +87,8 @@ const TabComponents = {
   CelestialNavigationTab,
   ShopTab,
   MultiplierBreakdownTab,
-  GalaxyTab
+  GalaxyTab,
+  GalaxyChallengesTab
 };
 
 export default TabComponents;

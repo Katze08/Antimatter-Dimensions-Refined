@@ -114,6 +114,7 @@ export const GameCache = {
   challengeTimeSum: new Lazy(() => player.challenge.normal.bestTimes.sum()),
 
   infinityChallengeTimeSum: new Lazy(() => player.challenge.infinity.bestTimes.sum()),
+  galaxyChallengeTimeSum: new Lazy(() => player.challenge.galaxy.bestTimes.sum()),
 };
 
 EventHub.logic.on(GAME_EVENT.GLYPHS_CHANGED, () => {

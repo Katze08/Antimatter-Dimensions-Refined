@@ -21,7 +21,7 @@ export default {
       return undefined;
     },
     text() {
-      return this.isIntergalactic ? "ALREADY INTERGALACTIC" : "BECOME INTERGALACTIC";
+      return this.isIntergalactic ? "ALREADY INTERGALACTIC (NYI)" : "BECOME INTERGALACTIC (NYI)";
     }
   },
   methods: {

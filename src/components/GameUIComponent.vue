@@ -8,6 +8,8 @@ import TabComponents from "@/components/tabs";
 import S12DesktopIcons from "@/components/ui-modes/s12/DesktopIcons";
 import S12Ui from "@/components/ui-modes/s12/S12Ui";
 import S12UiFixed from "@/components/ui-modes/s12/S12UiFixed";
+// eslint-disable-next-line sort-imports
+import { Player } from "@/core/player";
 
 export default {
   name: "GameUIComponent",
@@ -22,6 +24,9 @@ export default {
     S12DesktopIcons,
   },
   computed: {
+    hasBigCrunchButton() {
+      return !player.break && Player.canCrunch;
+    },
     view() {
       return this.$viewModel;
     },
@@ -71,7 +76,7 @@ export default {
         :href="themeCss"
       >
     </div>
-    <GameUiComponentFixed v-if="!isThemeS12" />
+    <GameUiComponentFixed v-if="(!isThemeS12 && !hasBigCrunchButton)" />
     <BackgroundAnimations v-if="!isThemeS12" />
     <S12UiFixed v-if="isThemeS12" />
   </div>

@@ -10,9 +10,9 @@ export default {
   computed: {
     message() {
       return `Becoming intergalacic will allow you to possess galaxies and alternating them, like increasing their size
-      or fusing them together. \n By becoming intergalactic, galaxy upgrades are unlocked.
-      The cost for galaxies and galaxy upgrades depend on the distance. \n
-      Becoming intergalactic costs ${format(1e70, 0, 0)} antimatter.`.split("\n");
+      or fusing them together. \n The cost for galaxies and galaxy upgrades depend on the distance. \n
+      Becoming intergalactic costs ${format(1e70, 0, 0)} antimatter. \n
+      Please note that the intergalactical mechanic is not yet implemented (NYI).`.split("\n");
     },
   },
   methods: {

@@ -57,9 +57,9 @@ export default {
     },
     typeName() {
       switch (this.type) {
-        case GALAXY_TYPE.NORMAL: return "Antimatter Galaxies";
-        case GALAXY_TYPE.DISTANT: return "Distant Antimatter Galaxies";
-        case GALAXY_TYPE.REMOTE: return "Remote Antimatter Galaxies";
+        case GALAXY_TYPE.NORMAL: return "Antimatter Galaxies (DEPRECATED)";
+        case GALAXY_TYPE.DISTANT: return "Distant Antimatter Galaxies (DEPRECATED)";
+        case GALAXY_TYPE.REMOTE: return "Remote Antimatter Galaxies (DEPRECATED)";
       }
       return undefined;
     },

@@ -53,6 +53,9 @@ export default {
       if (this.isContinuumActive) return "Continuum produces all your Antimatter Dimensions";
       return `Purchased ${quantifyInt("time", this.bought)}`;
     },
+    timeUntilEnough() {
+      return "XX:XX:XX until enough AM";
+    },
     costUnit() {
       return `${AntimatterDimension(this.tier - 2).shortDisplayName} AD`;
     },
@@ -146,6 +149,8 @@ export default {
     <div class="l-dim-row-multi-button-container c-modern-dim-tooltip-container">
       <div class="c-modern-dim-purchase-count-tooltip">
         {{ boughtTooltip }}
+        <!--<br/>-->
+        <!--{{ timeUntilEnough }}-->
       </div>
       <button
         :class="buttonClass()"

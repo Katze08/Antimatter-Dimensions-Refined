@@ -25,7 +25,7 @@ export default {
         [
           GalaxyUpgrade.moreAM,
           GalaxyUpgrade.removeMultiplier,
-          GalaxyUpgrade.increaseTickspeedMultiplier
+          GalaxyUpgrade.increase8AD
         ],
         [
           GalaxyUpgrade.decreaseDelay,

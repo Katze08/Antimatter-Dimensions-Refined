@@ -1,3 +1,5 @@
+import { GalaxyUpgrade } from "@/core/galaxy-upgrades";
+
 export const GALAXY_TYPE = {
   NORMAL: 0,
   DISTANT: 1,
@@ -129,6 +131,9 @@ function galaxyReset() {
   if (Notations.current === Notation.emoji) player.requirementChecks.permanent.emojiGalaxies++;
   // This is specifically reset here because the check is actually per-galaxy and not per-infinity
   player.requirementChecks.infinity.noSacrifice = true;
+  if (GalaxyUpgrade.dimBoostGalaxy.isBought) {
+    player.dimensionBoosts = player.galaxies;
+  }
   EventHub.dispatch(GAME_EVENT.GALAXY_RESET_AFTER);
 }
 

@@ -1,3 +1,4 @@
+import { GalaxyUpgrade } from "@/core/galaxy-upgrades";
 import { DC } from "./constants";
 
 class DimBoostRequirement {
@@ -102,7 +103,8 @@ export class DimBoost {
     let amount = 20;
     const discount = Effects.sum(
       TimeStudy(211),
-      TimeStudy(222)
+      TimeStudy(222),
+      GalaxyUpgrade.decreaseDimBoost
     );
     if (tier === 6 && NormalChallenge(10).isRunning) {
       amount += Math.round((targetResets - 3) * (20 - discount));
@@ -165,11 +167,14 @@ export class DimBoost {
   }
 
   static get startingDimensionBoosts() {
-    if (InfinityUpgrade.skipResetGalaxy.isBought) return 4;
-    if (InfinityUpgrade.skipReset3.isBought) return 3;
-    if (InfinityUpgrade.skipReset2.isBought) return 2;
-    if (InfinityUpgrade.skipReset1.isBought) return 1;
-    return 0;
+    let value = 0;
+    let guVal = 0;
+    if (InfinityUpgrade.skipResetGalaxy.isBought) value = 4;
+    if (InfinityUpgrade.skipReset3.isBought) value = 3;
+    if (InfinityUpgrade.skipReset2.isBought) value = 2;
+    if (InfinityUpgrade.skipReset1.isBought) value = 1;
+    if (GalaxyUpgrade.dimBoostGalaxy.isBought) guVal = player.galaxies;
+    return (guVal > value) ? guVal : value;
   }
 }
 

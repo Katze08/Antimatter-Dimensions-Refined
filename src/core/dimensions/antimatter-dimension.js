@@ -1,3 +1,5 @@
+import { GalaxyUpgrade } from "@/core/galaxy-upgrades";
+import { galaxyUpgrades } from "@/core/secret-formula/galaxy/galaxy-upgrades";
 import { DC } from "../constants";
 
 import { DimensionState } from "./dimension";
@@ -125,6 +127,7 @@ function applyNDMultipliers(mult, tier) {
   }
   if (tier === 8) {
     multiplier = multiplier.times(Sacrifice.totalBoost);
+    multiplier = multiplier.times(1 + (player.galaxyRebuyables[1] * 0.05));
   }
 
   multiplier = multiplier.timesEffectsOf(

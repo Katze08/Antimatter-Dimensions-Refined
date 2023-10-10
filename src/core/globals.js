@@ -90,3 +90,6 @@ export * from "./tab-notifications";
 export * from "./speedrun";
 
 export * from "./automator/script-templates";
+
+export * from "./galaxy-upgrades";
+export * from "./galaxy-challenges";

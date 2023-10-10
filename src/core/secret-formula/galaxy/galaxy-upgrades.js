@@ -1,7 +1,7 @@
 import { DC } from "../../constants";
 
 const decreaseDimBoostMaxUpgrades = 5;
-const increaseTickspeedMultiplierUpgrades = 5;
+const increase8ADUpgrades = 20;
 const decreaseDimBoostBase = 15;
 const increaseTickspeedMultiplierBase = 1.1245;
 const increaseLyBase = 10;
@@ -82,7 +82,6 @@ export const galaxyUpgrades = {
     maxUpgrades: decreaseDimBoostMaxUpgrades,
     description: () => `Decrease the difference of 8th Antimatter Dimensions by ${format(1, 0, 0)} between Dimension Boosts`,
     noLabel: true,
-    onPurchased: () => GameCache.tickSpeedMultDecrease.invalidate(),
     formatEffect: (value => {
       if (value === decreaseDimBoostMaxUpgrades) {
         return `Currently: ${format(decreaseDimBoostBase - value, 0, 0)}`;
@@ -90,19 +89,18 @@ export const galaxyUpgrades = {
       return `Currently: ${format(decreaseDimBoostBase - value, 0, 0)} | Next: ${format(decreaseDimBoostBase - value - 1, 0, 0)}`;
     })
   }),
-  increaseTickspeedMultiplier: rebuyable({
+  increase8AD: rebuyable({
     id: 1,
     initialCost: DC.E120,
     costIncrease: DC.E30,
-    maxUpgrades: increaseTickspeedMultiplierUpgrades,
-    description: "Increase the Tickspeed multiplier",
+    maxUpgrades: increase8ADUpgrades,
+    description: "Increase the 8th Antimatter Dimension multiplier",
     noLabel: true,
-    onPurchased: () => GameCache.tickSpeedMultDecrease.invalidate(),
     formatEffect: (value => {
-      if (value === increaseTickspeedMultiplierUpgrades) {
-        return `Currently: ${formatX(increaseTickspeedMultiplierBase + (value * 0.005), 4, 4)}`;
+      if (value === increase8ADUpgrades) {
+        return `Currently: +${formatX(1 + (value * 0.05), 2, 2)}`;
       }
-      return `Currently: ${formatX(increaseTickspeedMultiplierBase + (value * 0.005), 4, 4)} | Next: ${formatX(increaseTickspeedMultiplierBase + ((value + 1) * 0.005), 4, 4)}`;
+      return `Currently: +${formatX(1 + (value * 0.05), 2, 2)} | Next: +${formatX(1 + ((value + 1) * 0.05), 2, 2)}`;
     })
   }),
   increaseLy: rebuyable({
@@ -111,6 +109,7 @@ export const galaxyUpgrades = {
     costIncrease: DC.E50,
     description: () => `Increase the near galaxy lightyear limit by ${format(2e6, 0, 0)} Ly (NYI)`,
     noLabel: true,
+    // TODO: CHANGE THIS!
     onPurchased: () => GameCache.dimensionMultDecrease.invalidate(),
     formatEffect: (value => {
       return `Currently: ${format((increaseLyBase + (value * 2)) * 1e6, 3, 3)} Ly | Next: ${format((increaseLyBase + ((value + 1) * 2)) * 1e6, 3, 3)} Ly`;
@@ -122,6 +121,7 @@ export const galaxyUpgrades = {
     costIncrease: DC.E75,
     description: () => `Extend the observable universe by ${format(5e6, 0, 0)} Ly (NYI)`,
     noLabel: true,
+    // TODO: CHANGE THIS!
     onPurchased: () => GameCache.dimensionMultDecrease.invalidate(),
     formatEffect: (value => {
       return `Currently: ${format((extendUniverseBase + (value * 5)) * 1e6, 3, 3)} Ly | Next: ${format((extendUniverseBase + ((value + 1) * 5)) * 1e6, 3, 3)} Ly`;

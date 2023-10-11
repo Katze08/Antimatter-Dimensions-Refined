@@ -159,7 +159,7 @@ export default {
         {{ boughtTooltip }}
         <br/>
         <!--{{ timeUntilEnough }}-->
-        {{ logarithmicPercentScale }}
+        <!--{{ logarithmicPercentScale }}-->
       </div>
       <button
         :class="buttonClass()"

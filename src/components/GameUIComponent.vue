@@ -76,7 +76,7 @@ export default {
         :href="themeCss"
       >
     </div>
-    <GameUiComponentFixed v-if="(!isThemeS12 && !hasBigCrunchButton)" />
+    <GameUiComponentFixed v-if="!isThemeS12" />
     <BackgroundAnimations v-if="!isThemeS12" />
     <S12UiFixed v-if="isThemeS12" />
   </div>

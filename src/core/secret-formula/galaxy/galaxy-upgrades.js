@@ -3,7 +3,6 @@ import { DC } from "../../constants";
 const decreaseDimBoostMaxUpgrades = 5;
 const increase8ADUpgrades = 20;
 const decreaseDimBoostBase = 15;
-const increaseTickspeedMultiplierBase = 1.1245;
 const increaseLyBase = 10;
 const extendUniverseBase = 30;
 
@@ -41,7 +40,7 @@ export const galaxyUpgrades = {
   },
   dimBoostGalaxy: {
     id: "dimBoostGalaxy",
-    cost: 1e90,
+    cost: 1e120,
     description: "Start out each galaxy reset with one more Dimension Boost per galaxy"
   },
   moreAM: {

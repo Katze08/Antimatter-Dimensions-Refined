@@ -9,7 +9,7 @@ export const normalAchievements = [
   },
   {
     id: 12,
-    name: "100 antimatter is a lot",
+    name: "10 antimatter is a lot",
     description: "Buy a 2nd Antimatter Dimension.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },

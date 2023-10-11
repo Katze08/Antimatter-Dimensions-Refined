@@ -1,3 +1,4 @@
+import { PlayerProgress } from "@/core/player-progress";
 import { DC } from "../constants";
 
 import { credits } from "@/core/secret-formula/credits";
@@ -25,7 +26,7 @@ Welcome to the How to Play!
 This modal (pop-up window) contains in-depth explanations and additional details for everything you will encounter
 as you progress through the game. As you unlock new features and mechanics, you will also gain access to additional
 pages here. If you ever feel lost or confused about how something in the game works, you may find a helpful
-explanation within the related entry in here. 
+explanation within the related entry in here.
 <br>
 <br>
 For now, opening the How to Play will always start you on this page. After you get your first Dimension Boost,
@@ -229,6 +230,9 @@ Play entry will update itself with additional entries for new resources as you e
 - <b>AM</b>: Antimatter<br>
 - <b>AD</b>: Antimatter Dimension<br>
 - <b>AG</b>: Antimatter Galaxy<br>
+${PlayerProgress.intergalacticUnlocked() ? "- <b>IG</b>: Intergalactic<br>" : ""}
+${PlayerProgress.intergalacticUnlocked() ? "- <b>GU</b>: Galaxy Upgrade<br>" : ""}
+${PlayerProgress.intergalacticUnlocked() ? "- <b>GC</b>: Galaxy Challenge<br>" : ""}
 ${PlayerProgress.infinityUnlocked() ? "- <b>IP</b>: Infinity Point<br>" : ""}
 ${PlayerProgress.infinityUnlocked() ? "- <b>NC</b>: Normal Challenge<br>" : ""}
 ${PlayerProgress.infinityUnlocked() ? "- <b>IC</b>: Infinity Challenge<br>" : ""}
@@ -249,7 +253,7 @@ ${Laitela.isUnlocked ? "- <b>DM</b>: Dark Matter<br>" : ""}
 ${Laitela.isUnlocked ? "- <b>DE</b>: Dark Energy<br>" : ""}
 `,
       isUnlocked: () => true,
-      tags: ["abbreviation", "shorten", "am", "ad", "ag", "ip", "nc", "ic", "id", "rg", "ep", "tt", "td", "ec", "tp",
+      tags: ["abbreviation", "shorten", "am", "ad", "ag", "ig", "gu", "gc", "ip", "nc", "ic", "id", "rg", "ep", "tt", "td", "ec", "tp",
         "dt", "tg", "rm", "ap", "bh", "im", "dm", "de"],
       tab: ""
     }, {

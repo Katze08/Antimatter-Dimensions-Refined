@@ -58,7 +58,7 @@ export default {
         v-if="!smallCrunch"
         class="o-emptiness"
       >
-        The world has collapsed due to excess of antimatter.
+        The world has collapsed because it can only hold 1.79e308 antimatter.
       </div>
     </div>
   </span>

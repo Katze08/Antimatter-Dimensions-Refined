@@ -3,6 +3,10 @@ export class PlayerProgress {
     this._player = player;
   }
 
+  get isIntergalacticUnlocked() {
+    return player.wasOnceIntergalactical;
+  }
+
   get isInfinityUnlocked() {
     // Infinity count data is stored in either player.infinitied or player.infinities based on if the save is before
     // or after the reality update, but this also gets checked in the import modal before any migration code is run.
@@ -34,6 +38,10 @@ export class PlayerProgress {
 
   static infinityUnlocked() {
     return PlayerProgress.current.isInfinityUnlocked;
+  }
+
+  static intergalacticUnlocked() {
+    return PlayerProgress.current.isIntergalacticUnlocked
   }
 
   static hasBroken() {

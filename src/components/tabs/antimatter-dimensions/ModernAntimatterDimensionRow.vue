@@ -1,5 +1,6 @@
 <script>
 import GenericDimensionRowText from "@/components/GenericDimensionRowText";
+import { DC } from "@/core/constants";
 
 export default {
   name: "ModernAntimatterDimensionRow",
@@ -55,6 +56,13 @@ export default {
     },
     timeUntilEnough() {
       return "XX:XX:XX until enough AM";
+    },
+    logarithmicPercentScale() {
+      let percent = player.antimatter.exponent.toDecimal().divide(this.singleCost.exponent.toDecimal()).multiply(new Decimal(DC.E2));
+      if ((percent.greaterThan(new Decimal(DC.E2))) || (this.singleCost.exponent.toDecimal().equals(new Decimal(0)))) {
+        percent = new Decimal(DC.E2);
+      }
+      return percent.toFixed(2).toString().concat("%");
     },
     costUnit() {
       return `${AntimatterDimension(this.tier - 2).shortDisplayName} AD`;
@@ -149,8 +157,9 @@ export default {
     <div class="l-dim-row-multi-button-container c-modern-dim-tooltip-container">
       <div class="c-modern-dim-purchase-count-tooltip">
         {{ boughtTooltip }}
-        <!--<br/>-->
+        <br/>
         <!--{{ timeUntilEnough }}-->
+        {{ logarithmicPercentScale }}
       </div>
       <button
         :class="buttonClass()"

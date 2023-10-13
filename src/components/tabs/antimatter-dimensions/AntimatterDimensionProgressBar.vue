@@ -82,8 +82,10 @@ export default {
           } else {
             setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "Percentage to Infinity");
           }
-        } else {
+        } else if (player.intergalactic) {
           setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "Percentage to first Strike");
+        } else {
+          setProgress(Currency.antimatter.value, DC.E70, "Percentage till intergalactic");
         }
       } else if (Enslaved.isCompleted) {
         // Show all other goals from the top down, starting at features in the highest prestige layer
@@ -102,8 +104,10 @@ export default {
         } else {
           setProgress(player.infinityPoints, nextID.ipRequirement, text);
         }
-      } else {
+      } else if (player.intergalactic) {
         setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "Percentage to Infinity");
+      } else {
+        setProgress(Currency.antimatter.value, DC.E70, "Percentage till intergalactic");
       }
     }
   }

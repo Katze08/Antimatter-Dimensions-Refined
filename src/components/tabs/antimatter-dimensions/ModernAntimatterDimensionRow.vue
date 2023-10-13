@@ -1,10 +1,12 @@
 <script>
 import GenericDimensionRowText from "@/components/GenericDimensionRowText";
+import AntimatterDimensionRowPercents from "@/components/tabs/antimatter-dimensions/AntimatterDimensionRowPercents";
 import { DC } from "@/core/constants";
 
 export default {
   name: "ModernAntimatterDimensionRow",
   components: {
+    AntimatterDimensionRowPercents,
     GenericDimensionRowText
   },
   props: {
@@ -58,8 +60,10 @@ export default {
       return "XX:XX:XX until enough AM";
     },
     logarithmicPercentScale() {
-      let percent = player.antimatter.exponent.toDecimal().divide(this.singleCost.exponent.toDecimal()).multiply(new Decimal(DC.E2));
-      if ((percent.greaterThan(new Decimal(DC.E2))) || (this.singleCost.exponent.toDecimal().equals(new Decimal(0)))) {
+      let currentAM = player.antimatter.exponent.toDecimal();
+      let costAM = this.singleCost.exponent.toDecimal();
+      let percent = currentAM.divide(costAM).multiply(new Decimal(DC.E2));
+      if ((percent.greaterThan(new Decimal(DC.E2))) || (costAM.equals(new Decimal(0)))) {
         percent = new Decimal(DC.E2);
       }
       return percent.toFixed(2).toString().concat("%");
@@ -160,6 +164,9 @@ export default {
         <br/>
         <!--{{ timeUntilEnough }}-->
         <!--{{ logarithmicPercentScale }}-->
+        <AntimatterDimensionRowPercents
+          :cost="singleCost"
+        />
       </div>
       <button
         :class="buttonClass()"

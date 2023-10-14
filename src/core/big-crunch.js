@@ -58,6 +58,7 @@ export function bigCrunchReset(
     player.intergalactic = false;
     player.galaxyUpgrades = new Set();
     player.galaxyRebuyables = [0, 0, 0, 0];
+    player.atBigCrunchButton = false;
     if (Pelle.isDoomed) PelleStrikes.infinity.trigger();
   }
 

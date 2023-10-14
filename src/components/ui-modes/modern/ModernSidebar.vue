@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       isHidden: false,
-      tabVisibilities: []
+      tabVisibilities: [],
     };
   },
   computed: {
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     update() {
-      this.isHidden = AutomatorData.isEditorFullscreen;
+      this.isHidden = AutomatorData.isEditorFullscreen || player.atBigCrunchButton;
       this.tabVisibilities = Tabs.newUI.map(x => x.isAvailable);
     },
   },

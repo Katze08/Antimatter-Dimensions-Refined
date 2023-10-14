@@ -34,6 +34,7 @@ export default {
       hasTTGen: false,
       showTTGen: false,
       invertTTgenDisplay: false,
+      shouldDisplay: true,
     };
   },
   computed: {
@@ -132,6 +133,7 @@ export default {
       this.hasTTGen = this.theoremGeneration.gt(0);
       this.showTTGen = this.hasTTGen && (ui.view.shiftDown === this.invertTTgenDisplay);
       this.invertTTgenDisplay = player.options.invertTTgenDisplay;
+      this.shouldDisplay = !player.atBigCrunchButton;
     },
     toggleTTgen() {
       this.invertTTgenDisplay = !this.invertTTgenDisplay;
@@ -141,7 +143,10 @@ export default {
 </script>
 
 <template>
-  <div class="time-theorem-buttons">
+  <div
+    v-if="shouldDisplay"
+    class="time-theorem-buttons"
+  >
     <div class="ttshop-container ttshop-background">
       <div
         data-role="page"

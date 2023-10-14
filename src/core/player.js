@@ -39,6 +39,7 @@ window.player = {
   galaxyChallengesUnlocked: false,
   infinityRebuyables: [0, 0, 0],
   galaxyRebuyables: [0, 0, 0, 0],
+  atBigCrunchButton: false,
   challenge: {
     normal: {
       current: 0,

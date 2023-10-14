@@ -9,6 +9,7 @@ export default {
       lastCloudSave: 0,
       showTimeSinceSave: false,
       saveDisabled: false,
+      shouldDisplay: true,
     };
   },
   computed: {
@@ -28,6 +29,7 @@ export default {
       this.lastCloudSave = GameStorage.lastCloudSave;
       this.showTimeSinceSave = player.options.showTimeSinceSave;
       this.saveDisabled = GameEnd.endState >= END_STATE_MARKERS.INTERACTIVITY_DISABLED;
+      this.shouldDisplay = !player.atBigCrunchButton;
     },
     save() {
       GameStorage.save(false, true);
@@ -38,7 +40,7 @@ export default {
 
 <template>
   <div
-    v-if="showTimeSinceSave"
+    v-if="showTimeSinceSave && shouldDisplay"
     class="o-save-timer"
     @click="save"
   >

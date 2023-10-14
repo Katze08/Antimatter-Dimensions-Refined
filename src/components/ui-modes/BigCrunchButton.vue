@@ -14,6 +14,7 @@ export default {
       if (!this.shouldDisplay) return;
       this.isModern = player.options.newUI;
       this.smallCrunch = Time.bestInfinityRealTime.totalMinutes <= 1;
+      player.atBigCrunchButton = this.shouldDisplay && !this.smallCrunch;
     },
     handleClick() {
       if (PlayerProgress.infinityUnlocked()) bigCrunchResetRequest();
@@ -25,7 +26,9 @@ export default {
 
 <template>
   <span v-if="shouldDisplay">
-    <div v-if="isModern">
+    <div
+      v-if="isModern"
+    >
       <h3
         v-if="!smallCrunch"
         class="l-spacing"

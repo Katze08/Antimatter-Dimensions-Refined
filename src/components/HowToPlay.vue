@@ -1,10 +1,12 @@
 <script>
+
 export default {
   name: "HowToPlay",
   data() {
     return {
       hasTutorial: false,
       isModern: false,
+      shouldDisplay: true
     };
   },
   computed: {
@@ -21,8 +23,9 @@ export default {
   },
   methods: {
     update() {
-      this.hasTutorial = Tutorial.emphasizeH2P();
+      this.hasTutorial = Tutorial.emphasizeH2P() && this.shouldDisplay;
       this.isModern = player.options.newUI;
+      this.shouldDisplay = !player.atBigCrunchButton;
     },
     showH2P() {
       Modal.h2p.show();
@@ -37,6 +40,7 @@ export default {
 <template>
   <div>
     <div
+      v-if="shouldDisplay"
       :class="h2pClassObject"
       :style="topMargin"
       @click="showH2P"
@@ -55,6 +59,7 @@ export default {
       :style="topMargin"
     />
     <div
+      v-if="shouldDisplay"
       class="o-tab-btn l-information l-help-me"
       @click="showInfo"
     >

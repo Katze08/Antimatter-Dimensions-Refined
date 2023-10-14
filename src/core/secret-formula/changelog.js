@@ -59,6 +59,10 @@ This minor update adds a logarithmic percentage below the "Purchased X times" ph
 <li>New link in the "About the game" modal that refers to the vanilla game.</li>
 <li>Added two new categories to the credits: "Modder" with my name and "Supporter" with the name of ʇʎouıplɐuop.</li>
 </ul>
+<b>Minor Update 14.10.2023 06:50PM UTC+2</b><br>
+<ul>
+<li>If you Infinity and get the big button (where even the header disappears), everything now disappears (including the sidebar, savetimer, news and the how to play).</li>
+</ul>
 `
   }
 ];

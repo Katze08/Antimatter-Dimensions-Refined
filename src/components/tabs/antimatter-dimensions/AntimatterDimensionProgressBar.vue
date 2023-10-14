@@ -57,7 +57,7 @@ export default {
       if (inSpecialRun) {
         if (Player.isInAntimatterChallenge) {
           let color = COLORS.CHALLENGE_RED;
-          if (Player.antimatterChallenge.goal.exponent >= 309){
+          if (Player.antimatterChallenge.goal.exponent >= 309) {
             color = COLORS.INFINITY_BROWN;
           }
           setProgress(Currency.antimatter.value, Player.antimatterChallenge.goal, "Percentage to Challenge goal", color);

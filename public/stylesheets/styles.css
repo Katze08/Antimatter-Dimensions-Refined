@@ -2520,7 +2520,6 @@ br {
 
   /* Align percents on center */
   text-align: center;
-  /* background-color: #127a20; */
   border-radius: inherit;
   transition-duration: 0.1s;
   pointer-events: none;

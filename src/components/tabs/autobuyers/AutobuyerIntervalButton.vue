@@ -48,12 +48,6 @@ export default {
     <br>
     Cost: {{ format(cost, 2) }} IP
   </button>
-  <button
-    v-else-if="!isMaxed"
-    class="o-autobuyer-btn l-autobuyer-box__button o-autobuyer-btn--unavailable"
-  >
-    Complete the challenge to upgrade interval
-  </button>
 </template>
 
 <style scoped>

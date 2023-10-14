@@ -21,7 +21,8 @@ export default {
     </div>
     <div class="c-info-body">
       Antimatter Dimensions is an Idle Incremental game created by Finnish developer Hevipelle. Originating as a solo
-      project in 2016, it was expanded upon by a large team of developers and testers from then on.
+      project in 2016, it was expanded upon by a large team of developers and testers from then on. This is a modded
+      version by Katze08 called Antimatter Dimensions Refined.
       <br>
       <br>
       The game has unfolding gameplay and multiple prestige layers. The "How to Play" button contains useful
@@ -31,27 +32,12 @@ export default {
       <InformationModalButton
         name="GitHub repository"
         icon="fa-brands fa-github"
-        link="https://github.com/IvarK/AntimatterDimensionsSourceCode"
+        link="https://github.com/Katze08/Antimatter-Dimensions-Refined"
       />
       <InformationModalButton
-        name="r/AntimatterDimensions"
-        icon="fa-brands fa-reddit-alien"
-        link="https://www.reddit.com/r/AntimatterDimensions/"
-      />
-      <InformationModalButton
-        name="Antimatter Dimensions Discord Server"
+        name="Antimatter Dimensions Refined Discord Server"
         icon="fa-brands fa-discord"
-        link="https://discord.gg/ST9NaXa"
-      />
-      <InformationModalButton
-        name="Antimatter Dimensions on Google Play"
-        icon="fa-brands fa-google-play"
-        link="https://play.google.com/store/apps/details?id=kajfosz.antimatterdimensions"
-      />
-      <InformationModalButton
-        name="Antimatter Dimensions on Steam"
-        icon="fa-brands fa-steam"
-        link="https://store.steampowered.com/app/1399720/Antimatter_Dimensions/"
+        link="https://discord.gg/SrNZhpHY9S"
       />
       <InformationModalButton
         name="Credits"
@@ -62,6 +48,11 @@ export default {
         name="Game Changelog"
         icon="fa-solid fa-file-lines"
         show-modal="changelog"
+      />
+      <InformationModalButton
+        name="To the vanilla game"
+        icon="fa-solid fa-arrow-right"
+        link="https://ivark.github.io/AntimatterDimensions/"
       />
     </div>
   </div>

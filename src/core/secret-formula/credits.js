@@ -13,7 +13,9 @@ export const credits = {
     10: "Modal Maker, Lady Taker, Pie Baker",
     11: "Lurker Tester",
     12: "Web Tester",
-    13: "Android Tester"
+    13: "Android Tester",
+    14: "Modder",
+    15: "Supporter"
   },
 
   // Each person must have a name and at least one role (the index of the desired role in roles). They can also have a
@@ -435,6 +437,14 @@ export const credits = {
       name: "ZylaKat",
       name2: "Katherine Goforth-Harbin",
       roles: 13
+    },
+    {
+      name: "Katze08",
+      roles: 14
+    },
+    {
+      name: "ʇʎouıplɐuop",
+      roles: 15
     }
   ]
 };

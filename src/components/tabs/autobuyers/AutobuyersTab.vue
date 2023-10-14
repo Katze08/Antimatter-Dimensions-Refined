@@ -75,9 +75,6 @@ export default {
       <br>
       <br>
     </div>
-    <div v-if="!hasInfinity">
-      Challenges for upgrading autobuyers are unlocked by reaching Infinity.
-    </div>
     <b>Autobuyers with no displayed bulk have unlimited bulk by default.</b>
     <b>
       Antimatter Dimension Autobuyers can have their bulk upgraded once interval is below {{ formatInt(100) }} ms.

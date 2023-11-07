@@ -1,3 +1,4 @@
+import { generateGalaxies } from "@/core/secret-formula/galaxy/map_galaxies";
 import { DC } from "./constants";
 import FullScreenAnimationHandler from "./full-screen-animation-handler";
 
@@ -59,7 +60,8 @@ export function bigCrunchReset(
     player.galaxyUpgrades = new Set();
     player.galaxyRebuyables = [0, 0, 0, 0];
     player.mapGalaxies = new Set();
-    player.availableMapGalaxiesCurrentInfinity = null;
+    player.availableMapGalaxiesCurrentInfinity = {};
+    generateGalaxies();
     player.antimatterGalaxiesBought = 0;
     player.atBigCrunchButton = false;
     if (Pelle.isDoomed) PelleStrikes.infinity.trigger();

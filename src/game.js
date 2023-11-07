@@ -1,5 +1,6 @@
 import { Currency } from "@/core/currency";
 import { NormalChallenge } from "@/core/normal-challenges";
+import { generateGalaxies } from "@/core/secret-formula/galaxy/map_galaxies";
 import TWEEN from "tween.js";
 
 import { ElectronRuntime, SteamRuntime } from "@/steam";
@@ -97,6 +98,7 @@ export function becomeIntergalactic() {
   player.intergalactic = !player.intergalactic;
   player.wasOnceIntergalactical = true;
   player.unlockedGalaxyMap = true;
+  generateGalaxies();
   EventHub.dispatch(player.intergalactic ? GAME_EVENT.BECOME_INTERGALACTIC : GAME_EVENT.UNBECOME_INTERGALACTIC);
   GameUI.update();
 }

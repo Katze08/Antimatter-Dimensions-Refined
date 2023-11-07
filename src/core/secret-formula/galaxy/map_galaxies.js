@@ -20,6 +20,7 @@ export let galaxies = {
 };
 
 export function generateGalaxies() {
+  console.log("test");
   let id = 1;
   for (let x = -10; x <= 10; x += 2) {
     for (let y = -10; y <= 10; y += 2) {

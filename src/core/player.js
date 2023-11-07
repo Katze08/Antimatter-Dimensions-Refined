@@ -1,6 +1,7 @@
 import { AutomatorPanels } from "@/components/tabs/automator/AutomatorDocs";
 import { GlyphInfo } from "@/components/modals/options/SelectGlyphInfoDropdown";
 import { galaxyUpgrades } from "@/core/secret-formula/galaxy/galaxy-upgrades";
+import { GALAXY_FAMILY, generateGalaxies } from "@/core/secret-formula/galaxy/map_galaxies";
 
 import { AUTOMATOR_MODE, AUTOMATOR_TYPE } from "./automator/automator-backend";
 import { DC } from "./constants";
@@ -13,7 +14,7 @@ window.player = {
   antimatter: DC.E0,
   antimatterGalaxiesBought: 0,
   mapGalaxies: new Set(),
-  availableMapGalaxiesCurrentInfinity: new Set(),
+  availableMapGalaxiesCurrentInfinity: {},
   dimensions: {
     antimatter: Array.range(0, 8).map(() => ({
       bought: 0,

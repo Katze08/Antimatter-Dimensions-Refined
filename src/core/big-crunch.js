@@ -59,7 +59,7 @@ export function bigCrunchReset(
     player.galaxyUpgrades = new Set();
     player.galaxyRebuyables = [0, 0, 0, 0];
     player.mapGalaxies = new Set();
-    player.availableMapGalaxiesCurrentInfinity = new Set();
+    player.availableMapGalaxiesCurrentInfinity = null;
     player.antimatterGalaxiesBought = 0;
     player.atBigCrunchButton = false;
     if (Pelle.isDoomed) PelleStrikes.infinity.trigger();

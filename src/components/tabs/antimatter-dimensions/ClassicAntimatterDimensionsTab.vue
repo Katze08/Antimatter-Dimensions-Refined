@@ -13,7 +13,6 @@ export default {
     PrimaryButton,
     AntimatterDimensionRow,
     AntimatterDimensionsTabHeader,
-    AntimatterGalaxyRow,
     DimensionBoostRow,
     AntimatterDimensionProgressBar,
     TickspeedRow,
@@ -61,7 +60,6 @@ export default {
         :tier="tier"
       />
       <DimensionBoostRow />
-      <AntimatterGalaxyRow />
     </div>
     <PrimaryButton
       v-if="isQuickResetAvailable"

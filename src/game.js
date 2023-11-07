@@ -96,6 +96,7 @@ export function becomeIntergalactic() {
   Achievement(61).tryUnlock();
   player.intergalactic = !player.intergalactic;
   player.wasOnceIntergalactical = true;
+  player.unlockedGalaxyMap = true;
   EventHub.dispatch(player.intergalactic ? GAME_EVENT.BECOME_INTERGALACTIC : GAME_EVENT.UNBECOME_INTERGALACTIC);
   GameUI.update();
 }

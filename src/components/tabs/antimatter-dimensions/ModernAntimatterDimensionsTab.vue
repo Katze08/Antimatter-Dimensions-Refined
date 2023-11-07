@@ -12,8 +12,6 @@ export default {
     PrimaryButton,
     AntimatterDimensionProgressBar,
     AntimatterDimensionRow,
-    AntimatterGalaxyRow,
-    DimensionBoostRow,
     TickspeedRow
   },
   data() {
@@ -97,6 +95,7 @@ export default {
 
 <template>
   <div class="l-antimatter-dim-tab">
+    <AntimatterDimensionProgressBar />
     <div class="modes-container">
       <button
         class="o-primary-btn l-button-container"
@@ -131,19 +130,15 @@ export default {
       />
     </div>
     <div class="resets-container">
-      <DimensionBoostRow />
       <PrimaryButton
         v-if="isQuickResetAvailable"
         class="o-primary-btn--quick-reset"
         onclick="softReset(-1, true, true)"
       >
-        Perform a Dimension Boost reset
+        Fix softlock
         <span v-if="hasDimensionBoosts"> but lose a Dimension Boost</span>
-        <span v-else> for no gain</span>
       </PrimaryButton>
-      <AntimatterGalaxyRow />
     </div>
-    <AntimatterDimensionProgressBar />
   </div>
 </template>
 

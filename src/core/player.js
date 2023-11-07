@@ -11,6 +11,8 @@ import { GlyphTypes } from "./glyph-effects";
 // eslint-disable-next-line prefer-const
 window.player = {
   antimatter: DC.E0,
+  mapGalaxies: new Set(),
+  availableMapGalaxiesCurrentInfinity: new Set(),
   dimensions: {
     antimatter: Array.range(0, 8).map(() => ({
       bought: 0,
@@ -239,6 +241,7 @@ window.player = {
   break: false,
   intergalactic: false,
   wasOnceIntergalactical: false,
+  unlockedGalaxyMap: false,
   secretUnlocks: {
     themes: new Set(),
     viewSecretTS: false,
@@ -841,6 +844,7 @@ window.player = {
       glyphEffectDots: true,
       realityUpgrades: true,
       perks: true,
+      galaxies: true,
       alchemy: true,
       glyphInfoType: GlyphInfo.types.NONE,
       showGlyphInfoByDefault: false,

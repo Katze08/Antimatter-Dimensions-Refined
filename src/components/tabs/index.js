@@ -1,4 +1,5 @@
 // Temporarily aggregate tab components here until GameUI is migrated to SFC
+import GalaxyMapTab from "@/components/tabs/new-galaxy-map/GalaxyMapTab";
 import AlchemyTab from "./alchemy/AlchemyTab";
 import AntimatterDimensionsTab from "./antimatter-dimensions/AntimatterDimensionsTab";
 import AutobuyersTab from "./autobuyers/AutobuyersTab";
@@ -88,6 +89,7 @@ const TabComponents = {
   ShopTab,
   MultiplierBreakdownTab,
   GalaxyTab,
+  GalaxyMapTab,
   GalaxyChallengesTab
 };
 

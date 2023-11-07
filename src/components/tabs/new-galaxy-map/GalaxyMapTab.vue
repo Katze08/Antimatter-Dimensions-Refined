@@ -1,13 +1,14 @@
 <script>
+import GalaxyLabel from "@/components/tabs/new-galaxy-map/GalaxyLabel";
+import { Galaxies } from "@/core/map_galaxies";
+import { GALAXY_FAMILY } from "@/core/secret-formula/galaxy/map_galaxies";
 import { DataSet, Network } from "vis-network";
-
-import { PERK_FAMILY } from "@/core/secret-formula";
-import PerkPointLabel from "./PerkPointLabel";
+import ModernAntimatterGalaxyRow from "@/components/tabs/antimatter-dimensions/ModernAntimatterGalaxyRow";
 
 export default {
-  name: "PerksTab",
+  name: "GalaxyMap",
   components: {
-    PerkPointLabel
+    GalaxyLabel
   },
   computed: {
     showHintText() {
@@ -16,57 +17,33 @@ export default {
   },
   watch: {
     showHintText(newValue) {
-      if (ui.view.theme === "S9") PerkNetwork.setLabelVisibility(false);
-      else PerkNetwork.setLabelVisibility(newValue);
+      if (ui.view.theme === "S9") GalaxyNetwork.setLabelVisibility(false);
+      else GalaxyNetwork.setLabelVisibility(newValue);
     }
   },
   created() {
-    EventHub.ui.on(GAME_EVENT.PERK_BOUGHT, () => PerkNetwork.updatePerkColor());
+    EventHub.ui.on(GAME_EVENT.GALAXY_BOUGHT, () => GalaxyNetwork.updatePerkColor());
   },
   mounted() {
-    PerkNetwork.initialStabilization = false;
-    PerkNetwork.currentLayout = PerkLayouts[player.options.perkLayout];
-    PerkNetwork.initializeIfNeeded();
-    if (ui.view.theme === "S9") PerkNetwork.setLabelVisibility(false);
-    else PerkNetwork.setLabelVisibility(ui.view.shiftDown || player.options.showHintText.perks);
-    PerkNetwork.updatePerkColor();
-    PerkNetwork.updatePerkSize();
-    this.$refs.tab.appendChild(PerkNetwork.container);
-    PerkNetwork.moveToDefaultLayoutPositions(player.options.perkLayout);
+    GalaxyNetwork.initialStabilization = false;
+    GalaxyNetwork.currentLayout = PerkLayouts[0];
+    GalaxyNetwork.initializeIfNeeded();
+    if (ui.view.theme === "S9") GalaxyNetwork.setLabelVisibility(false);
+    else GalaxyNetwork.setLabelVisibility(ui.view.shiftDown || player.options.showHintText.perks);
+    GalaxyNetwork.updatePerkColor();
+    GalaxyNetwork.updatePerkSize();
+    this.$refs.tab.appendChild(GalaxyNetwork.container);
+    GalaxyNetwork.moveToDefaultLayoutPositions(0);
   }
 };
 
 // Primary is lifted from the study tree (mostly),
 // secondary is primary -15% l in hsl, apart from reality which is -10%
 const perkColors = () => ({
-  [PERK_FAMILY.ANTIMATTER]: {
-    primary: "#22aa48",
-    secondary: "#156a2d"
-  },
-  [PERK_FAMILY.INFINITY]: {
-    primary: "#b67f33",
-    secondary: "#7b5623"
-  },
-  [PERK_FAMILY.ETERNITY]: {
-    primary: "#b241e3",
-    secondary: "#8b1cba"
-  },
-  [PERK_FAMILY.DILATION]: {
-    primary: "#64dd17",
-    secondary: "#449810"
-  },
-  [PERK_FAMILY.REALITY]: {
-    primary: "#0b600e",
-    secondary: "#063207"
-  },
-  [PERK_FAMILY.AUTOMATION]: {
-    primary: "#ff0000",
-    secondary: "#b30000"
-  },
-  [PERK_FAMILY.ACHIEVEMENT]: {
-    primary: "#fdd835",
-    secondary: "#e3ba02"
-  },
+  [GALAXY_FAMILY.GALAXY]: {
+    primary: "#b840d0",
+    secondary: "#6F277D"
+  }
 });
 
 // Coordinate specifications are sometimes given in a grid index, so we need to spread them out to the proper scaling.
@@ -87,51 +64,10 @@ export const PerkLayouts = [
   {
     buttonText: "Default Untangled",
     position: config => positionNumToVector(config.layoutPosList[0]),
-  },
-  {
-    buttonText: "Random Positions",
-    position: () => new Vector(2000 * Math.random() - 1000, 1200 * Math.random() - 600),
-  },
-  {
-    // This is the perks laid out in the same way that they're laid out in the Android version
-    buttonText: "Android Layout",
-    position: config => globalScale(positionNumToVector(config.layoutPosList[1]), 20),
-    centerOffset: new Vector(0, 120),
-    forcePhysics: false,
-    straightEdges: true,
-  },
-  {
-    buttonText: "Square",
-    position: config => globalScale(positionNumToVector(config.layoutPosList[2]), 27.5),
-    centerOffset: new Vector(0, 0),
-    forcePhysics: false,
-    straightEdges: true,
-  },
-  {
-    buttonText: "Horizontal Grid",
-    position: config => globalScale(positionNumToVector(config.layoutPosList[3]), 32.5),
-    centerOffset: new Vector(-60, 0),
-    forcePhysics: false,
-    straightEdges: true,
-  },
-  {
-    buttonText: "Distance from START",
-    position: config => globalScale(positionNumToVector(config.layoutPosList[4]), 17.5),
-    centerOffset: new Vector(0, 0),
-    forcePhysics: false,
-    straightEdges: true,
-  },
-  {
-    buttonText: "Blob",
-    position: config => positionNumToVector(config.layoutPosList[5]),
-    centerOffset: new Vector(50, 0),
-    forcePhysics: false,
-    straightEdges: true,
-    isUnlocked: () => Themes.available().map(t => t.name).includes("S11"),
   }
 ];
 
-export const PerkNetwork = {
+export const GalaxyNetwork = {
   container: undefined,
   network: undefined,
   nodes: undefined,
@@ -151,26 +87,14 @@ export const PerkNetwork = {
     this.network.on("click", params => {
       const id = params.nodes[0];
       if (!isFinite(id)) return;
-      Perks.find(id).purchase();
-      this.updatePerkColor();
-      this.updatePerkSize();
-    });
-
-    this.network.on("dragStart", () => {
-      const tooltip = this.container.getElementsByClassName("vis-tooltip")[0];
-      if (tooltip !== undefined) {
-        tooltip.style.visibility = "hidden";
+      const oldGalaxyValue = player.galaxies;
+      ModernAntimatterGalaxyRow.methods.buyGalaxy(false);
+      if (player.galaxies > oldGalaxyValue) {
+        Galaxies.find(id).purchase();
+        this.updatePerkColor();
+        this.updatePerkSize();
       }
-      if (!this.initialStabilization) {
-        this.setPhysics(player.options.perkPhysicsEnabled);
-        this.initialStabilization = true;
-      }
-    });
-
-    // Change node side while dragging on Cancer theme, but skip the method otherwise because it's mildly intensive
-    this.network.on("dragging", () => {
-      SecretAchievement(45).tryUnlock();
-      if (Theme.current().name === "S4") PerkNetwork.updatePerkSize();
+      if (!this.canBeBought) return;
     });
 
     this.network.on("zoom", () => {
@@ -184,10 +108,10 @@ export const PerkNetwork = {
     this.network.on("stabilizationIterationsDone", () => {
       // Centering the perk tree doesn't work until the physics-based movement has stopped after the initial creation
       if (!this.initialStabilization) {
-        this.resetPosition(false);
+        this.resetPosition(true);
         this.initialStabilization = true;
       }
-      this.setPhysics(player.options.perkPhysicsEnabled);
+      this.setPhysics(false);
     });
   },
   makeNetwork() {
@@ -199,34 +123,24 @@ export const PerkNetwork = {
     }
     // Just for a bit of fun, tangle it up a bit unless the player specifically chooses not to
     const isDisabled = perk => Pelle.isDoomed && Pelle.uselessPerks.includes(perk.id);
-    const selectPos = config => PerkLayouts[player.options.perkLayout].position(config);
-    this.nodes = new DataSet(Perks.all.map(perk => ({
-      id: perk.id,
-      label: perk.config.label,
-      shape: perk.config.automatorPoints ? "diamond" : "dot",
+    const selectPos = config => PerkLayouts[0].position(config);
+    this.nodes = new DataSet(Galaxies.all.map(galaxy => ({
+      id: galaxy.id,
+      label: galaxy.config.label,
+      shape: "diamond",
       // As far as I am aware, vis.js doesn't support arbitrary CSS styling; nevertheless, we still want the original
       // description to be visible instead of being hidden by disable/lock text
-      title: (isDisabled(perk)
-        ? htmlTitle(
-          `<span style='text-decoration: line-through;'>${perk.config.description}</span>`
-        )
-        : `${perk.config.description} ${perk.config.automatorPoints && !isDisabled(perk)
-          ? `(+${formatInt(perk.config.automatorPoints)} AP)`
-          : ""}`
+      title: (isDisabled(galaxy)
+          ? htmlTitle(
+            `<span style='text-decoration: line-through;'>${galaxy.config.description}</span>`
+          )
+          : `${galaxy.config.description}`
       ),
-      x: selectPos(perk.config).x,
-      y: selectPos(perk.config).y,
+      x: selectPos(galaxy.config).x,
+      y: selectPos(galaxy.config).y,
     })));
 
     const edges = [];
-    for (const perk of Perks.all) {
-      for (const connectedPerk of perk.connectedPerks) {
-        const from = Math.min(perk.id, connectedPerk.id);
-        const to = Math.max(perk.id, connectedPerk.id);
-        if (edges.find(edge => edge.from === from && edge.to === to)) continue;
-        edges.push({ from, to });
-      }
-    }
 
     const nodeData = {
       nodes: this.nodes,
@@ -284,10 +198,10 @@ export const PerkNetwork = {
     this.setPhysics(false);
     this.setEdgeCurve(false);
 
-    for (const key of Object.keys(PerkNetwork.network.getPositions())) {
+    for (const key of Object.keys(GalaxyNetwork.network.getPositions())) {
       const id = Number(key);
-      const config = Perks.all.find(p => p.id === id).config;
-      const target = PerkLayouts[layoutIndex].position(config);
+      const config = Galaxies.all.find(p => p.id === id).config;
+      const target = PerkLayouts[0].position(config);
       this.network.moveNode(id, target.x, target.y);
     }
 
@@ -304,8 +218,8 @@ export const PerkNetwork = {
   },
   resetPosition(centerOnStart) {
     const center = centerOnStart
-      ? PerkNetwork.network.body.nodes[GameDatabase.reality.perks.firstPerk.id]
-      : (PerkLayouts[player.options.perkLayout].centerOffset ?? new Vector(0, 0));
+      ? GalaxyNetwork.network.body.nodes[GameDatabase.galaxy.galaxies.centerGalaxy.id]
+      : (PerkLayouts[0].centerOffset ?? new Vector(0, 0));
     this.network.moveTo({ position: { x: center.x, y: center.y }, scale: 0.4, offset: { x: 0, y: 0 } });
   },
   setLabelVisibility(areVisible) {
@@ -374,16 +288,16 @@ export const PerkNetwork = {
       };
     }
 
-    const data = Perks.all
+    const data = Galaxies.all
       .map(perk => ({ id: perk.id, color: nodeColor(perk) }));
     this.nodes.update(data);
   },
   updatePerkSize() {
     function nodeSize(perk) {
-      PerkNetwork.pulseTimer += 0.1;
+      GalaxyNetwork.pulseTimer += 0.1;
       // Make the nodes pulse continuously on Cancer theme
       const mod = Theme.current().name === "S4"
-        ? 10 * Math.sin(5 * PerkNetwork.pulseTimer + 0.1 * perk._config.id)
+        ? 10 * Math.sin(5 * GalaxyNetwork.pulseTimer + 0.1 * perk._config.id)
         : 0;
       if (perk._config.label === "START") return 35 + mod;
       if (perk.isBought) return 25 + mod;
@@ -391,7 +305,7 @@ export const PerkNetwork = {
       return 12 + mod;
     }
 
-    const data = Perks.all
+    const data = Galaxies.all
       .map(perk => ({ id: perk.id, size: nodeSize(perk) }));
     this.nodes.update(data);
   }
@@ -403,7 +317,7 @@ export const PerkNetwork = {
     ref="tab"
     class="c-perk-tab"
   >
-    <PerkPointLabel />
+    <GalaxyLabel />
   </div>
 </template>
 

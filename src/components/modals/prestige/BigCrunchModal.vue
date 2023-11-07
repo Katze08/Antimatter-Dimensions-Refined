@@ -63,7 +63,7 @@ export default {
 
 <template>
   <ResetModal
-    header="You are about to Infinity"
+    header="You are about to Big Crunch"
     :message="message"
     :gained-resources="ipGainInfo"
     :starting-resources="startingResources"

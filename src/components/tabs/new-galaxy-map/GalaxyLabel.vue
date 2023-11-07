@@ -1,8 +1,9 @@
 <script>
 import PrimaryButton from "@/components/PrimaryButton";
+import { GalaxyNetwork } from "./GalaxyMapTab";
 
 export default {
-  name: "PerkPointLabel",
+  name: "GalaxyLabel",
   components: {
     PrimaryButton
   },
@@ -14,55 +15,29 @@ export default {
       physicsOverride: false,
     };
   },
-  computed: {
-    layoutText() {
-      return PerkLayouts[this.treeLayout].buttonText;
-    },
-    physicsText() {
-      const enableStr = (this.physicsOverride ?? this.physicsEnabled) ? "Enabled" : "Disabled";
-      return `${enableStr}${this.physicsOverride === undefined ? "" : " (fixed)"}`;
-    }
-  },
-  created() {
-    this.treeLayout = player.options.perkLayout;
-    this.physicsOverride = PerkLayouts[this.treeLayout].forcePhysics;
-  },
   methods: {
     update() {
-      this.pp = Math.floor(Currency.perkPoints.value);
-      this.physicsEnabled = player.options.perkPhysicsEnabled;
-    },
-    togglePhysics() {
-      if (this.physicsOverride !== undefined) return;
-      player.options.perkPhysicsEnabled = !player.options.perkPhysicsEnabled;
-      PerkNetwork.setPhysics(player.options.perkPhysicsEnabled);
-    },
-    physicsClassObject() {
-      return {
-        "o-primary-btn c-button-physics": true,
-        "o-primary-btn--disabled": this.physicsOverride !== undefined
-      };
+      this.pp = Math.floor(Currency.galaxies.value);
     },
     centerTree() {
-      PerkNetwork.resetPosition(true);
+      GalaxyNetwork.resetPosition(true);
     },
     straightenEdges() {
-      PerkNetwork.setEdgeCurve(false);
-      PerkNetwork.setEdgeCurve(true);
+      GalaxyNetwork.setEdgeCurve(false);
+      GalaxyNetwork.setEdgeCurve(true);
     },
     cycleLayout() {
       // Step forward once, but if this lands us on a locked layout, keep stepping until it doesn't
-      let newIndex = (player.options.perkLayout + 1) % PerkLayouts.length;
-      while (!(PerkLayouts[newIndex].isUnlocked?.() ?? true)) {
-        newIndex = (newIndex + 1) % PerkLayouts.length;
+      let newIndex = 1 % MapLayout.length;
+      while (!(MapLayout[newIndex].isUnlocked?.() ?? true)) {
+        newIndex = (newIndex + 1) % MapLayout.length;
       }
 
-      player.options.perkLayout = newIndex;
       this.treeLayout = newIndex;
-      this.physicsOverride = PerkLayouts[this.treeLayout].forcePhysics;
-      PerkNetwork.currentLayout = PerkLayouts[this.treeLayout];
-      PerkNetwork.setPhysics(player.options.perkPhysicsEnabled);
-      PerkNetwork.moveToDefaultLayoutPositions(this.treeLayout);
+      this.physicsOverride = MapLayout[this.treeLayout].forcePhysics;
+      GalaxyNetwork.currentLayout = MapLayout[this.treeLayout];
+      GalaxyNetwork.setPhysics(false);
+      GalaxyNetwork.moveToDefaultLayoutPositions(this.treeLayout);
     }
   }
 };
@@ -70,37 +45,26 @@ export default {
 
 <template>
   <div class="c-perk-tab__header">
-    You have <span class="c-perk-tab__perk-points">{{ format(pp, 2) }}</span> {{ pluralize("Perk Point", pp) }}.
+    You have <span class="c-perk-tab__perk-points">{{ format(pp, 2) }}</span> {{ pluralize("Galaxy", pp) }}, translated to a <span class="c-perk-tab__perk-points">×{{ format(pp, 2, 3) }}</span> galaxy power.
     <br>
-    Perk choices are permanent and cannot be respecced.
+    Hover over a galaxy to see its details. Click on it to buy it. The further out the galaxy is from the center,
     <br>
-    Diamond-shaped perks also give Automator Points.
+    the higher the delay. The bigger the galaxy, the bigger the buff. Intergalactic upgrades can modify
+    <br>
+    the minimum distance between two galaxies, the size of the observable universe and the near galaxy limit.
+    <br>
+    They can also unlock galaxy extensibility and fusibility, mechanics to make galaxies even more powerful.
+    <br>
+    Extensibility can increase the size of galaxies and therefore it's buff. Fusibility makes two galaxies
+    <br>
+    collide with each other, drastically increasing their total buff and unleashing an enormous power boost for a short time.
     <br>
     <div class="perk-settings">
-      <PrimaryButton
-        class="o-primary-btn c-button-perk-layout"
-        @click="cycleLayout"
-      >
-        Perk Layout: {{ layoutText }}
-      </PrimaryButton>
-      <PrimaryButton
-        :class="physicsClassObject()"
-        @click="togglePhysics"
-      >
-        Physics: {{ physicsText }}
-      </PrimaryButton>
-      <br>
       <PrimaryButton
         class="o-primary-btn"
         @click="centerTree"
       >
-        Center Tree on START
-      </PrimaryButton>
-      <PrimaryButton
-        class="o-primary-btn"
-        @click="straightenEdges"
-      >
-        Straighten Edges
+        Center map at X: {{format(0)}} ly; Y: {{format(0)}} ly
       </PrimaryButton>
     </div>
   </div>

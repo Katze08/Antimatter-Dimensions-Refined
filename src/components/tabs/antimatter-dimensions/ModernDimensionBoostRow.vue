@@ -36,11 +36,18 @@ export default {
     },
     classObject() {
       return {
-        "o-primary-btn o-primary-btn--new o-primary-btn--dimension-reset": true,
+        "o-primary-btn": true,
+        "tickspeed-btn": true,
         "tutorial--glow": this.isBuyable && this.hasTutorial,
         "o-primary-btn--disabled": !this.isBuyable,
         "o-pelle-disabled-pointer": this.creditsClosed
       };
+    },
+    upgradeCount() {
+      return `${formatInt(this.purchasedBoosts)} Purchased Boosts; ${this.unlockedByBoost}`;
+    },
+    btnText() {
+      return `Dimension Boost: ${formatInt(this.requirement.amount)} ${this.dimName} AD`;
     }
   },
   methods: {
@@ -66,19 +73,25 @@ export default {
 </script>
 
 <template>
-  <div class="reset-container dimboost">
-    <h4>Dimension Boost ({{ boostCountText }})</h4>
-    <span>Requires: {{ formatInt(requirement.amount) }} {{ dimName }} Antimatter D</span>
-    <button
-      :class="classObject"
-      @click.exact="dimensionBoost(true)"
-      @click.shift.exact="dimensionBoost(false)"
-    >
-      {{ unlockedByBoost }}
-      <div
-        v-if="hasTutorial"
-        class="fas fa-circle-exclamation l-notification-icon"
-      />
-    </button>
-  </div>
+  <button
+    v-tooltip="upgradeCount"
+    :class="classObject"
+    @click.exact="dimensionBoost(true)"
+    @click.shift.exact="dimensionBoost(false)"
+  >
+    {{ btnText }}
+    <div
+      v-if="hasTutorial"
+      class="fas fa-circle-exclamation l-notification-icon"
+    />
+  </button>
 </template>
+
+<style scoped>
+.tickspeed-btn {
+position: relative;
+width: 30rem;
+height: 2.5rem;
+padding: 0.25rem;
+}
+</style>

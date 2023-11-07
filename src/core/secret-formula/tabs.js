@@ -1,5 +1,4 @@
 import { PlayerProgress } from "@/core/player-progress";
-import { galaxyUpgrades } from "@/core/secret-formula/galaxy/galaxy-upgrades";
 
 export const tabs = [
   {
@@ -216,7 +215,7 @@ export const tabs = [
       {
         key: "galaxy",
         name: "Galaxy Challenges",
-        symbol: "🌀",
+        symbol: "<i class='fa-solid fa-fan'></i>",
         component: "GalaxyChallengesTab",
         condition: () => {
           if (player.galaxyUpgrades.has("unlockChallenges")) {
@@ -538,6 +537,14 @@ export const tabs = [
         symbol: "<i class='fas fa-arrow-up'></i>",
         component: "GalaxyTab",
         id: 0,
+        hidable: true
+      }, {
+        key: "map",
+        name: "Intergalactic Map",
+        symbol: "<i class='fas fa-map-marked-alt'></i>",
+        component: "GalaxyMapTab",
+        condition: () => player.unlockedGalaxyMap,
+        id: 1,
         hidable: true
       }
     ]

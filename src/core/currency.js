@@ -415,6 +415,11 @@ Currency.perkPoints = new class extends NumberCurrency {
   set value(value) { player.reality.perkPoints = value; }
 }();
 
+Currency.galaxies = new class extends NumberCurrency {
+  get value() { return player.galaxies; }
+  set value(value) { player.galaxies = value; }
+}();
+
 Currency.relicShards = new class extends NumberCurrency {
   get value() { return player.celestials.effarig.relicShards; }
   set value(value) { player.celestials.effarig.relicShards = value; }

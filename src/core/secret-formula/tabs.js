@@ -540,7 +540,7 @@ export const tabs = [
         hidable: true
       }, {
         key: "map",
-        name: "Intergalactic Map",
+        name: "Intergalactical Map",
         symbol: "<i class='fas fa-map-marked-alt'></i>",
         component: "GalaxyMapTab",
         condition: () => player.unlockedGalaxyMap,

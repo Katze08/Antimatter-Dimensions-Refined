@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       pp: 0,
+      amBoughtGalaxies: 0,
       treeLayout: 0,
       physicsEnabled: false,
       physicsOverride: false,
@@ -17,7 +18,8 @@ export default {
   },
   methods: {
     update() {
-      this.pp = Math.floor(Currency.galaxies.value);
+      this.pp = Currency.galaxies.value;
+      this.amBoughtGalaxies = player.antimatterGalaxiesBought;
     },
     centerTree() {
       GalaxyNetwork.resetPosition(true);
@@ -45,19 +47,19 @@ export default {
 
 <template>
   <div class="c-perk-tab__header">
-    You have <span class="c-perk-tab__perk-points">{{ format(pp, 2) }}</span> {{ pluralize("Galaxy", pp) }}, translated to a <span class="c-perk-tab__perk-points">×{{ format(pp, 2, 3) }}</span> galaxy power.
+    You have <span class="c-perk-tab__perk-points">{{ amBoughtGalaxies }}</span> {{ pluralize("Galaxy", pp) }} with a total galaxy power of <span class="c-perk-tab__perk-points">×{{ format(pp, 2, 3) }}</span>.
     <br>
     Hover over a galaxy to see its details. Click on it to buy it. The further out the galaxy is from the center,
     <br>
-    the higher the delay. The bigger the galaxy, the bigger the buff. Intergalactic upgrades can modify
+    the higher the delay (NYI). The bigger the galaxy, the bigger the galaxy power and requirement. Intergalactic upgrades can modify
     <br>
-    the minimum distance between two galaxies, the size of the observable universe and the near galaxy limit.
+    the minimum distance between two galaxies, the size of the observable universe and the near galaxy limit (NYI).
     <br>
-    They can also unlock galaxy extensibility and fusibility, mechanics to make galaxies even more powerful.
+    They can also unlock galaxy extensibility and fusibility, mechanics that make galaxies even more powerful (NYI).
     <br>
-    Extensibility can increase the size of galaxies and therefore it's buff. Fusibility makes two galaxies
+    Extensibility can increase the size of galaxies and therefore it's buff (NYI). Fusibility makes two galaxies
     <br>
-    collide with each other, drastically increasing their total buff and unleashing an enormous power boost for a short time.
+    collide with each other, drastically increasing their total buff and unleashing an enormous power boost for a short time (NYI).
     <br>
     <div class="perk-settings">
       <PrimaryButton

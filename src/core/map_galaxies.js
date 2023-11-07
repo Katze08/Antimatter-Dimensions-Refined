@@ -43,7 +43,6 @@ class GalaxyState extends SetPurchasableMechanicState {
     if (this.config.bumpCurrency !== undefined) this.config.bumpCurrency();
     GameCache.achievementPeriod.invalidate();
     GameCache.buyablePerks.invalidate();
-    player.galaxies += 1;
     EventHub.dispatch(GAME_EVENT.GALAXY_BOUGHT);
   }
 }
@@ -51,7 +50,8 @@ class GalaxyState extends SetPurchasableMechanicState {
 export function Galaxy() {
   generateGalaxies();
   return mapGameDataToObject(
-    GameDatabase.galaxy.galaxies,
+    //GameDatabase.galaxy.galaxies,
+    player.availableMapGalaxiesCurrentInfinity,
     config => new GalaxyState(config)
   );
 }

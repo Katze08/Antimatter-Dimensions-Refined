@@ -60,6 +60,7 @@ export function bigCrunchReset(
     player.galaxyRebuyables = [0, 0, 0, 0];
     player.mapGalaxies = new Set();
     player.availableMapGalaxiesCurrentInfinity = new Set();
+    player.antimatterGalaxiesBought = 0;
     player.atBigCrunchButton = false;
     if (Pelle.isDoomed) PelleStrikes.infinity.trigger();
   }

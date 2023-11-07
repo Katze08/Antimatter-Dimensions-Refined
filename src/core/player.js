@@ -11,6 +11,7 @@ import { GlyphTypes } from "./glyph-effects";
 // eslint-disable-next-line prefer-const
 window.player = {
   antimatter: DC.E0,
+  antimatterGalaxiesBought: 0,
   mapGalaxies: new Set(),
   availableMapGalaxiesCurrentInfinity: new Set(),
   dimensions: {

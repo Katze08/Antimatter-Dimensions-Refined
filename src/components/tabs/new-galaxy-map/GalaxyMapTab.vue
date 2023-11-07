@@ -87,14 +87,14 @@ export const GalaxyNetwork = {
     this.network.on("click", params => {
       const id = params.nodes[0];
       if (!isFinite(id)) return;
-      const oldGalaxyValue = player.galaxies;
-      ModernAntimatterGalaxyRow.methods.buyGalaxy(false);
-      if (player.galaxies > oldGalaxyValue) {
+      if (player.dimensions.antimatter[7].bought >= ((player.galaxies + Galaxies.find(id).config.power) * 60 + 20)) {
         Galaxies.find(id).purchase();
+        softReset(0);
+        player.galaxies += Galaxies.find(id).config.power;
+        player.antimatterGalaxiesBought++;
         this.updatePerkColor();
         this.updatePerkSize();
       }
-      if (!this.canBeBought) return;
     });
 
     this.network.on("zoom", () => {

@@ -64,17 +64,17 @@ export default {
       player.challenge = {
         normal: {
           current: 0,
-          bestTimes: Array.repeat(Number.MAX_VALUE, 11),
+          bestTimes: player.challenge.normal.bestTimes,
           completedBits: 0,
         },
         infinity: {
           current: 0,
-          bestTimes: Array.repeat(Number.MAX_VALUE, 8),
+          bestTimes: player.challenge.infinity.bestTimes,
           completedBits: 0,
         },
         galaxy: {
           current: 0,
-          bestTimes: Array.repeat(Number.MAX_VALUE, 24),
+          bestTimes: player.challenge.galaxy.bestTimes,
           completedBits: 0,
         },
         eternity: {

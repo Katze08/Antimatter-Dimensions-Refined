@@ -363,8 +363,6 @@ export default {
         Simulation
       </div>
       <div>You have {{ quantifyInt("Simulation", simulation.count) }}.</div>
-      <div>Your fastest game-time Simulation was {{ simulation.best.toStringShort() }}.</div>
-      <div>Your fastest real-time Simulation was {{ simulation.bestReal.toStringShort() }}.</div>
       <br>
     </div>
   </div>

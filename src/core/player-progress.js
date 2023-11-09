@@ -68,6 +68,10 @@ export class PlayerProgress {
     return PlayerProgress.current.isRealityUnlocked;
   }
 
+  static simulationUnlocked() {
+    return PlayerProgress.current.isSimulationUnlocked;
+  }
+
   static seenAlteredSpeed() {
     const ec12 = EternityChallenge(12);
     return this.realityUnlocked() || ec12.completions > 0 || ec12.isRunning;

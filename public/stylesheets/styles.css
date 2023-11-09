@@ -775,6 +775,16 @@ button:focus {
   background: var(--color-celestials);
 }
 
+.o-tab-btn--simulation {
+  color: var(--color-simulation);
+  background-color: var(--color-prestige--accent);
+  border-color: var(--color-simulation);
+}
+
+.o-tab-btn--simulation:hover {
+  background: var(--color-simulation);
+}
+
 /* #endregion tab buttons */
 
 #loading {

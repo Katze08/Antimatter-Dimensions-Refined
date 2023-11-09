@@ -1378,4 +1378,11 @@ export const normalAchievements = [
     checkRequirement: () => GameEnd.endState > END_STATE_MARKERS.GAME_END && !GameEnd.removeAdditionalEnd,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
+  {
+    id: 191,
+    name: "Turns out it was all a simulation...",
+    description: "Start a new simulation after you thought you have beaten the game.",
+    checkRequirement: () => player.simulations > 0,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  }
 ];

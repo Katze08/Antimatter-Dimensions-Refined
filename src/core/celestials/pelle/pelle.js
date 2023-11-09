@@ -354,7 +354,7 @@ export const Pelle = {
     return zalgo(str, Math.floor(stage ** 2 * 7));
   },
 
-  endTabNames: "End Is Nigh Destruction Is Imminent Help Us Good Bye Forever".split(" "),
+  endTabNames: "End Is Nigh Destruction Is Imminent Help Us See You Next Simulation".split(" "),
 
   quotes: Quotes.pelle,
 };

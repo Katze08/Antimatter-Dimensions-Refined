@@ -33,7 +33,7 @@ export const NG = {
     }
 
     // Modify beaten-game quantities before doing a carryover reset
-    player.records.fullGameCompletions++;
+    //player.records.fullGameCompletions++;
     GlyphAppearanceHandler.unlockSet();
     this.restartWithCarryover();
 
@@ -48,6 +48,15 @@ export const NG = {
   // Reset the game, but carry over some post-completion stats. We also call this when starting a speedrun, so make sure
   // any stats which are updated due to completion happen in startNewGame() instead of in here
   restartWithCarryover() {
+    /*const totalAM = player.totalAntimatter;
+    const simulations = player.simulations;
+    const gameTime = player.records.totalTimePlayed;
+    const saveCreationDate = player.records.gameCreatedTime;
+    const newsSeen = player.news.totalSeen;
+    const uniqueSeen = player.news.uniqueSeen;
+    const paperclips = player.news.specialTickerData.paperclips;*/
+
+    // Vanilla part starting here
     const backUpOptions = JSON.stringify(player.options);
     // This can't be JSONed as it contains sets
     const secretUnlocks = player.secretUnlocks;
@@ -66,6 +75,15 @@ export const NG = {
     Modal.hideAll();
     Quote.clearAll();
     GameStorage.hardReset();
+    /*player.totalAntimatter = totalAM;
+    player.realTimePlayed = fullTimePlayed;
+    player.simulations = simulations + 1;
+    player.records.totalTimePlayed = gameTime;
+    player.records.gameCreatedTime = saveCreationDate;
+    player.news.totalSeen = newsSeen;
+    player.news.uniqueSeen = uniqueSeen;*/
+
+    // Vanilla part starting here
     player.options = JSON.parse(backUpOptions);
     // We need to force this one to be true because otherwise the player will be unable to select their glyphs
     // until they can auto-reality

@@ -396,6 +396,11 @@ Currency.realities = new class extends NumberCurrency {
   set value(value) { player.realities = value; }
 }();
 
+Currency.simulations = new class extends NumberCurrency {
+  get value() { return player.simulations; }
+  set value(value) { player.simulations = value; }
+}();
+
 Currency.realityMachines = new class extends DecimalCurrency {
   get value() { return player.reality.realityMachines; }
   set value(value) {

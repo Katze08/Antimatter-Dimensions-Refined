@@ -49,6 +49,15 @@ export default {
         bestRate: new Decimal(0),
         bestRarity: 0,
       },
+      simulation: {
+        isUnlocked: false,
+        count: 0,
+        best: TimeSpan.zero,
+        bestReal: TimeSpan.zero,
+        this: TimeSpan.zero,
+        thisReal: TimeSpan.zero,
+        totalTimePlayed: TimeSpan.zero,
+      },
       matterScale: [],
       lastMatterTime: 0,
       paperclips: 0,
@@ -141,6 +150,26 @@ export default {
         reality.bestRate.copyFrom(bestReality.RMmin);
         reality.bestRarity = Math.max(strengthToRarity(bestReality.glyphStrength), 0);
       }
+
+      const isSimulationUnlocked = progress.isSimulationUnlocked;
+      const simulation = this.simulation;
+      const bestSimulation = records.bestSimulation;
+      simulation.isUnlocked = isSimulationUnlocked;
+
+      if (isSimulationUnlocked) {
+        simulation.count = Math.floor(Currency.simulations.value);
+        simulation.best.setFrom(bestSimulation.time);
+        simulation.bestReal.setFrom(bestSimulation.realTime);
+        simulation.this.setFrom(records.thisSimulation.time);
+        simulation.totalTimePlayed.setFrom(records.totalTimePlayed);
+        // Real time tracking is only a thing once reality is unlocked:
+        infinity.thisReal.setFrom(records.thisInfinity.realTime);
+        infinity.bankRate = infinity.projectedBanked.div(Math.clampMin(33, records.thisEternity.realTime)).times(60000);
+        eternity.thisReal.setFrom(records.thisEternity.realTime);
+        reality.thisReal.setFrom(records.thisReality.realTime);
+        reality.bestRate.copyFrom(bestReality.RMmin);
+        reality.bestRarity = Math.max(strengthToRarity(bestReality.glyphStrength), 0);
+      }
       this.updateMatterScale();
 
       this.isDoomed = Pelle.isDoomed;
@@ -163,6 +192,12 @@ export default {
         "c-stats-tab-reality": !this.isDoomed,
         "c-stats-tab-doomed": this.isDoomed,
       };
+    },
+    simulationClassObject() {
+      return {
+        "c-stats-tab-title": true,
+        "c-stats-tab-simulation": true
+      };
     }
   },
 };
@@ -180,7 +215,7 @@ export default {
       <div class="c-stats-tab-general">
         <div>You have made a total of {{ format(totalAntimatter, 2, 1) }} antimatter.</div>
         <div>You have played for {{ realTimePlayed }}. (real time)</div>
-        <div v-if="reality.isUnlocked">
+        <div v-if="reality.isUnlocked || simulation.isUnlocked">
           Your existence has spanned {{ reality.totalTimePlayed }} of time. (game time)
         </div>
         <div>
@@ -320,6 +355,18 @@ export default {
       <div>Your best Glyph rarity is {{ formatRarity(reality.bestRarity) }}.</div>
       <br>
     </div>
+    <div
+      v-if="simulation.isUnlocked"
+      class="c-stats-tab-subheader c-stats-tab-general"
+    >
+      <div :class="simulationClassObject()">
+        Simulation
+      </div>
+      <div>You have {{ quantifyInt("Simulation", simulation.count) }}.</div>
+      <div>Your fastest game-time Simulation was {{ simulation.best.toStringShort() }}.</div>
+      <div>Your fastest real-time Simulation was {{ simulation.bestReal.toStringShort() }}.</div>
+      <br>
+    </div>
   </div>
 </template>
 
@@ -351,6 +398,10 @@ export default {
 
 .c-stats-tab-reality {
   color: var(--color-reality);
+}
+
+.c-stats-tab-simulation {
+  color: var(--color-simulation);
 }
 
 .c-stats-tab-doomed {

@@ -229,6 +229,7 @@ window.player = {
       eiffelTowerChapter: 0
     },
     totalSeen: 0,
+    uniqueSeen: 0
   },
   lastUpdate: new Date().getTime(),
   backupTimer: 0,
@@ -292,7 +293,7 @@ window.player = {
     realTimeDoomed: 0,
     fullGameCompletions: 0,
     previousRunRealTime: 0,
-    totalAntimatter: DC.E1,
+    totalAntimatter: DC.E0,
     recentInfinities: Array.range(0, 10).map(() =>
       [Number.MAX_VALUE, Number.MAX_VALUE, DC.D1, DC.D1, ""]),
     recentEternities: Array.range(0, 10).map(() =>
@@ -340,6 +341,18 @@ window.player = {
       bestRSmin: 0,
       bestRSminVal: 0,
     },
+    thisSimulation: {
+      time: 0,
+      realTime: 0,
+      maxAM: DC.D0,
+      maxIP: DC.D0,
+      maxEP: DC.D0,
+      bestEternitiesPerMs: DC.D0,
+      maxReplicanti: DC.D0,
+      maxDT: DC.D0,
+      bestRSmin: 0,
+      bestRSminVal: 0,
+    },
     bestReality: {
       time: Number.MAX_VALUE,
       realTime: Number.MAX_VALUE,
@@ -355,6 +368,10 @@ window.player = {
       speedSet: [],
       iMCapSet: [],
       laitelaSet: [],
+    },
+    bestSimulation: {
+      time: Number.MAX_VALUE,
+      realTime: Number.MAX_VALUE
     },
   },
   speedrun: {
@@ -435,6 +452,7 @@ window.player = {
     lastEP: DC.DM1,
   },
   realities: 0,
+  simulations: 0,
   partSimulatedReality: 0,
   reality: {
     realityMachines: DC.D0,
@@ -789,7 +807,7 @@ window.player = {
       speed: 1,
       includeAnimated: true,
     },
-    notation: "Mixed scientific",
+    notation: "Scientific",
     notationDigits: {
       comma: 5,
       notation: 9

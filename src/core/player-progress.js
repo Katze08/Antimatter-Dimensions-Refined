@@ -24,6 +24,10 @@ export class PlayerProgress {
     return this._player.realities > 0;
   }
 
+  get isSimulationUnlocked() {
+    return this._player.simulations > 0;
+  }
+
   get hasFullCompletion() {
     return this._player.records?.fullGameCompletions > 0;
   }

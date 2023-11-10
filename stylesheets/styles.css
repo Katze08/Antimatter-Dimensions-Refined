@@ -80,6 +80,7 @@ html {
   --color-eternity: #b341e0;
   --color-dilation: #64dd17;
   --color-reality: #0ba00e;
+  --color-simulation: #ff0000;
   --color-reality-light: #d5ffd7;
   --color-reality-dark: #0a790c;
   --color-celestials: #5151ec;
@@ -123,6 +124,7 @@ html {
   --color-infinity: #ff9800;
   --color-eternity: #673ab7;
   --color-reality: #3a823d;
+  --color-simulation: #ff0000;
   --color-reality-light: #d5ffd7;
   --color-celestials: #00bcd4;
 }
@@ -163,6 +165,7 @@ html {
   --color-infinity: #ff9800;
   --color-eternity: #673ab7;
   --color-reality: #4caf50;
+  --color-simulation: #ff0000;
   --color-reality-dark: #0ba00e;
   --color-celestials: #00bcd4;
   --color-prestige--accent: black;
@@ -204,6 +207,7 @@ html {
   --color-infinity: #ff9800;
   --color-eternity: #673ab7;
   --color-reality: #4caf50;
+  --color-simulation: #ff0000;
   --color-reality-dark: #0ba00e;
   --color-celestials: #00bcd4;
   --color-prestige--accent: black;
@@ -228,6 +232,7 @@ html {
   --color-infinity: #7d3c1b;
   --color-eternity: #639565;
   --color-reality: #afa3a5;
+  --color-simulation: #ce7b7b;
   --color-reality-light: #e8e3e4;
   --color-reality-dark: #7a7273;
   --color-celestials: #f2d6c1;
@@ -768,6 +773,16 @@ button:focus {
 
 .o-tab-btn--celestial:hover {
   background: var(--color-celestials);
+}
+
+.o-tab-btn--simulation {
+  color: var(--color-simulation);
+  background-color: var(--color-prestige--accent);
+  border-color: var(--color-simulation);
+}
+
+.o-tab-btn--simulation:hover {
+  background: var(--color-simulation);
 }
 
 /* #endregion tab buttons */

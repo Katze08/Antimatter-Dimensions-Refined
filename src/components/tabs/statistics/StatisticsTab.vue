@@ -136,7 +136,12 @@ export default {
       const bestReality = records.bestReality;
       reality.isUnlocked = isRealityUnlocked;
 
-      if (isRealityUnlocked) {
+      const isSimulationUnlocked = progress.isSimulationUnlocked;
+      const simulation = this.simulation;
+      const bestSimulation = records.bestSimulation;
+      simulation.isUnlocked = isSimulationUnlocked;
+
+      if (isRealityUnlocked || isSimulationUnlocked) {
         reality.count = Math.floor(Currency.realities.value);
         reality.best.setFrom(bestReality.time);
         reality.bestReal.setFrom(bestReality.realTime);
@@ -150,11 +155,6 @@ export default {
         reality.bestRate.copyFrom(bestReality.RMmin);
         reality.bestRarity = Math.max(strengthToRarity(bestReality.glyphStrength), 0);
       }
-
-      const isSimulationUnlocked = progress.isSimulationUnlocked;
-      const simulation = this.simulation;
-      const bestSimulation = records.bestSimulation;
-      simulation.isUnlocked = isSimulationUnlocked;
 
       if (isSimulationUnlocked) {
         simulation.count = Math.floor(Currency.simulations.value);

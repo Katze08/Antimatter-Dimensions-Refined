@@ -132,7 +132,7 @@ export class UpgradeableAutobuyerState extends IntervaledAutobuyerState {
   }
 
   get interval() {
-    const interval = this.data.interval;
+    const interval = this.data.interval / player.gears.score.toNumber();
     return BreakInfinityUpgrade.autobuyerSpeed.isBought ? interval / 2 : interval;
   }
 

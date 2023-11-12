@@ -31,8 +31,10 @@ export default {
     },
     startNewGame() {
       //NG.startNewGame();
+      player.hadSimulationOnce = true;
       player.antimatter = DC.E0;
       player.simulations++;
+      player.currentSimulations.add(DC.D1);
       player.antimatterGalaxiesBought = 0;
       player.mapGalaxies = new Set();
       player.availableMapGalaxiesCurrentInfinity = {};

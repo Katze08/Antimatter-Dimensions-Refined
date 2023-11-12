@@ -220,6 +220,16 @@ export const tabs = [
         id: 1,
         hidable: true,
       },
+      {
+        key: "gears",
+        name: "Automation Gears",
+        symbol: "<i class='fas fa-gears'></i>",
+        component: "AutomationGearsTab",
+        condition: () =>
+          PlayerProgress.simulationUnlocked() || player.hadSimulationOnce,
+        id: 2,
+        hidable: true,
+      },
     ]
   },
   {
@@ -594,7 +604,7 @@ export const tabs = [
     hideAt: 2.9,
     UIClass: "o-tab-btn--simulation",
     id: 12,
-    condition: () => PlayerProgress.simulationUnlocked() || player.simulations >= 1,
+    condition: () => PlayerProgress.simulationUnlocked() || player.hadSimulationOnce,
     hidable: true,
     subtabs: [
       {

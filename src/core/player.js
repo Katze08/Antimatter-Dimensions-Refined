@@ -173,6 +173,9 @@ window.player = {
     timeTheorems: {
       isActive: false,
     },
+    gearTheorems: {
+      isActive: false,
+    },
     dilationUpgrades: {
       all: Array.range(0, 3).map(() => ({
         isActive: false,
@@ -278,6 +281,9 @@ window.player = {
       maxStudies: 0,
       maxGlyphs: 0,
       slowestBH: 1,
+    },
+    simulation: {
+      noPurchasedGT: true,
     },
     permanent: {
       emojiGalaxies: 0,
@@ -428,6 +434,16 @@ window.player = {
       studies: "",
     }),
   },
+  gears: {
+    theorem: DC.D0,
+    maxTheorem: DC.D0,
+    amBought: 0,
+    ipBought: 0,
+    epBought: 0,
+    rmBought: 0,
+    simBought: 0,
+    score: new Decimal(0)
+  },
   eternityChalls: {},
   respec: false,
   eterc8ids: 50,
@@ -453,6 +469,8 @@ window.player = {
   },
   realities: 0,
   simulations: 0,
+  currentSimulations: DC.D0,
+  hadSimulationOnce: false,
   partSimulatedReality: 0,
   reality: {
     realityMachines: DC.D0,
@@ -941,6 +959,7 @@ window.player = {
       clearOnRestart: true,
     },
     invertTTgenDisplay: false,
+    invertGTgenDisplay: false,
     autoRealityForFilter: false,
   },
   IAP: {

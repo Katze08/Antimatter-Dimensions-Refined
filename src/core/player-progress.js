@@ -25,7 +25,7 @@ export class PlayerProgress {
   }
 
   get isSimulationUnlocked() {
-    return this._player.simulations > 0;
+    return this._player.hadSimulationOnce;
   }
 
   get hasFullCompletion() {

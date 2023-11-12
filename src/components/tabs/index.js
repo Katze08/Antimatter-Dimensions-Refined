@@ -3,6 +3,7 @@ import GalaxyMapTab from "@/components/tabs/new-galaxy-map/GalaxyMapTab";
 import AlchemyTab from "./alchemy/AlchemyTab";
 import AntimatterDimensionsTab from "./antimatter-dimensions/AntimatterDimensionsTab";
 import AutobuyersTab from "./autobuyers/AutobuyersTab";
+import AutomationGearsTab from "./automation-gears/AutomationGearsTab";
 import AutomatorTab from "./automator/AutomatorTab";
 import BlackHoleTab from "./black-hole/BlackHoleTab";
 import BreakInfinityTab from "./break-infinity/BreakInfinityTab";
@@ -70,6 +71,7 @@ const TabComponents = {
   PelleTab,
   AutobuyersTab,
   AutomatorTab,
+  AutomationGearsTab,
   NormalChallengesTab,
   InfinityChallengesTab,
   EternityChallengesTab,

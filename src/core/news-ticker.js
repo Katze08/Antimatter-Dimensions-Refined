@@ -43,6 +43,7 @@ export const NewsHandler = {
         totalSeen += countValuesFromBitmask(bitmask);
       }
     }
+    player.news.uniqueSeen = totalSeen;
     return totalSeen;
   }
 };

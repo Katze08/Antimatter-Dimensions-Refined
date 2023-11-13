@@ -3,6 +3,7 @@ import GalaxyMapTab from "@/components/tabs/new-galaxy-map/GalaxyMapTab";
 import AlchemyTab from "./alchemy/AlchemyTab";
 import AntimatterDimensionsTab from "./antimatter-dimensions/AntimatterDimensionsTab";
 import AutobuyersTab from "./autobuyers/AutobuyersTab";
+import AutomationGearsTab from "./automation-gears/AutomationGearsTab";
 import AutomatorTab from "./automator/AutomatorTab";
 import BlackHoleTab from "./black-hole/BlackHoleTab";
 import BreakInfinityTab from "./break-infinity/BreakInfinityTab";
@@ -36,6 +37,7 @@ import RaTab from "./celestial-ra/RaTab";
 import RealityUpgradesTab from "./reality-upgrades/RealityUpgradesTab";
 import ReplicantiTab from "./replicanti/ReplicantiTab";
 import SecretAchievementTab from "./secret-achievements/SecretAchievementTab";
+import SimulationSettingsTab from "@/components/tabs/simulation/SimulationSettingsTab";
 import ShopTab from "./shop/ShopTab";
 import SpeedrunMilestonesTab from "./speedrun-milestones/SpeedrunMilestonesTab";
 import StatisticsTab from "./statistics/StatisticsTab";
@@ -69,6 +71,7 @@ const TabComponents = {
   PelleTab,
   AutobuyersTab,
   AutomatorTab,
+  AutomationGearsTab,
   NormalChallengesTab,
   InfinityChallengesTab,
   EternityChallengesTab,
@@ -90,7 +93,8 @@ const TabComponents = {
   MultiplierBreakdownTab,
   GalaxyTab,
   GalaxyMapTab,
-  GalaxyChallengesTab
+  GalaxyChallengesTab,
+  SimulationSettingsTab
 };
 
 export default TabComponents;

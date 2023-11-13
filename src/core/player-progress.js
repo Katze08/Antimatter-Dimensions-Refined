@@ -24,6 +24,10 @@ export class PlayerProgress {
     return this._player.realities > 0;
   }
 
+  get isSimulationUnlocked() {
+    return this._player.hadSimulationOnce;
+  }
+
   get hasFullCompletion() {
     return this._player.records?.fullGameCompletions > 0;
   }
@@ -62,6 +66,10 @@ export class PlayerProgress {
 
   static realityUnlocked() {
     return PlayerProgress.current.isRealityUnlocked;
+  }
+
+  static simulationUnlocked() {
+    return PlayerProgress.current.isSimulationUnlocked;
   }
 
   static seenAlteredSpeed() {

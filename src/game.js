@@ -1,5 +1,6 @@
 import { Currency } from "@/core/currency";
 import { NormalChallenge } from "@/core/normal-challenges";
+import { generateGalaxies } from "@/core/secret-formula/galaxy/map_galaxies";
 import TWEEN from "tween.js";
 
 import { ElectronRuntime, SteamRuntime } from "@/steam";
@@ -97,6 +98,7 @@ export function becomeIntergalactic() {
   player.intergalactic = !player.intergalactic;
   player.wasOnceIntergalactical = true;
   player.unlockedGalaxyMap = true;
+  generateGalaxies();
   EventHub.dispatch(player.intergalactic ? GAME_EVENT.BECOME_INTERGALACTIC : GAME_EVENT.UNBECOME_INTERGALACTIC);
   GameUI.update();
 }
@@ -535,7 +537,7 @@ export function gameLoop(passDiff, options = {}) {
   // These need to all be done consecutively in order to minimize the chance of a reset occurring between real time
   // updating and game time updating. This is only particularly noticeable when game speed is 1 and the player
   // expects to see identical numbers. We also don't increment the timers if the game has been beaten (Achievement 188)
-  if (!Achievement(188).isUnlocked) {
+  //if (!Achievement(188).isUnlocked) {
     player.records.realTimeDoomed += realDiff;
     player.records.realTimePlayed += realDiff;
     player.records.totalTimePlayed += diff;
@@ -549,7 +551,7 @@ export function gameLoop(passDiff, options = {}) {
     }
     player.records.thisReality.realTime += realDiff;
     player.records.thisReality.time += diff;
-  }
+  //}
 
   DeltaTimeState.update(realDiff, diff);
 

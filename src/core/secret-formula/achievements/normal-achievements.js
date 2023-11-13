@@ -1378,4 +1378,60 @@ export const normalAchievements = [
     checkRequirement: () => GameEnd.endState > END_STATE_MARKERS.GAME_END && !GameEnd.removeAdditionalEnd,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
+  {
+    id: 191,
+    name: "Turns out it was all a simulation...",
+    description: "Start a new simulation after you thought you have beaten the game.",
+    checkRequirement: () => player.simulations > 0,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  },
+  {
+    id: 192,
+    name: "PLACEHOLDER",
+    description: "WIP",
+    checkRequirement: () => 0 > 1,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  },
+  {
+    id: 193,
+    name: "PLACEHOLDER",
+    description: "WIP",
+    checkRequirement: () => 0 > 1,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  },
+  {
+    id: 194,
+    name: "PLACEHOLDER",
+    description: "WIP",
+    checkRequirement: () => 0 > 1,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  },
+  {
+    id: 195,
+    name: "PLACEHOLDER",
+    description: "WIP",
+    checkRequirement: () => 0 > 1,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  },
+  {
+    id: 196,
+    name: "PLACEHOLDER",
+    description: "WIP",
+    checkRequirement: () => 0 > 1,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  },
+  {
+    id: 197,
+    name: "PLACEHOLDER",
+    description: "WIP",
+    checkRequirement: () => 0 > 1,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  },
+  {
+    id: 198,
+    name: "PLACEHOLDER",
+    description: "WIP",
+    checkRequirement: () => 0 > 1,
+    checkEvent: GAME_EVENT.GAME_TICK_AFTER
+  },
 ];

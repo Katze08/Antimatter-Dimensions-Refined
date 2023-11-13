@@ -1,6 +1,7 @@
 import { AutomatorPanels } from "@/components/tabs/automator/AutomatorDocs";
 import { GlyphInfo } from "@/components/modals/options/SelectGlyphInfoDropdown";
 import { galaxyUpgrades } from "@/core/secret-formula/galaxy/galaxy-upgrades";
+import { GALAXY_FAMILY, generateGalaxies } from "@/core/secret-formula/galaxy/map_galaxies";
 
 import { AUTOMATOR_MODE, AUTOMATOR_TYPE } from "./automator/automator-backend";
 import { DC } from "./constants";
@@ -13,7 +14,7 @@ window.player = {
   antimatter: DC.E0,
   antimatterGalaxiesBought: 0,
   mapGalaxies: new Set(),
-  availableMapGalaxiesCurrentInfinity: new Set(),
+  availableMapGalaxiesCurrentInfinity: {},
   dimensions: {
     antimatter: Array.range(0, 8).map(() => ({
       bought: 0,
@@ -172,6 +173,9 @@ window.player = {
     timeTheorems: {
       isActive: false,
     },
+    gearTheorems: {
+      isActive: false,
+    },
     dilationUpgrades: {
       all: Array.range(0, 3).map(() => ({
         isActive: false,
@@ -228,6 +232,7 @@ window.player = {
       eiffelTowerChapter: 0
     },
     totalSeen: 0,
+    uniqueSeen: 0
   },
   lastUpdate: new Date().getTime(),
   backupTimer: 0,
@@ -277,6 +282,9 @@ window.player = {
       maxGlyphs: 0,
       slowestBH: 1,
     },
+    simulation: {
+      noPurchasedGT: true,
+    },
     permanent: {
       emojiGalaxies: 0,
       singleTickspeed: 0,
@@ -291,7 +299,7 @@ window.player = {
     realTimeDoomed: 0,
     fullGameCompletions: 0,
     previousRunRealTime: 0,
-    totalAntimatter: DC.E1,
+    totalAntimatter: DC.E0,
     recentInfinities: Array.range(0, 10).map(() =>
       [Number.MAX_VALUE, Number.MAX_VALUE, DC.D1, DC.D1, ""]),
     recentEternities: Array.range(0, 10).map(() =>
@@ -339,6 +347,18 @@ window.player = {
       bestRSmin: 0,
       bestRSminVal: 0,
     },
+    thisSimulation: {
+      time: 0,
+      realTime: 0,
+      maxAM: DC.D0,
+      maxIP: DC.D0,
+      maxEP: DC.D0,
+      bestEternitiesPerMs: DC.D0,
+      maxReplicanti: DC.D0,
+      maxDT: DC.D0,
+      bestRSmin: 0,
+      bestRSminVal: 0,
+    },
     bestReality: {
       time: Number.MAX_VALUE,
       realTime: Number.MAX_VALUE,
@@ -354,6 +374,10 @@ window.player = {
       speedSet: [],
       iMCapSet: [],
       laitelaSet: [],
+    },
+    bestSimulation: {
+      time: Number.MAX_VALUE,
+      realTime: Number.MAX_VALUE
     },
   },
   speedrun: {
@@ -410,6 +434,16 @@ window.player = {
       studies: "",
     }),
   },
+  gears: {
+    theorem: DC.D0,
+    maxTheorem: DC.D0,
+    amBought: 0,
+    ipBought: 0,
+    epBought: 0,
+    rmBought: 0,
+    simBought: 0,
+    score: new Decimal(0)
+  },
   eternityChalls: {},
   respec: false,
   eterc8ids: 50,
@@ -434,6 +468,9 @@ window.player = {
     lastEP: DC.DM1,
   },
   realities: 0,
+  simulations: 0,
+  currentSimulations: DC.D0,
+  hadSimulationOnce: false,
   partSimulatedReality: 0,
   reality: {
     realityMachines: DC.D0,
@@ -788,7 +825,7 @@ window.player = {
       speed: 1,
       includeAnimated: true,
     },
-    notation: "Mixed scientific",
+    notation: "Scientific",
     notationDigits: {
       comma: 5,
       notation: 9
@@ -922,6 +959,7 @@ window.player = {
       clearOnRestart: true,
     },
     invertTTgenDisplay: false,
+    invertGTgenDisplay: false,
     autoRealityForFilter: false,
   },
   IAP: {

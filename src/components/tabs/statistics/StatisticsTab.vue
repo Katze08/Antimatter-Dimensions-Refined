@@ -49,6 +49,16 @@ export default {
         bestRate: new Decimal(0),
         bestRarity: 0,
       },
+      simulation: {
+        isUnlocked: false,
+        count: 0,
+        current: 0,
+        best: TimeSpan.zero,
+        bestReal: TimeSpan.zero,
+        this: TimeSpan.zero,
+        thisReal: TimeSpan.zero,
+        totalTimePlayed: TimeSpan.zero,
+      },
       matterScale: [],
       lastMatterTime: 0,
       paperclips: 0,
@@ -127,12 +137,33 @@ export default {
       const bestReality = records.bestReality;
       reality.isUnlocked = isRealityUnlocked;
 
-      if (isRealityUnlocked) {
+      const isSimulationUnlocked = progress.isSimulationUnlocked;
+      const simulation = this.simulation;
+      const bestSimulation = records.bestSimulation;
+      simulation.isUnlocked = isSimulationUnlocked;
+
+      if (isRealityUnlocked || isSimulationUnlocked) {
         reality.count = Math.floor(Currency.realities.value);
         reality.best.setFrom(bestReality.time);
         reality.bestReal.setFrom(bestReality.realTime);
         reality.this.setFrom(records.thisReality.time);
         reality.totalTimePlayed.setFrom(records.totalTimePlayed);
+        // Real time tracking is only a thing once reality is unlocked:
+        infinity.thisReal.setFrom(records.thisInfinity.realTime);
+        infinity.bankRate = infinity.projectedBanked.div(Math.clampMin(33, records.thisEternity.realTime)).times(60000);
+        eternity.thisReal.setFrom(records.thisEternity.realTime);
+        reality.thisReal.setFrom(records.thisReality.realTime);
+        reality.bestRate.copyFrom(bestReality.RMmin);
+        reality.bestRarity = Math.max(strengthToRarity(bestReality.glyphStrength), 0);
+      }
+
+      if (isSimulationUnlocked) {
+        simulation.count = Math.floor(Currency.simulations.value);
+        simulation.current.copyFrom(Currency.currentSimulations);
+        simulation.best.setFrom(bestSimulation.time);
+        simulation.bestReal.setFrom(bestSimulation.realTime);
+        simulation.this.setFrom(records.thisSimulation.time);
+        simulation.totalTimePlayed.setFrom(records.totalTimePlayed);
         // Real time tracking is only a thing once reality is unlocked:
         infinity.thisReal.setFrom(records.thisInfinity.realTime);
         infinity.bankRate = infinity.projectedBanked.div(Math.clampMin(33, records.thisEternity.realTime)).times(60000);
@@ -163,6 +194,12 @@ export default {
         "c-stats-tab-reality": !this.isDoomed,
         "c-stats-tab-doomed": this.isDoomed,
       };
+    },
+    simulationClassObject() {
+      return {
+        "c-stats-tab-title": true,
+        "c-stats-tab-simulation": true
+      };
     }
   },
 };
@@ -180,7 +217,7 @@ export default {
       <div class="c-stats-tab-general">
         <div>You have made a total of {{ format(totalAntimatter, 2, 1) }} antimatter.</div>
         <div>You have played for {{ realTimePlayed }}. (real time)</div>
-        <div v-if="reality.isUnlocked">
+        <div v-if="reality.isUnlocked || simulation.isUnlocked">
           Your existence has spanned {{ reality.totalTimePlayed }} of time. (game time)
         </div>
         <div>
@@ -320,6 +357,17 @@ export default {
       <div>Your best Glyph rarity is {{ formatRarity(reality.bestRarity) }}.</div>
       <br>
     </div>
+    <div
+      v-if="simulation.isUnlocked"
+      class="c-stats-tab-subheader c-stats-tab-general"
+    >
+      <div :class="simulationClassObject()">
+        Simulation
+      </div>
+      <div>You have a total of {{ quantifyInt("Simulation", simulation.count) }} ({{ format(simulation.current, 2) }}
+        currently).</div>
+      <br>
+    </div>
   </div>
 </template>
 
@@ -351,6 +399,10 @@ export default {
 
 .c-stats-tab-reality {
   color: var(--color-reality);
+}
+
+.c-stats-tab-simulation {
+  color: var(--color-simulation);
 }
 
 .c-stats-tab-doomed {

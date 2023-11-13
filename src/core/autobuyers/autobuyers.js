@@ -1,3 +1,4 @@
+import { GearTheoremAutobuyerState } from "@/core/autobuyers/gear-theorem-autobuyer";
 import { AnnihilationAutobuyerState } from "./annihilation-autobuyer";
 import { AntimatterDimensionAutobuyerState } from "./antimatter-dimension-autobuyer";
 import { BigCrunchAutobuyerState } from "./big-crunch-autobuyer";
@@ -44,7 +45,8 @@ export const Autobuyer = {
   singularity: new SingularityAutobuyerState(),
   tickspeed: new TickspeedAutobuyerState(),
   timeDimension: TimeDimensionAutobuyerState.createAccessor(),
-  timeTheorem: new TimeTheoremAutobuyerState()
+  timeTheorem: new TimeTheoremAutobuyerState(),
+  gearTheorem: new GearTheoremAutobuyerState(),
 };
 
 export const Autobuyers = (function() {
@@ -64,6 +66,7 @@ export const Autobuyers = (function() {
     Autobuyer.sacrifice,
     Autobuyer.replicantiGalaxy,
     Autobuyer.timeTheorem,
+    Autobuyer.gearTheorem,
     Autobuyer.ipMult,
     Autobuyer.epMult,
     Autobuyer.darkMatterDims,

@@ -33,7 +33,7 @@ export const NG = {
     }
 
     // Modify beaten-game quantities before doing a carryover reset
-    player.records.fullGameCompletions++;
+    //player.records.fullGameCompletions++;
     GlyphAppearanceHandler.unlockSet();
     this.restartWithCarryover();
 

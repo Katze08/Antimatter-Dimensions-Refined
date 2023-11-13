@@ -48,10 +48,10 @@ class GalaxyState extends SetPurchasableMechanicState {
 }
 
 export function Galaxy() {
-  generateGalaxies();
+  //generateGalaxies();
   return mapGameDataToObject(
-    //GameDatabase.galaxy.galaxies,
-    player.availableMapGalaxiesCurrentInfinity,
+    //player.availableMapGalaxiesCurrentInfinity,
+    GameDatabase.galaxy.galaxies,
     config => new GalaxyState(config)
   );
 }

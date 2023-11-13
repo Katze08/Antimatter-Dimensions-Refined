@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     update() {
-      this.hasReality = PlayerProgress.realityUnlocked();
+      this.hasReality = PlayerProgress.simulationUnlocked() || PlayerProgress.realityUnlocked();
     },
   },
 };

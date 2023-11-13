@@ -23,6 +23,7 @@ export const tabs = [
         symbol: "∞",
         component: "InfinityDimensionsTab",
         condition: () =>
+          PlayerProgress.simulationUnlocked() ||
           PlayerProgress.realityUnlocked() ||
           PlayerProgress.eternityUnlocked() ||
           InfinityDimension(1).isUnlocked,
@@ -35,7 +36,10 @@ export const tabs = [
         hideAt: 2.6,
         symbol: "Δ",
         component: "TimeDimensionsTab",
-        condition: () => PlayerProgress.eternityUnlocked(),
+        condition: () =>
+          PlayerProgress.simulationUnlocked() ||
+          PlayerProgress.realityUnlocked() ||
+          PlayerProgress.eternityUnlocked(),
         id: 2,
         hidable: true,
       },
@@ -95,6 +99,7 @@ export const tabs = [
         symbol: "<i class='fas fa-stopwatch'></i>",
         component: "ChallengeRecordsTab",
         condition: () =>
+          PlayerProgress.simulationUnlocked() ||
           PlayerProgress.realityUnlocked() ||
           PlayerProgress.eternityUnlocked() ||
           PlayerProgress.challengeCompleted(),
@@ -106,7 +111,11 @@ export const tabs = [
         name: "Past Prestige Runs",
         symbol: "<i class='fas fa-list-ol'></i>",
         component: "PastPrestigeRunsTab",
-        condition: () => PlayerProgress.infinityUnlocked(),
+        condition: () =>
+          PlayerProgress.simulationUnlocked() ||
+          PlayerProgress.realityUnlocked() ||
+          PlayerProgress.eternityUnlocked() ||
+          PlayerProgress.infinityUnlocked(),
         id: 2,
         hidable: true,
       },
@@ -115,7 +124,11 @@ export const tabs = [
         name: "Multiplier Breakdown",
         symbol: "<i class='fas fa-calculator'></i>",
         component: "MultiplierBreakdownTab",
-        condition: () => PlayerProgress.infinityUnlocked(),
+        condition: () =>
+          PlayerProgress.simulationUnlocked() ||
+          PlayerProgress.realityUnlocked() ||
+          PlayerProgress.eternityUnlocked() ||
+          PlayerProgress.infinityUnlocked(),
         id: 3,
         hidable: true,
       },
@@ -124,7 +137,9 @@ export const tabs = [
         name: "Glyph Set Records",
         symbol: "<i class='fas fa-ellipsis-h'></i>",
         component: "GlyphSetRecordsTab",
-        condition: () => PlayerProgress.realityUnlocked(),
+        condition: () =>
+          PlayerProgress.simulationUnlocked() ||
+          PlayerProgress.realityUnlocked(),
         id: 4,
         hidable: true,
       },
@@ -178,7 +193,12 @@ export const tabs = [
     name: "Automation",
     id: 4,
     hideAt: 2.1,
-    condition: () => player.records.totalAntimatter.gte(1e40),
+    condition: () =>
+      PlayerProgress.simulationUnlocked() ||
+      PlayerProgress.realityUnlocked() ||
+      PlayerProgress.eternityUnlocked() ||
+      PlayerProgress.infinityUnlocked() ||
+      player.records.totalAntimatter.gte(1e40),
     hidable: true,
     subtabs: [
       {
@@ -194,8 +214,20 @@ export const tabs = [
         name: "Automator",
         symbol: "<i class='fas fa-code'></i>",
         component: "AutomatorTab",
-        condition: () => PlayerProgress.realityUnlocked(),
+        condition: () =>
+          PlayerProgress.simulationUnlocked() ||
+          PlayerProgress.realityUnlocked(),
         id: 1,
+        hidable: true,
+      },
+      {
+        key: "gears",
+        name: "Automation Gears",
+        symbol: "<i class='fas fa-gears'></i>",
+        component: "AutomationGearsTab",
+        condition: () =>
+          PlayerProgress.simulationUnlocked() || player.hadSimulationOnce,
+        id: 2,
         hidable: true,
       },
     ]
@@ -205,6 +237,7 @@ export const tabs = [
     name: "Challenges",
     hideAt: 2,
     condition: () =>
+      PlayerProgress.simulationUnlocked() ||
       PlayerProgress.realityUnlocked() ||
       PlayerProgress.eternityUnlocked() ||
       PlayerProgress.infinityUnlocked() ||
@@ -222,6 +255,9 @@ export const tabs = [
             player.galaxyChallengesUnlocked = true;
             return true;
           }
+          if (PlayerProgress.simulationUnlocked()) {
+            return true;
+          }
           return player.galaxyChallengesUnlocked;
 
         },
@@ -233,7 +269,11 @@ export const tabs = [
         name: "Challenges",
         symbol: "Ω",
         component: "NormalChallengesTab",
-        condition: () => PlayerProgress.infinityUnlocked() || PlayerProgress.eternityUnlocked() || PlayerProgress.realityUnlocked(),
+        condition: () =>
+          PlayerProgress.infinityUnlocked() ||
+          PlayerProgress.eternityUnlocked() ||
+          PlayerProgress.realityUnlocked() ||
+          PlayerProgress.simulationUnlocked(),
         id: 0,
         hidable: true
       },
@@ -242,7 +282,7 @@ export const tabs = [
         name: "Infinity Challenges",
         symbol: "∞",
         component: "infinity-challenges-tab",
-        condition: () => PlayerProgress.realityUnlocked() || PlayerProgress.hasBroken() || Pelle.isDoomed,
+        condition: () => PlayerProgress.simulationUnlocked() || PlayerProgress.realityUnlocked() || PlayerProgress.hasBroken() || Pelle.isDoomed,
         id: 1,
         hidable: true
       },
@@ -252,6 +292,7 @@ export const tabs = [
         symbol: "Δ",
         component: "eternity-challenges-tab",
         condition: () =>
+          PlayerProgress.simulationUnlocked() ||
           PlayerProgress.realityUnlocked() ||
           player.challenge.eternity.unlocked !== 0 ||
           EternityChallenges.all.some(ec => ec.completions > 0),
@@ -267,7 +308,11 @@ export const tabs = [
     UIClass: "o-tab-btn--infinity",
     before: "InfinityPointsHeader",
     id: 6,
-    condition: () => PlayerProgress.infinityUnlocked(),
+    condition: () =>
+      PlayerProgress.simulationUnlocked() ||
+      PlayerProgress.realityUnlocked() ||
+      PlayerProgress.eternityUnlocked() ||
+      PlayerProgress.infinityUnlocked(),
     hidable: true,
     subtabs: [
       {
@@ -276,6 +321,7 @@ export const tabs = [
         symbol: "<i class='fas fa-arrow-up'></i>",
         component: "InfinityUpgradesTab",
         condition: () =>
+          PlayerProgress.simulationUnlocked() ||
           PlayerProgress.realityUnlocked() ||
           PlayerProgress.eternityUnlocked() ||
           PlayerProgress.infinityUnlocked(),
@@ -288,6 +334,7 @@ export const tabs = [
         symbol: "∝",
         component: "BreakInfinityTab",
         condition: () =>
+          PlayerProgress.simulationUnlocked() ||
           PlayerProgress.realityUnlocked() ||
           PlayerProgress.eternityUnlocked() ||
           PlayerProgress.infinityUnlocked(),
@@ -300,6 +347,7 @@ export const tabs = [
         symbol: "Ξ",
         component: "ReplicantiTab",
         condition: () =>
+          PlayerProgress.simulationUnlocked() ||
           PlayerProgress.realityUnlocked() ||
           PlayerProgress.eternityUnlocked() ||
           PlayerProgress.infinityUnlocked(),
@@ -314,6 +362,7 @@ export const tabs = [
     hideAt: 1.8,
     UIClass: "o-tab-btn--eternity",
     condition: () =>
+      PlayerProgress.simulationUnlocked() ||
       PlayerProgress.realityUnlocked() ||
       PlayerProgress.eternityUnlocked(),
     before: "EternityPointsHeader",
@@ -349,7 +398,7 @@ export const tabs = [
         name: "Time Dilation",
         symbol: "Ψ",
         component: "TimeDilationTab",
-        condition: () => PlayerProgress.dilationUnlocked() || PlayerProgress.realityUnlocked(),
+        condition: () => PlayerProgress.dilationUnlocked() || PlayerProgress.realityUnlocked() || PlayerProgress.simulationUnlocked(),
         id: 3,
         hidable: true,
       }
@@ -360,7 +409,7 @@ export const tabs = [
     name: "Reality",
     hideAt: 2.3,
     UIClass: "o-tab-btn--reality",
-    condition: () => PlayerProgress.realityUnlocked() || TimeStudy.reality.isBought,
+    condition: () => PlayerProgress.simulationUnlocked() || PlayerProgress.realityUnlocked() || TimeStudy.reality.isBought,
     id: 8,
     hidable: true,
     subtabs: [
@@ -385,7 +434,7 @@ export const tabs = [
         name: "Imaginary Upgrades",
         symbol: "<i class='fas fa-level-up-alt'></i>",
         component: "ImaginaryUpgradesTab",
-        condition: () => MachineHandler.isIMUnlocked,
+        condition: () => PlayerProgress.simulationUnlocked() || MachineHandler.isIMUnlocked,
         id: 2,
         hidable: true,
       },
@@ -402,7 +451,7 @@ export const tabs = [
         name: "Black Hole",
         symbol: "<i class='fas fa-circle'></i>",
         component: "BlackHoleTab",
-        condition: () => PlayerProgress.realityUnlocked(),
+        condition: () => PlayerProgress.simulationUnlocked() || PlayerProgress.realityUnlocked(),
         id: 4,
         hidable: true,
       },
@@ -411,7 +460,7 @@ export const tabs = [
         name: "Glyph Alchemy",
         symbol: "<i class='fas fa-vial'></i>",
         component: "AlchemyTab",
-        condition: () => Ra.unlocks.unlockGlyphAlchemy.canBeApplied,
+        condition: () => PlayerProgress.simulationUnlocked() || Ra.unlocks.unlockGlyphAlchemy.canBeApplied,
         id: 5,
         hidable: true,
       },
@@ -422,7 +471,7 @@ export const tabs = [
     name: "Celestials",
     hideAt: 2.4,
     UIClass: "o-tab-btn--celestial",
-    condition: () => Teresa.isUnlocked,
+    condition: () => PlayerProgress.simulationUnlocked() || Teresa.isUnlocked,
     id: 9,
     hidable: true,
     subtabs: [
@@ -447,7 +496,7 @@ export const tabs = [
         name: "Effarig",
         symbol: "Ϙ",
         component: "EffarigTab",
-        condition: () => TeresaUnlocks.effarig.isUnlocked,
+        condition: () => PlayerProgress.simulationUnlocked() || TeresaUnlocks.effarig.isUnlocked,
         id: 2,
         hidable: true,
       },
@@ -456,7 +505,7 @@ export const tabs = [
         name: "The Nameless Ones",
         symbol: "<div class='o-tab-btn--cel3'>\uf0c1</div>",
         component: "EnslavedTab",
-        condition: () => EffarigUnlock.eternity.isUnlocked,
+        condition: () => PlayerProgress.simulationUnlocked() || EffarigUnlock.eternity.isUnlocked,
         id: 3,
         hidable: true,
       },
@@ -465,7 +514,7 @@ export const tabs = [
         name: "V",
         symbol: "⌬",
         component: "VTab",
-        condition: () => Achievement(151).isUnlocked,
+        condition: () => PlayerProgress.simulationUnlocked() || Achievement(151).isUnlocked,
         id: 4,
         hidable: true,
       },
@@ -474,7 +523,7 @@ export const tabs = [
         name: "Ra",
         symbol: "<i class='fas fa-sun'></i>",
         component: "RaTab",
-        condition: () => VUnlocks.raUnlock.isUnlocked,
+        condition: () => PlayerProgress.simulationUnlocked() || VUnlocks.raUnlock.isUnlocked,
         id: 5,
         hidable: true,
       },
@@ -483,7 +532,7 @@ export const tabs = [
         name: "Lai'tela",
         symbol: "ᛝ",
         component: "LaitelaTab",
-        condition: () => Laitela.isUnlocked,
+        condition: () => PlayerProgress.simulationUnlocked() || Laitela.isUnlocked,
         id: 6,
         hidable: true,
       },
@@ -492,7 +541,7 @@ export const tabs = [
         name: "Pelle",
         symbol: "♅",
         component: "PelleTab",
-        condition: () => Pelle.isUnlocked,
+        condition: () => PlayerProgress.simulationUnlocked() || Pelle.isUnlocked,
         id: 7,
         hidable: true,
       }
@@ -524,7 +573,7 @@ export const tabs = [
     UIClass: "o-tab-btn--galaxy",
     id: 11,
     condition: () => {
-      if (player.dimensionBoosts >= 4) {
+      if (player.dimensionBoosts >= 4 || PlayerProgress.simulationUnlocked()) {
         player.wasOnceIntergalactical = true;
       }
       return player.wasOnceIntergalactical;
@@ -543,8 +592,27 @@ export const tabs = [
         name: "Intergalactical Map",
         symbol: "<i class='fas fa-map-marked-alt'></i>",
         component: "GalaxyMapTab",
-        condition: () => player.unlockedGalaxyMap,
+        condition: () => PlayerProgress.simulationUnlocked() || player.unlockedGalaxyMap,
         id: 1,
+        hidable: true
+      }
+    ]
+  },
+  {
+    key: "simulation",
+    name: "Simulation",
+    hideAt: 2.9,
+    UIClass: "o-tab-btn--simulation",
+    id: 12,
+    condition: () => PlayerProgress.simulationUnlocked() || player.hadSimulationOnce,
+    hidable: true,
+    subtabs: [
+      {
+        key: "settings",
+        name: "Simulation settings",
+        symbol: "<i class='fas fa-cog'></i>",
+        component: "SimulationSettingsTab",
+        id: 0,
         hidable: true
       }
     ]

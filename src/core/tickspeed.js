@@ -39,12 +39,12 @@ export function getTickSpeedMultiplier() {
     // Magic numbers are to retain balancing from before while displaying
     // them now as positive multipliers rather than negative percentages
     let baseMultiplier = 1 / 1.1245;
-    if (player.galaxies === 1) baseMultiplier = 1 / 1.11888888;
-    if (player.galaxies === 2) baseMultiplier = 1 / 1.11267177;
+    //if (player.galaxies === 1) baseMultiplier = 1 / 1.11888888;
+    //if (player.galaxies === 2) baseMultiplier = 1 / 1.11267177;
     if (NormalChallenge(5).isRunning) {
       baseMultiplier = 1 / 1.08;
-      if (player.galaxies === 1) baseMultiplier = 1 / 1.07632;
-      if (player.galaxies === 2) baseMultiplier = 1 / 1.072;
+      //if (player.galaxies === 1) baseMultiplier = 1 / 1.07632;
+      //if (player.galaxies === 2) baseMultiplier = 1 / 1.072;
     }
     const perGalaxy = 0.02 * effects;
     if (Pelle.isDoomed) galaxies *= 0.5;

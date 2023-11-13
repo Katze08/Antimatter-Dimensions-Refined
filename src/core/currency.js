@@ -1,4 +1,5 @@
 import { GalaxyUpgrade } from "@/core/galaxy-upgrades";
+import { GearTheorems } from "@/core/gear-theorems";
 import { galaxyUpgrades } from "@/core/secret-formula/galaxy/galaxy-upgrades";
 import { DC } from "./constants";
 
@@ -378,6 +379,31 @@ Currency.timeTheorems = new class extends DecimalCurrency {
   }
 }();
 
+Currency.gearTheorems = new class extends DecimalCurrency {
+  get value() { return player.gears.theorem; }
+  set value(value) {
+    player.gears.theorem = value;
+    player.gears.maxTheorem = value;
+  }
+
+  get max() { return player.gears.maxTheorem; }
+
+  add(amount) {
+    super.add(amount);
+    player.gears.maxTheorem = player.gears.maxTheorem.plus(amount);
+  }
+
+  reset() {
+    super.reset();
+    GearTheoremPurchaseType.am.reset();
+    GearTheoremPurchaseType.ip.reset();
+    GearTheoremPurchaseType.ep.reset();
+    GearTheoremPurchaseType.rm.reset();
+    GearTheoremPurchaseType.sim.reset();
+    player.gears.maxTheorem = this.startingValue;
+  }
+}();
+
 Currency.tachyonParticles = new class extends DecimalCurrency {
   get value() { return player.dilation.tachyonParticles; }
   set value(value) { player.dilation.tachyonParticles = value; }
@@ -394,6 +420,16 @@ Currency.dilatedTime = new class extends DecimalCurrency {
 Currency.realities = new class extends NumberCurrency {
   get value() { return player.realities; }
   set value(value) { player.realities = value; }
+}();
+
+Currency.simulations = new class extends NumberCurrency {
+  get value() { return player.simulations; }
+  set value(value) { player.simulations = value; }
+}();
+
+Currency.currentSimulations = new class extends DecimalCurrency {
+  get value() { return player.currentSimulations; }
+  set value(value) { player.currentSimulations = value; }
 }();
 
 Currency.realityMachines = new class extends DecimalCurrency {

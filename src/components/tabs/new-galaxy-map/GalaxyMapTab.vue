@@ -3,7 +3,6 @@ import GalaxyLabel from "@/components/tabs/new-galaxy-map/GalaxyLabel";
 import { Galaxies } from "@/core/map_galaxies";
 import { GALAXY_FAMILY } from "@/core/secret-formula/galaxy/map_galaxies";
 import { DataSet, Network } from "vis-network";
-import ModernAntimatterGalaxyRow from "@/components/tabs/antimatter-dimensions/ModernAntimatterGalaxyRow";
 
 export default {
   name: "GalaxyMap",
@@ -91,6 +90,7 @@ export const GalaxyNetwork = {
         Galaxies.find(id).purchase();
         softReset(0);
         player.galaxies += Galaxies.find(id).config.power;
+        player.dimensionBoosts = 0;
         player.antimatterGalaxiesBought++;
         this.updatePerkColor();
         this.updatePerkSize();

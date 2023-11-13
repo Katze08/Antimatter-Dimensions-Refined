@@ -1,6 +1,11 @@
 <script>
+import PrimaryButton from "@/components/PrimaryButton";
+
 export default {
-  name: "ModernDimensionBoostRow",
+  name: "ClassicDimensionBoostRow",
+  components: {
+    PrimaryButton
+  },
   data() {
     return {
       requirement: {
@@ -36,18 +41,10 @@ export default {
     },
     classObject() {
       return {
-        "o-primary-btn": true,
-        "tickspeed-btn": true,
+        "o-primary-btn--dimboost l-dim-row__prestige-button": true,
         "tutorial--glow": this.isBuyable && this.hasTutorial,
-        "o-primary-btn--disabled": !this.isBuyable,
         "o-pelle-disabled-pointer": this.creditsClosed
       };
-    },
-    upgradeCount() {
-      return `${formatInt(this.purchasedBoosts)} Purchased Boosts; ${this.unlockedByBoost}`;
-    },
-    btnText() {
-      return `Dimension Boost: ${formatInt(this.requirement.amount)} ${this.dimName} AD`;
     }
   },
   methods: {
@@ -60,7 +57,7 @@ export default {
       this.imaginaryBoosts = DimBoost.imaginaryBoosts;
       this.lockText = DimBoost.lockText;
       this.unlockedByBoost = DimBoost.unlockedByBoost;
-      this.creditsClosed = GameEnd.creditsEverClosed;
+      this.creditsClosed = GameEnd.creditsClosed;
       if (this.isDoomed) this.requirementText = formatInt(this.purchasedBoosts);
       this.hasTutorial = Tutorial.isActive(TUTORIAL_STATE.DIMBOOST);
     },
@@ -73,25 +70,31 @@ export default {
 </script>
 
 <template>
-  <button
-    v-tooltip="upgradeCount"
-    :class="classObject"
-    @click.exact="dimensionBoost(true)"
-    @click.shift.exact="dimensionBoost(false)"
-  >
-    {{ btnText }}
-    <div
-      v-if="hasTutorial"
-      class="fas fa-circle-exclamation l-notification-icon"
-    />
-  </button>
+  <div class="c-dimension-row c-antimatter-dim-row c-antimatter-prestige-row">
+    <div class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount">
+      Dimension Boost ({{ boostCountText }})
+      Requires {{ formatInt(requirement.amount) }} {{ dimName }} Antimatter D
+    </div>
+    <PrimaryButton
+      :enabled="isBuyable"
+      :class="classObject"
+      @click.exact="dimensionBoost(true)"
+      @click.shift.exact="dimensionBoost(false)"
+    >
+      {{ unlockedByBoost }}
+      <div
+        v-if="hasTutorial"
+        class="fas fa-circle-exclamation l-notification-icon"
+      />
+    </PrimaryButton>
+  </div>
 </template>
 
 <style scoped>
-.tickspeed-btn {
-position: relative;
-width: 30rem;
-height: 2.5rem;
-padding: 0.25rem;
+.o-primary-btn--dimboost {
+  width: 22rem;
+  height: 5.5rem;
+  position: relative;
+  font-size: 0.9rem;
 }
 </style>

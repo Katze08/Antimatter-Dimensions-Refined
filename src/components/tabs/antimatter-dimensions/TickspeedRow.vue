@@ -1,8 +1,6 @@
 <script>
-import ModernDimensionBoostRow from "@/components/tabs/antimatter-dimensions/ModernDimensionBoostRow";
 export default {
   name: "TickspeedRow",
-  components: { ModernDimensionBoostRow },
   data() {
     return {
       purchasedTickspeed: 0,
@@ -106,9 +104,8 @@ export default {
         :class="{ 'o-primary-btn--disabled': !isAffordable && !isContinuumActive }"
         onclick="buyMaxTickSpeed()"
       >
-        Max TS
+        Buy Max
       </button>
-      <ModernDimensionBoostRow />
     </div>
     <div
       v-if="hasRealityButton"

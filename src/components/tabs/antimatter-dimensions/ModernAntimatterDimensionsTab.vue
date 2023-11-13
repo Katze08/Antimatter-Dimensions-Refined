@@ -1,8 +1,7 @@
 <script>
 import AntimatterDimensionProgressBar from "./AntimatterDimensionProgressBar";
 import AntimatterDimensionRow from "@/components/tabs/antimatter-dimensions/ModernAntimatterDimensionRow";
-import AntimatterGalaxyRow from "@/components/tabs/antimatter-dimensions/ModernAntimatterGalaxyRow";
-import DimensionBoostRow from "@/components/tabs/antimatter-dimensions/ModernDimensionBoostRow";
+import DimensionBoostRow from "./ModernDimensionBoostRow";
 import PrimaryButton from "@/components/PrimaryButton";
 import TickspeedRow from "@/components/tabs/antimatter-dimensions/TickspeedRow";
 
@@ -12,6 +11,7 @@ export default {
     PrimaryButton,
     AntimatterDimensionProgressBar,
     AntimatterDimensionRow,
+    DimensionBoostRow,
     TickspeedRow
   },
   data() {
@@ -95,7 +95,6 @@ export default {
 
 <template>
   <div class="l-antimatter-dim-tab">
-    <AntimatterDimensionProgressBar />
     <div class="modes-container">
       <button
         class="o-primary-btn l-button-container"
@@ -130,15 +129,17 @@ export default {
       />
     </div>
     <div class="resets-container">
+      <DimensionBoostRow />
       <PrimaryButton
-        v-if="isQuickResetAvailable"
-        class="o-primary-btn--quick-reset"
-        onclick="softReset(-1, true, true)"
+      v-if="isQuickResetAvailable"
+      class="o-primary-btn--quick-reset"
+      onclick="softReset(-1, true, true)"
       >
-        Fix softlock
-        <span v-if="hasDimensionBoosts"> but lose a Dimension Boost</span>
-      </PrimaryButton>
-    </div>
+      Perform a Dimension Boost reset
+      <span v-if="hasDimensionBoosts"> but lose a Dimension Boost</span>
+    </PrimaryButton>
+  </div>
+  <AntimatterDimensionProgressBar />
   </div>
 </template>
 

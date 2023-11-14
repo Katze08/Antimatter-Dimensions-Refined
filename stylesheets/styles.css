@@ -9322,3 +9322,23 @@ input.o-automator-block-input {
   width: 100%;
   height: 100%;
 }
+
+.antimatter-gear {
+  color: #138626;
+}
+
+.infinity-gear {
+  color: #b67f33;
+}
+
+.eternity-gear {
+  color: #b341e0;
+}
+
+.reality-gear {
+  color: #5151ec;
+}
+
+.simulation-gear {
+  color: #ff0000;
+}

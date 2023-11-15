@@ -427,10 +427,10 @@ Currency.simulations = new class extends NumberCurrency {
   set value(value) { player.simulations = value; }
 }();
 
-Currency.currentSimulations = new class extends DecimalCurrency {
+/*Currency.currentSimulations = new class extends DecimalCurrency {
   get value() { return player.currentSimulations; }
   set value(value) { player.currentSimulations = value; }
-}();
+}();*/
 
 Currency.realityMachines = new class extends DecimalCurrency {
   get value() { return player.reality.realityMachines; }

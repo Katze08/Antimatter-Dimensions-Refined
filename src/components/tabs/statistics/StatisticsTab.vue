@@ -159,7 +159,7 @@ export default {
 
       if (isSimulationUnlocked) {
         simulation.count = Math.floor(Currency.simulations.value);
-        simulation.current.copyFrom(Currency.currentSimulations);
+        //simulation.current.copyFrom(Currency.currentSimulations);
         simulation.best.setFrom(bestSimulation.time);
         simulation.bestReal.setFrom(bestSimulation.realTime);
         simulation.this.setFrom(records.thisSimulation.time);
@@ -364,8 +364,7 @@ export default {
       <div :class="simulationClassObject()">
         Simulation
       </div>
-      <div>You have a total of {{ quantifyInt("Simulation", simulation.count) }} ({{ format(simulation.current, 2) }}
-        currently).</div>
+      <div>You have {{ quantifyInt("Simulation", simulation.count) }}<!--({{ format(simulation.current, 2) }} currently)-->.</div>
       <br>
     </div>
   </div>

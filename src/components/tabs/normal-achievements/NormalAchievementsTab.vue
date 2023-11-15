@@ -120,7 +120,13 @@ export default {
       return this.renderedRowIndices.includes(row);
     },
     isObscured(row) {
-      return this.isDoomed ? false : row === 17;
+      if (player.simulations > 0) {
+        return false;
+      } else if (this.isDoomed) {
+        return row >= 18;
+      } else {
+        return row >= 17;
+      }
     },
     timeDisplay,
     timeDisplayNoDecimals,

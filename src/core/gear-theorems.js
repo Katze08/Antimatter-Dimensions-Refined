@@ -78,7 +78,18 @@ GearTheoremPurchaseType.am = new class extends GearTheoremPurchaseType {
 
   get currency() { return Currency.antimatter; }
   get costBase() { return DC.E100000; }
-  get costIncrement() { return DC.E20000; } //needs to be changed, super-exponentially
+  get costIncrement() { return DC.D0; }
+  /*get costIncrement() {
+    let str = "1e9";
+    const str2 = "0";
+    for (let i = 0; i <= player.gears.amBought + 3; i++) {
+      str += str2;
+    }
+    return new Decimal(str);
+  } //needs to be changed, super-exponentially*/
+  get cost() {
+    return this.costBase.pow(10 ** this.amount);
+  }
 }();
 
 GearTheoremPurchaseType.ip = new class extends GearTheoremPurchaseType {
@@ -87,7 +98,10 @@ GearTheoremPurchaseType.ip = new class extends GearTheoremPurchaseType {
 
   get currency() { return Currency.infinityPoints; }
   get costBase() { return DC.E1000; }
-  get costIncrement() { return DC.E100; } //needs to be changed, super-exponentially
+  get costIncrement() { return DC.D0; } //needs to be changed, super-exponentially
+  get cost() {
+    return this.costBase.pow(2 ** this.amount);
+  }
 }();
 
 GearTheoremPurchaseType.ep = new class extends GearTheoremPurchaseType {

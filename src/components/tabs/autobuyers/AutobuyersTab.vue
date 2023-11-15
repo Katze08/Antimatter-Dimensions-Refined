@@ -31,7 +31,7 @@ export default {
       hasContinuum: false,
       displayADAutobuyersIndividually: false,
       hasInstant: false,
-      gearScore: 0,
+      gearScore: new Decimal(1),
       hasIntervalUpgrade: false
     };
   },
@@ -46,18 +46,15 @@ export default {
     }
   },
   methods: {
-    gearSum() {
-      let value = player.gears.amBought + player.gears.ipBought + player.gears.epBought + player.gears.rmBought + player.gears.simBought;
-    },
     update() {
       this.hasInfinity = PlayerProgress.infinityUnlocked();
       this.hasContinuum = Laitela.continuumActive;
       this.checkADAutoStatus();
       this.hasIntervalUpgrade = BreakInfinityUpgrade.autobuyerSpeed.isBought;
-      if (player.gears.amBought > 0 || player.gears.ipBought > 0 || player.gears.epBought > 0 || player.gears.rmBought > 0 || player.gears.simBought > 0) {
-        this.gearScore = Decimal.pow(new Decimal(1.1), new Decimal(this.gearSum));
-        GameUI.update();
-      }
+      //if (player.gears.amBought > 0 || player.gears.ipBought > 0 || player.gears.epBought > 0 || player.gears.rmBought > 0/* || player.gears.simBought > 0*/) {
+        this.gearScore = Decimal.pow(new Decimal(1.1), player.gears.score);
+        //GameUI.update();
+      //}
     },
     checkADAutoStatus() {
       const ad = Autobuyer.antimatterDimension;
@@ -87,9 +84,9 @@ export default {
       <br>
     </div>
     <b>Autobuyers with no displayed bulk have unlimited bulk by default.</b>
-    <b>Antimatter Dimension Autobuyers can have their bulk upgraded once interval is below {{ gearScore > 1 ? format(100 / gearScore / (hasIntervalUpgrade ? 2 : 1), 0, 3) : (hasIntervalUpgrade ? formatInt(50) : formatInt(100)) }} ms.</b>
+    <b>Antimatter Dimension Autobuyers can have their bulk upgraded once interval is below {{ ((gearScore.toNumber() > 1) ? format(100 / gearScore.toNumber() / (hasIntervalUpgrade ? 2 : 1), 0, 3) : (hasIntervalUpgrade ? formatInt(50) : formatInt(100))) }} ms.</b>
     <b v-if="hasInstant">Autobuyers with "Instant" interval will trigger every game tick ({{ gameTickLength }}).</b>
-    <b v-if="gearScore > 1">Intervals are divided by the current gear score.</b>
+    <b v-if="gearScore.toNumber() > 1">Intervals are divided by the current gear score unless they are instant.</b>
     <RealityAutobuyerBox class="c-reality-pos" />
     <EternityAutobuyerBox class="c-eternity-pos" />
     <BigCrunchAutobuyerBox class="c-infinity-pos" />

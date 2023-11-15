@@ -131,8 +131,10 @@ export function galaxyReset() {
   // This is specifically reset here because the check is actually per-galaxy and not per-infinity
   player.requirementChecks.infinity.noSacrifice = true;
   if (GalaxyUpgrade.dimBoostGalaxy.isBought) {
-    player.dimensionBoosts = player.galaxies;
+    player.dimensionBoosts = player.boughtGalaxies;
   }
+  player.antimatterGalaxiesBought++;
+  player.galaxies += 1;
   EventHub.dispatch(GAME_EVENT.GALAXY_RESET_AFTER);
 }
 

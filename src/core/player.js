@@ -442,7 +442,7 @@ window.player = {
     epBought: 0,
     rmBought: 0,
     simBought: 0,
-    score: new Decimal(0)
+    score: new Decimal(1)
   },
   eternityChalls: {},
   respec: false,

@@ -99,14 +99,14 @@ export const normalAchievements = [
     id: 26,
     name: "You got past The Big Wall",
     description: "Buy an Antimatter Galaxy.",
-    checkRequirement: () => true,
-    checkEvent: GAME_EVENT.GALAXY_RESET_BEFORE
+    checkRequirement: () => player.boughtGalaxies >= 1,
+    checkEvent: GAME_EVENT.GALAXY_RESET_AFTER
   },
   {
     id: 27,
     name: "Double Galaxy",
     get description() { return `Buy ${formatInt(2)} Antimatter Galaxies.`; },
-    checkRequirement: () => player.galaxies >= 2,
+    checkRequirement: () => player.boughtGalaxies >= 2,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER
   },
   {
@@ -1387,9 +1387,9 @@ export const normalAchievements = [
   },
   {
     id: 192,
-    name: "PLACEHOLDER",
-    description: "WIP",
-    checkRequirement: () => 0 > 1,
+    name: "Geared up",
+    description: "Purchase at least one upgrade per gear (AM, IP, EP, RM)",
+    checkRequirement: () => player.gears.amBought > 0 && player.gears.ipBought > 0 && player.gears.epBought > 0 && player.gears.rmBought > 0,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
   {

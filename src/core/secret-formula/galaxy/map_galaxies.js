@@ -12,7 +12,7 @@ export let galaxies = {
     distance: 0.0,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format(player.galaxies * 60 + 80)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt(player.galaxies * 60 + 80)} 8th Antimatter Dimensions`.split("\n");
     },
     // 8 is y (2Mly = 1), 0 is unknown, 200 is x (2Mly = 25).
     layoutPosList: [80200]
@@ -23,10 +23,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 39000,
     power: 0.622,
-    distance: 10,
+    distance: 10e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((10 + 10) / 2)) * 10000 + (75 + (((2 + 10) / 2) * 25)))]
@@ -37,10 +37,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 967000,
     power: 3.110,
-    distance: 10,
+    distance: 10e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((8 + 10) / 2)) * 10000 + (75 + (((-10 + 10) / 2) * 25)))]
@@ -51,10 +51,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 56000,
     power: 0.749,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((8 + 10) / 2)) * 10000 + (75 + (((-8 + 10) / 2) * 25)))]
@@ -65,10 +65,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 978000,
     power: 3.128,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((8 + 10) / 2)) * 10000 + (75 + (((-2 + 10) / 2) * 25)))]
@@ -79,10 +79,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 451000,
     power: 2.124,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((8 + 10) / 2)) * 10000 + (75 + (((2 + 10) / 2) * 25)))]
@@ -93,10 +93,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 458000,
     power: 2.140,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((6 + 10) / 2)) * 10000 + (75 + (((-8 + 10) / 2) * 25)))]
@@ -107,10 +107,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 10000,
     power: 0.316,
-    distance: 6,
+    distance: 6e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((6 + 10) / 2)) * 10000 + (75 + (((-4 + 10) / 2) * 25)))]
@@ -121,10 +121,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 731000,
     power: 2.704,
-    distance: 6,
+    distance: 6e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((6 + 10) / 2)) * 10000 + (75 + (((-2 + 10) / 2) * 25)))]
@@ -135,10 +135,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 10000,
     power: 0.316,
-    distance: 6,
+    distance: 6e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((6 + 10) / 2)) * 10000 + (75 + (((2 + 10) / 2) * 25)))]
@@ -149,10 +149,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 635000,
     power: 2.520,
-    distance: 10,
+    distance: 10e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((6 + 10) / 2)) * 10000 + (75 + (((10 + 10) / 2) * 25)))]
@@ -163,10 +163,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 525000,
     power: 2.291,
-    distance: 10,
+    distance: 10e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((2 + 10) / 2)) * 10000 + (75 + (((-10 + 10) / 2) * 25)))]
@@ -177,10 +177,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 42000,
     power: 0.647,
-    distance: 4,
+    distance: 4e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((2 + 10) / 2)) * 10000 + (75 + (((-4 + 10) / 2) * 25)))]
@@ -191,10 +191,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 950000,
     power: 3.083,
-    distance: 2,
+    distance: 2e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((2 + 10) / 2)) * 10000 + (75 + (((-2 + 10) / 2) * 25)))]
@@ -205,10 +205,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 777000,
     power: 2.787,
-    distance: 4,
+    distance: 4e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((2 + 10) / 2)) * 10000 + (75 + (((4 + 10) / 2) * 25)))]
@@ -219,10 +219,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 741000,
     power: 2.721,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((2 + 10) / 2)) * 10000 + (75 + (((8 + 10) / 2) * 25)))]
@@ -233,10 +233,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 589000,
     power: 2.427,
-    distance: 2,
+    distance: 2e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((0 + 10) / 2)) * 10000 + (75 + (((-2 + 10) / 2) * 25)))]
@@ -247,10 +247,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 930000,
     power: 3.049,
-    distance: 6,
+    distance: 6e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((0 + 10) / 2)) * 10000 + (75 + (((6 + 10) / 2) * 25)))]
@@ -261,10 +261,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 58000,
     power: 0.762,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((0 + 10) / 2)) * 10000 + (75 + (((8 + 10) / 2) * 25)))]
@@ -275,10 +275,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 183000,
     power: 1.353,
-    distance: 2,
+    distance: 2e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-2 + 10) / 2)) * 10000 + (75 + (((-2 + 10) / 2) * 25)))]
@@ -289,10 +289,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 743000,
     power: 2.725,
-    distance: 4,
+    distance: 4e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-2 + 10) / 2)) * 10000 + (75 + (((4 + 10) / 2) * 25)))]
@@ -303,10 +303,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 48000,
     power: 0.690,
-    distance: 6,
+    distance: 6e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-4 + 10) / 2)) * 10000 + (75 + (((-6 + 10) / 2) * 25)))]
@@ -317,10 +317,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 53000,
     power: 0.729,
-    distance: 4,
+    distance: 4e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-4 + 10) / 2)) * 10000 + (75 + (((0 + 10) / 2) * 25)))]
@@ -331,10 +331,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 42000,
     power: 0.648,
-    distance: 4,
+    distance: 4e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-4 + 10) / 2)) * 10000 + (75 + (((2 + 10) / 2) * 25)))]
@@ -345,10 +345,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 727000,
     power: 2.696,
-    distance: 6,
+    distance: 6e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-6 + 10) / 2)) * 10000 + (75 + (((-6 + 10) / 2) * 25)))]
@@ -359,10 +359,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 87000,
     power: 0.934,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-8 + 10) / 2)) * 10000 + (75 + (((-8 + 10) / 2) * 25)))]
@@ -373,10 +373,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 59000,
     power: 0.770,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-8 + 10) / 2)) * 10000 + (75 + (((-2 + 10) / 2) * 25)))]
@@ -387,10 +387,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 844000,
     power: 2.906,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-8 + 10) / 2)) * 10000 + (75 + (((4 + 10) / 2) * 25)))]
@@ -401,10 +401,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 100000,
     power: 1,
-    distance: 8,
+    distance: 8e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-8 + 10) / 2)) * 10000 + (75 + (((8 + 10) / 2) * 25)))]
@@ -415,10 +415,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 427000,
     power: 2.066,
-    distance: 10,
+    distance: 10e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-8 + 10) / 2)) * 10000 + (75 + (((10 + 10) / 2) * 25)))]
@@ -429,10 +429,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 427000,
     power: 2.066,
-    distance: 10,
+    distance: 10e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-10 + 10) / 2)) * 10000 + (75 + (((-8 + 10) / 2) * 25)))]
@@ -443,10 +443,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 90000,
     power: 0.948,
-    distance: 10,
+    distance: 10e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-10 + 10) / 2)) * 10000 + (75 + (((-6 + 10) / 2) * 25)))]
@@ -457,10 +457,10 @@ export let galaxies = {
     family: GALAXY_FAMILY.GALAXY,
     size: 544000,
     power: 2.333,
-    distance: 10,
+    distance: 10e6,
     delay: 0.0,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     //((3 + ((y + 10) / 2)) * 10000 + (75 + (((x + 10) / 2) * 25)))
     layoutPosList: [((3 + ((-10 + 10) / 2)) * 10000 + (75 + (((8 + 10) / 2) * 25)))]
@@ -488,7 +488,7 @@ export function generateGalaxies() {
           distance: player.availableMapGalaxiesCurrentInfinity[i].distance,
           delay: player.availableMapGalaxiesCurrentInfinity[i].delay,
           get description() {
-            return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+            return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
           },
           layoutPosList: [player.availableMapGalaxiesCurrentInfinity[i].layoutPosList]
         };*/
@@ -536,7 +536,7 @@ export function generateGalaxy(idVar, x, y) {
     distance: distance * 1e6,
     delay: delayVar,
     get description() {
-      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${format((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
+      return `Size: ${format(this.size)}ly\n Galaxy power +×${format(this.power, 2, 3)}\n Distance: ${format(this.distance)}ly\n Delay: ${format(this.delay)}s\n Requirement: ${formatInt((player.galaxies + this.power) * 60 + 20)} 8th Antimatter Dimensions`.split("\n");
     },
     layoutPosList: [lpl]
   };

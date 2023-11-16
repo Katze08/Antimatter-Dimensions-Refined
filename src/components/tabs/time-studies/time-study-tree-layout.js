@@ -122,7 +122,8 @@ export class TimeStudyTreeLayout {
       normalRow(                          TimeStudy.dilation                          ),
       normalRow(          TimeStudy.timeDimension(5), TimeStudy.timeDimension(6)      ),
       normalRow(          TimeStudy.timeDimension(7), TimeStudy.timeDimension(8)      ),
-      normalRow(                          TimeStudy.reality                           )
+      normalRow(                          TimeStudy.reality                           ),
+      //normalRow(TS(241)) //this is the new Time Study
     );
     /* eslint-enable no-multi-spaces, space-in-parens, func-call-spacing */
 

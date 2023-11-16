@@ -9,9 +9,30 @@ export default {
   components: {
     GalaxyLabel
   },
+  data() {
+    return {
+      currentEighthDims: 0,
+      currentGalaxies: 0,
+      pendingUpdate: false
+    };
+  },
   computed: {
     showHintText() {
       return ui.view.shiftDown || player.options.showHintText.perks;
+    }
+  },
+  methods: {
+    update() {
+      if ((this.currentEighthDims !== player.dimensions.antimatter[7].amount.toNumber()) || (this.currentGalaxies !== player.galaxies)) {
+        this.pendingUpdate = true;
+      } else {
+        this.pendingUpdate = false;
+      }
+      this.currentEighthDims = player.dimensions.antimatter[7].amount.toNumber();
+      this.currentGalaxies = player.galaxies;
+      if (this.pendingUpdate) {
+        GameUI.update();
+      }
     }
   },
   watch: {
@@ -21,7 +42,8 @@ export default {
     }
   },
   created() {
-    EventHub.ui.on(GAME_EVENT.GALAXY_BOUGHT, () => GalaxyNetwork.updatePerkColor());
+    // eslint-disable-next-line max-statements-per-line
+    EventHub.ui.on(GAME_EVENT.GALAXY_BOUGHT, () => { GalaxyNetwork.updatePerkColor(); GalaxyNetwork.updateDescription(); });
   },
   mounted() {
     GalaxyNetwork.initialStabilization = false;
@@ -31,6 +53,7 @@ export default {
     else GalaxyNetwork.setLabelVisibility(ui.view.shiftDown || player.options.showHintText.perks);
     GalaxyNetwork.updatePerkColor();
     GalaxyNetwork.updatePerkSize();
+    GalaxyNetwork.updateDescription();
     this.$refs.tab.appendChild(GalaxyNetwork.container);
     GalaxyNetwork.moveToDefaultLayoutPositions(0);
   }
@@ -86,7 +109,7 @@ export const GalaxyNetwork = {
     this.network.on("click", params => {
       const id = params.nodes[0];
       if (!isFinite(id)) return;
-      if (player.dimensions.antimatter[7].bought >= ((player.galaxies + Galaxies.find(id).config.power) * 60 + 20)) {
+      if ((player.dimensions.antimatter[7].amount.toNumber()) >= (((player.galaxies + Galaxies.find(id).config.power) * 60) + 20)) {
         Galaxies.find(id).purchase();
         softReset(0);
         player.galaxies += Galaxies.find(id).config.power;
@@ -94,6 +117,7 @@ export const GalaxyNetwork = {
         player.antimatterGalaxiesBought++;
         this.updatePerkColor();
         this.updatePerkSize();
+        this.updateDescription();
       }
     });
 
@@ -122,7 +146,6 @@ export const GalaxyNetwork = {
       return container;
     }
     // Just for a bit of fun, tangle it up a bit unless the player specifically chooses not to
-    const isDisabled = perk => Pelle.isDoomed && Pelle.uselessPerks.includes(perk.id);
     const selectPos = config => PerkLayouts[0].position(config);
     this.nodes = new DataSet(Galaxies.all.map(galaxy => ({
       id: galaxy.id,
@@ -130,12 +153,7 @@ export const GalaxyNetwork = {
       shape: "diamond",
       // As far as I am aware, vis.js doesn't support arbitrary CSS styling; nevertheless, we still want the original
       // description to be visible instead of being hidden by disable/lock text
-      title: (isDisabled(galaxy)
-          ? htmlTitle(
-            `<span style='text-decoration: line-through;'>${galaxy.config.description}</span>`
-          )
-          : `${galaxy.config.description}`
-      ),
+      title: (`${galaxy.config.description}`),
       x: selectPos(galaxy.config).x,
       y: selectPos(galaxy.config).y,
     })));
@@ -242,25 +260,7 @@ export const GalaxyNetwork = {
       const primaryColor = perkColor.primary;
       const secondaryColor = perkColor.secondary;
 
-      const pelleUseless = Pelle.isDoomed && Pelle.uselessPerks.includes(perk.id);
-      if (pelleUseless) {
-        const backgroundColor = "#00bcd4";
-        const hoverColor = "crimson";
-        const borderColor = secondaryColor;
-        return {
-          background: backgroundColor,
-          border: borderColor,
-          hover: {
-            background: hoverColor,
-            border: borderColor
-          },
-          highlight: {
-            background: backgroundColor,
-            border: borderColor
-          }
-        };
-      }
-      const canBeBought = perk.canBeBought;
+      const canBeBought = (player.dimensions.antimatter[7].amount.toNumber() >= ((player.galaxies + perk.config.power) * 60 + 20));
       const isBought = perk.isBought;
 
       let backgroundColor;
@@ -299,7 +299,6 @@ export const GalaxyNetwork = {
       const mod = Theme.current().name === "S4"
         ? 10 * Math.sin(5 * GalaxyNetwork.pulseTimer + 0.1 * perk._config.id)
         : 0;
-      if (perk._config.label === "START") return 35 + mod;
       if (perk.isBought) return 25 + mod;
       if (perk.canBeBought) return 20 + mod;
       return 12 + mod;
@@ -307,6 +306,14 @@ export const GalaxyNetwork = {
 
     const data = Galaxies.all
       .map(perk => ({ id: perk.id, size: nodeSize(perk) }));
+    this.nodes.update(data);
+  },
+  updateDescription() {
+    function desc(perk) {
+      return `Size: ${format(perk.config.size)}ly\n Galaxy power +${formatX(perk.config.power, 2, 3)}\n Distance: ${format(perk.config.distance)}ly\n Delay: ${format(perk.config.delay)}s\n Requirement: ${formatInt(player.galaxies * 60 + 80)} 8th Antimatter Dimensions`.split("\n");
+    }
+    const data = Galaxies.all
+      .map(perk => ({ id: perk.id, description: desc(perk) }));
     this.nodes.update(data);
   }
 };

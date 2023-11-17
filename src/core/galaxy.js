@@ -1,3 +1,4 @@
+import { DimBoost } from "@/core/dimboost";
 import { GalaxyUpgrade } from "@/core/galaxy-upgrades";
 
 export const GALAXY_TYPE = {
@@ -130,9 +131,6 @@ export function galaxyReset() {
   if (Notations.current === Notation.emoji) player.requirementChecks.permanent.emojiGalaxies++;
   // This is specifically reset here because the check is actually per-galaxy and not per-infinity
   player.requirementChecks.infinity.noSacrifice = true;
-  if (GalaxyUpgrade.dimBoostGalaxy.isBought) {
-    player.dimensionBoosts = player.boughtGalaxies;
-  }
   player.antimatterGalaxiesBought++;
   player.galaxies += 1;
   EventHub.dispatch(GAME_EVENT.GALAXY_RESET_AFTER);
@@ -160,6 +158,9 @@ export function requestGalaxyReset(bulk, limit = Number.MAX_VALUE) {
   if (player.galaxies >= restrictedLimit || !Galaxy.canBeBought || !Galaxy.requirement.isSatisfied) return false;
   Tutorial.turnOffEffect(TUTORIAL_STATE.GALAXY);
   galaxyReset();
+  if (GalaxyUpgrade.dimBoostGalaxy.isBought) {
+    player.dimensionBoosts = player.antimatterGalaxiesBought;
+  }
   return true;
 }
 

@@ -41,7 +41,7 @@ export const galaxyUpgrades = {
   dimBoostGalaxy: {
     id: "dimBoostGalaxy",
     cost: 1e120,
-    description: "Start out each galaxy reset with one more Dimension Boost per galaxy"
+    description: "Start out each galaxy reset with one more Dimension Boost per bought galaxy"
   },
   moreAM: {
     id: "moreAM",

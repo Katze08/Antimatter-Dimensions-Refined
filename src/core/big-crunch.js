@@ -1,3 +1,4 @@
+import { InfinityUpgrade } from "@/core/infinity-upgrades";
 import { generateGalaxies } from "@/core/secret-formula/galaxy/map_galaxies";
 import { DC } from "./constants";
 import FullScreenAnimationHandler from "./full-screen-animation-handler";
@@ -62,7 +63,11 @@ export function bigCrunchReset(
     player.mapGalaxies = new Set();
     //player.availableMapGalaxiesCurrentInfinity = {};
     //generateGalaxies();
-    player.antimatterGalaxiesBought = 0;
+    if (InfinityUpgrade.skipResetGalaxy.isBought) {
+      player.antimatterGalaxiesBought = 1;
+    } else {
+      player.antimatterGalaxiesBought = 0;
+    }
     player.atBigCrunchButton = false;
     if (Pelle.isDoomed) PelleStrikes.infinity.trigger();
   }

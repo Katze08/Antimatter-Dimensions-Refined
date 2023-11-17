@@ -173,7 +173,7 @@ export class DimBoost {
     if (InfinityUpgrade.skipReset3.isBought) value = 3;
     if (InfinityUpgrade.skipReset2.isBought) value = 2;
     if (InfinityUpgrade.skipReset1.isBought) value = 1;
-    if (GalaxyUpgrade.dimBoostGalaxy.isBought) guVal = player.galaxies;
+    if (GalaxyUpgrade.dimBoostGalaxy.isBought) guVal = player.antimatterGalaxiesBought;
     return (guVal > value) ? guVal : value;
   }
 }

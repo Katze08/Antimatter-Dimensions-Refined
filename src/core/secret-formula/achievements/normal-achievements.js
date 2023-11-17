@@ -99,14 +99,14 @@ export const normalAchievements = [
     id: 26,
     name: "You got past The Big Wall",
     description: "Buy an Antimatter Galaxy.",
-    checkRequirement: () => player.boughtGalaxies >= 1,
+    checkRequirement: () => player.antimatterGalaxiesBought >= 1,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER
   },
   {
     id: 27,
     name: "Double Galaxy",
     get description() { return `Buy ${formatInt(2)} Antimatter Galaxies.`; },
-    checkRequirement: () => player.boughtGalaxies >= 2,
+    checkRequirement: () => player.antimatterGalaxiesBought >= 2,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER
   },
   {
@@ -175,7 +175,7 @@ export const normalAchievements = [
     get description() {
       return `Infinity with just ${formatInt(1)} Antimatter Galaxy. (Your Antimatter Galaxies are reset on Infinity.)`;
     },
-    checkRequirement: () => player.galaxies === 1,
+    checkRequirement: () => player.antimatterGalaxiesBought === 1,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
     get reward() { return `Multiply starting tick speed by ${format(1.02, 2, 2)}.`; },
     effect: 1 / 1.02
@@ -548,7 +548,7 @@ export const normalAchievements = [
     id: 83,
     name: "YOU CAN GET 50 GALAXIES?!?!",
     get description() { return `Get ${formatInt(50)} Antimatter Galaxies.`; },
-    checkRequirement: () => player.galaxies >= 50,
+    checkRequirement: () => player.antimatterGalaxiesBought >= 50,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
     get reward() { return `Tickspeed is just over ${formatPercents(0.05)} faster per Antimatter Galaxy.`; },
     effect: () => DC.D0_95.pow(player.galaxies),
@@ -942,7 +942,7 @@ export const normalAchievements = [
       return `Have ${formatInt(569)} Antimatter Galaxies without gaining any
         Replicanti Galaxies in your current Eternity.`;
     },
-    checkRequirement: () => player.galaxies >= 569 && player.requirementChecks.eternity.noRG,
+    checkRequirement: () => player.antimatterGalaxiesBought >= 569 && player.requirementChecks.eternity.noRG,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
     reward: "Gain a multiplier to Tachyon Particle and Dilated Time gain based on Antimatter Galaxies.",
     effect: () => 1.22 * Math.max(Math.pow(player.galaxies, 0.04), 1),
@@ -1107,7 +1107,7 @@ export const normalAchievements = [
       return `Get ${formatInt(800)} Antimatter Galaxies without
       buying 8th Antimatter Dimensions in your current Infinity.`;
     },
-    checkRequirement: () => player.galaxies >= 800 && player.requirementChecks.infinity.noAD8,
+    checkRequirement: () => player.antimatterGalaxiesBought >= 800 && player.requirementChecks.infinity.noAD8,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
     reward: "Unlock V, the Celestial of Achievements."
   },
@@ -1149,7 +1149,7 @@ export const normalAchievements = [
     description: "Reality without buying Time Theorems.",
     checkRequirement: () => player.requirementChecks.reality.noPurchasedTT,
     checkEvent: GAME_EVENT.REALITY_RESET_BEFORE,
-    get reward() { return `Gain ${formatX(2.5, 0, 1)} generated Time Theorems, and a free coupon to McDonalds™️.`; },
+    get reward() { return `Gain ${formatX(2.5, 0, 1)} generated Time Theorems.`; },
     effect: 2.5
   },
   {
@@ -1305,7 +1305,7 @@ export const normalAchievements = [
     id: 178,
     name: "Destroyer of Worlds",
     get description() { return `Get ${formatInt(100000)} Antimatter Galaxies.`; },
-    checkRequirement: () => player.galaxies >= 100000,
+    checkRequirement: () => player.antimatterGalaxiesBought >= 100000,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
     get reward() { return `All Galaxies are ${formatPercents(0.01)} stronger.`; },
     effect: 1.01

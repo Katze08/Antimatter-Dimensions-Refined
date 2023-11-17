@@ -50,7 +50,7 @@ export class TimeTheoremPurchaseType {
     if (!this.canAfford) return false;
     let purchased = false;
     const amount = this.bulkPossible;
-    const buyFn = cost => (Perk.ttFree.canBeApplied ? this.currency.gte(cost) : this.currency.purchase(cost));
+    const buyFn = cost => (Perk.ttFree.canBeApplied ? this.currency.gte(cost) : this.currency.purchase());
     // This will sometimes buy one too few for EP, so we just have to buy 1 after.
     if (bulk && buyFn(this.bulkCost(amount))) {
       Currency.timeTheorems.add(amount);
@@ -118,7 +118,7 @@ export const TimeTheorems = {
 
   buyOne(auto = false, type) {
     if (!this.checkForBuying(auto)) return 0;
-    if (!TimeTheoremPurchaseType[type].purchase(false)) return 0;
+    if (!TimeTheoremPurchaseType[type].purchase()) return 0;
     return 1;
   },
 

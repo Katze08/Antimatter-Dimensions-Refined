@@ -427,6 +427,8 @@ window.player = {
     ipBought: 0,
     epBought: 0,
     studies: [],
+    expensiveStudies: [],
+    cursedStudies: [],
     shopMinimized: false,
     preferredPaths: [[], 0],
     presets: new Array(6).fill({

@@ -44,6 +44,12 @@ export default {
         case TIME_STUDY_TYPE.DILATION:
           pathClass = "o-time-study-connection--dilation";
           break;
+        case TIME_STUDY_TYPE.EXPENSIVE:
+          pathClass = pathClassOf(to) || pathClassOf(from);
+          break;
+        case TIME_STUDY_TYPE.CURSED:
+          pathClass = pathClassOf(to) || pathClassOf(from);
+          break;
       }
 
       if (pathClass !== undefined) {

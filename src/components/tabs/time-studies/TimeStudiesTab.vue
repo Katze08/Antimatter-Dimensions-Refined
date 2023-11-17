@@ -1,4 +1,6 @@
 <script>
+import CursedTimeStudy from "@/components/tabs/time-studies/CursedTimeStudy";
+import ExpensiveTimeStudy from "@/components/tabs/time-studies/ExpensiveTimeStudy";
 import { STUDY_TREE_LAYOUT_TYPE, TimeStudyTreeLayout } from "./time-study-tree-layout";
 
 import DilationTimeStudy from "./DilationTimeStudy";
@@ -21,6 +23,8 @@ export default {
     DilationTimeStudy,
     TriadTimeStudy,
     SecretTimeStudy,
+    ExpensiveTimeStudy,
+    CursedTimeStudy,
     TimeStudyConnection,
     HiddenTimeStudyConnection
   },
@@ -119,6 +123,8 @@ export default {
         case TIME_STUDY_TYPE.ETERNITY_CHALLENGE: return ECTimeStudy;
         case TIME_STUDY_TYPE.DILATION: return DilationTimeStudy;
         case TIME_STUDY_TYPE.TRIAD: return TriadTimeStudy;
+        case TIME_STUDY_TYPE.EXPENSIVE: return ExpensiveTimeStudy;
+        case TIME_STUDY_TYPE.CURSED: return CursedTimeStudy;
       }
       throw "Unknown Time Study type";
     },

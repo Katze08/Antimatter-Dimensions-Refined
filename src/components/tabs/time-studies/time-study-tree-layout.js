@@ -123,7 +123,12 @@ export class TimeStudyTreeLayout {
       normalRow(          TimeStudy.timeDimension(5), TimeStudy.timeDimension(6)      ),
       normalRow(          TimeStudy.timeDimension(7), TimeStudy.timeDimension(8)      ),
       normalRow(                          TimeStudy.reality                           ),
-      //normalRow(TS(241)) //this is the new Time Study
+      normalRow(TimeStudy.expensive(1), TimeStudy.expensive(2), TimeStudy.expensive(3), TimeStudy.expensive(4)),
+      normalRow(TimeStudy.expensive(5), TimeStudy.expensive(6), TimeStudy.expensive(7), TimeStudy.expensive(8)),
+      normalRow(TimeStudy.expensive(9), TimeStudy.expensive(10), TimeStudy.expensive(11), TimeStudy.expensive(12)),
+      normalRow(TimeStudy.expensive(13), TimeStudy.expensive(14), TimeStudy.expensive(15), TimeStudy.expensive(16)),
+      normalRow(TimeStudy.expensive(17), TimeStudy.expensive(18), TimeStudy.expensive(19), TimeStudy.expensive(20)),
+      normalRow(TimeStudy.expensive(21), TimeStudy.expensive(22))
     );
     /* eslint-enable no-multi-spaces, space-in-parens, func-call-spacing */
 

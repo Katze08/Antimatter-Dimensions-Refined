@@ -30,7 +30,7 @@ export class DilationUpgradeAutobuyerState extends IntervaledAutobuyerState {
   tick() {
     super.tick();
     const upgradeName = this._upgradeName;
-    DilationUpgrade[upgradeName].purchase(this.bulk);
+    DilationUpgrade[upgradeName].purchase();
   }
 
   static get entryCount() { return 3; }

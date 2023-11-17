@@ -1,3 +1,5 @@
+import { cursedTimeStudies } from "@/core/secret-formula/eternity/time-studies/cursed-time-studies";
+import { expensiveTimeStudies } from "@/core/secret-formula/eternity/time-studies/expensive-time-studies";
 import { dilationUpgrades } from "./dilation-upgrades";
 import { eternityMilestones } from "./eternity-milestones";
 import { eternityUpgrades } from "./eternity-upgrades";
@@ -12,7 +14,9 @@ export const eternity = {
   timeStudies: {
     dilation: dilationTimeStudies,
     ec: ecTimeStudies,
-    normal: normalTimeStudies
+    normal: normalTimeStudies,
+    expensive: expensiveTimeStudies,
+    cursed: cursedTimeStudies
   },
   upgrades: eternityUpgrades
 };

@@ -642,22 +642,6 @@ export const normalTimeStudies = [
     description: "Dimensional Sacrifice applies to 1st Antimatter Dimension",
     effect: () => Sacrifice.totalBoost,
   },
-  /*{
-    id: 241,
-    cost: 1,
-    // All requirements of an empty array will always evaluate to true, so this study is always purchasable
-    requirement: [],
-    reqType: TS_REQUIREMENT_TYPE.ALL,
-    description: "this is a test",
-    effect: () => {
-      const tickspeed = Tickspeed.current.dividedBy(1000);
-      const firstPart = tickspeed.pow(0.005).times(0.95);
-      const secondPart = tickspeed.pow(0.0003).times(0.05);
-      return firstPart.plus(secondPart).reciprocate();
-    },
-    cap: DC.E2500,
-    formatEffect: value => formatX(value, 2, 1)
-  },*/ //this is the new Time Study
   // Note: These last 4 entries are the triad studies
   {
     id: 301,

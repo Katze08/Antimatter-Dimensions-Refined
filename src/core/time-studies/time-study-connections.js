@@ -30,6 +30,7 @@ export class TimeStudyConnection {
 TimeStudy.allConnections = (function() {
   const TS = id => TimeStudy(id);
   const EC = id => TimeStudy.eternityChallenge(id);
+  const ETS = id => TimeStudy.expensive(id);
   const connections = [
     [TS(11), TS(21)],
     [TS(11), TS(22)],
@@ -154,7 +155,29 @@ TimeStudy.allConnections = (function() {
     [TimeStudy.timeDimension(6), TimeStudy.timeDimension(7)],
     [TimeStudy.timeDimension(7), TimeStudy.timeDimension(8)],
     [TimeStudy.timeDimension(8), TimeStudy.reality],
-    //[TimeStudy.reality, TS(241)] //this is the new Time Study
+
+    [TimeStudy.reality, ETS(1)],
+    [ETS(1), ETS(2)],
+    [ETS(2), ETS(3)],
+    [ETS(3), ETS(4)],
+    [ETS(4), ETS(5)],
+    [ETS(5), ETS(6)],
+    [ETS(6), ETS(7)],
+    [ETS(7), ETS(8)],
+    [ETS(8), ETS(9)],
+    [ETS(9), ETS(10)],
+    [ETS(10), ETS(11)],
+    [ETS(11), ETS(12)],
+    [ETS(12), ETS(13)],
+    [ETS(13), ETS(14)],
+    [ETS(14), ETS(15)],
+    [ETS(15), ETS(16)],
+    [ETS(16), ETS(17)],
+    [ETS(17), ETS(18)],
+    [ETS(18), ETS(19)],
+    [ETS(19), ETS(20)],
+    [ETS(20), ETS(21)],
+    [ETS(21), ETS(22)]
   ].map(props => new TimeStudyConnection(props[0], props[1], props[2]));
 
   return connections;

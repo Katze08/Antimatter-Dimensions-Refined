@@ -47,7 +47,7 @@ export class GearTheoremPurchaseType {
     if (!this.canAfford) return false;
     let purchased = false;
     const amount = this.bulkPossible;
-    const buyFn = cost => (this.currency.purchase(cost));
+    const buyFn = cost => (this.currency.purchase());
     // This will sometimes buy one too few for EP, so we just have to buy 1 after.
     if (bulk && buyFn(this.bulkCost(amount))) {
       Currency.gearTheorems.add(amount);
@@ -144,7 +144,7 @@ export const GearTheorems = {
 
   buyOne(auto = false, type) {
     if (!this.checkForBuying(auto)) return 0;
-    if (!GearTheoremPurchaseType[type].purchase(false)) return 0;
+    if (!GearTheoremPurchaseType[type].purchase()) return 0;
     return 1;
   },
 

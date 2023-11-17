@@ -82,6 +82,10 @@ export default {
           return "o-time-study-dilation";
         case TIME_STUDY_TYPE.TRIAD:
           return "o-time-study-triad";
+        case TIME_STUDY_TYPE.CURSED:
+          return "o-time-study-cursed";
+        case TIME_STUDY_TYPE.EXPENSIVE:
+          return "o-time-study-expensive";
       }
       return "";
     },

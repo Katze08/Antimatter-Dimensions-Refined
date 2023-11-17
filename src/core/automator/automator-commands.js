@@ -532,7 +532,7 @@ export const AutomatorCommands = [
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
         if (!EternityChallenge(ecNumber).isUnlocked) {
-          if (!TimeStudy.eternityChallenge(ecNumber).purchase(true)) {
+          if (!TimeStudy.eternityChallenge(ecNumber).purchase()) {
             return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
           }
         }
@@ -645,7 +645,7 @@ export const AutomatorCommands = [
           AutomatorData.logCommandEvent(`Purchased all specified Time Studies`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
-        const unlockedEC = TimeStudy.eternityChallenge(studies.ec).purchase(true);
+        const unlockedEC = TimeStudy.eternityChallenge(studies.ec).purchase();
         if (hasEC || unlockedEC) {
           if (studies.startEC) {
             EternityChallenge(studies.ec).start(true);
@@ -669,7 +669,7 @@ export const AutomatorCommands = [
         if (!studies.ec || TimeStudy.eternityChallenge(studies.ec).isBought) {
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
-        TimeStudy.eternityChallenge(studies.ec).purchase(true);
+        TimeStudy.eternityChallenge(studies.ec).purchase();
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       };
     },
@@ -800,7 +800,7 @@ export const AutomatorCommands = [
           AutomatorData.logCommandEvent(`Skipped dilation unlock due to being already unlocked`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
-        const unlockedThisTick = TimeStudy.dilation.purchase(true);
+        const unlockedThisTick = TimeStudy.dilation.purchase();
         if (unlockedThisTick) {
           AutomatorData.logCommandEvent(`Unlocked Dilation`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
@@ -842,7 +842,7 @@ export const AutomatorCommands = [
           AutomatorData.logCommandEvent(`EC ${ecNumber} unlock failed and skipped (NOWAIT)`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
         }
-        const purchased = TimeStudy.eternityChallenge(ecNumber).purchase(true);
+        const purchased = TimeStudy.eternityChallenge(ecNumber).purchase();
         if (purchased) {
           AutomatorData.logCommandEvent(`EC ${ecNumber} unlocked`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;

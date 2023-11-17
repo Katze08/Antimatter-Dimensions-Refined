@@ -241,6 +241,32 @@
   animation: a-time-study-dilation 10s infinite;
 }
 
+.o-time-study-expensive--available {
+  color: #1b4600;
+  background-color: white;
+  border-color: #1b4600;
+  animation: a-time-study-dilation 10s infinite;
+}
+
+.o-time-study-expensive--available:hover {
+  color: #1b4600;
+  background-color: black;
+  animation: a-time-study-dilation 10s infinite;
+}
+
+.o-time-study-cursed--available {
+  color: #b30079;
+  background-color: black;
+  border-color: #b30079;
+  animation: a-time-study-dilation 10s infinite;
+}
+
+.o-time-study-cursed--available:hover {
+  color: #b30079;
+  background-color: white;
+  animation: a-time-study-dilation 10s infinite;
+}
+
 .o-time-study-reality--available {
   color: var(--color-reality);
   background-color: white;
@@ -321,6 +347,14 @@
 
 .o-time-study-dilation--unavailable {
   background-color: #9ca894;
+}
+
+.o-time-study-expensive--unavailable {
+  background-color: #3c4537;
+}
+
+.o-time-study-cursed--unavailable {
+  background-color: #d1d1d1;
 }
 
 .o-time-study-reality--unavailable {
@@ -413,6 +447,18 @@
 .o-time-study-dilation--bought {
   color: black;
   background-color: #64dd17;
+  border-color: black;
+}
+
+.o-time-study-expensive--bought {
+  color: black;
+  background-color: #1b4600;
+  border-color: black;
+}
+
+.o-time-study-cursed--bought {
+  color: black;
+  background-color: #b30079;
   border-color: black;
 }
 

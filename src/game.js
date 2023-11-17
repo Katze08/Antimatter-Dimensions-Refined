@@ -610,7 +610,7 @@ export function gameLoop(passDiff, options = {}) {
     !isInCelestialReality() &&
     !Pelle.isDoomed) {
     Currency.timeTheorems.add(TimeStudy.dilation.cost);
-    TimeStudy.dilation.purchase(true);
+    TimeStudy.dilation.purchase();
   }
 
   applyAutoUnlockPerks();
@@ -733,7 +733,7 @@ function applyAutoUnlockPerks() {
     for (let dim = 5; dim <= 8; ++dim) TimeStudy.timeDimension(dim).purchase();
   }
   if (Perk.autounlockDilation3.canBeApplied) buyDilationUpgrade(DilationUpgrade.ttGenerator.id);
-  if (Perk.autounlockReality.canBeApplied) TimeStudy.reality.purchase(true);
+  if (Perk.autounlockReality.canBeApplied) TimeStudy.reality.purchase();
   applyEU2();
 }
 

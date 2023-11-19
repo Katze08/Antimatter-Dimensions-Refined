@@ -1,6 +1,8 @@
+import ExpensiveTimeStudy from "@/components/tabs/time-studies/ExpensiveTimeStudy";
 import { Currency } from "@/core/currency";
 import { NormalChallenge } from "@/core/normal-challenges";
 import { generateGalaxies } from "@/core/secret-formula/galaxy/map_galaxies";
+import { TimeStudy } from "@/core/time-studies";
 import TWEEN from "tween.js";
 
 import { ElectronRuntime, SteamRuntime } from "@/steam";
@@ -870,6 +872,7 @@ export function getTTPerSecond() {
     Ra.unlocks.achievementTTMult,
     Achievement(137),
     Achievement(156),
+    TimeStudy.expensive(1)
   );
   if (GlyphAlteration.isAdded("dilation")) ttMult *= getSecondaryGlyphEffect("dilationTTgen");
 

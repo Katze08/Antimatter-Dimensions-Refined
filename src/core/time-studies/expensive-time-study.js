@@ -11,7 +11,11 @@ export class ExpensiveTimeStudyState extends TimeStudyState {
   }
 
   get canBeBought() {
-    return this.isAffordable && this.config.requirement();
+    return this.isAffordable/* && this.config.requirement*/;
+  }
+
+  get isEffectActive() {
+    return this.isBought;
   }
 
   get description() {

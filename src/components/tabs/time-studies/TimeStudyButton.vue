@@ -110,7 +110,7 @@ export default {
       return this.eternityChallengeRunning ? "o-time-study-eternity-challenge--running" : "";
     },
     config() {
-      return { ...this.study.config, formatCost: value => (value >= 1e6 ? format(value) : formatInt(value)) };
+      return { ...this.study.config, formatCost: value => (Decimal.gte(value, 1e6) ? format(value) : formatInt(value)) };
     },
     showDefaultCostDisplay() {
       const costCond = (this.showCost && !this.showStCost) || this.STCost === 0;

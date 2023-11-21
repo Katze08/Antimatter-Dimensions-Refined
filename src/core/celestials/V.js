@@ -208,6 +208,9 @@ export const V = {
     this.spaceTheorems = 0;
   },
   get availableST() {
+    if (TimeStudy.expensive(16)) {
+      return V.spaceTheorems * 10 - player.celestials.v.STSpent;
+    }
     return V.spaceTheorems - player.celestials.v.STSpent;
   },
   get isRunning() {

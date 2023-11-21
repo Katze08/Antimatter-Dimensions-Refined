@@ -127,6 +127,9 @@ class BlackHoleState {
    * Multiplier to time the black hole gives when active.
    */
   get power() {
+    if (TimeStudy.expensive(8).isBought) {
+      return Math.pow((this.powerUpgrade.value * Achievement(158).effectOrDefault(1)), 1.01);
+    }
     return this.powerUpgrade.value * Achievement(158).effectOrDefault(1);
   }
 

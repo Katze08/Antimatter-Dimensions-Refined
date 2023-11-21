@@ -1,3 +1,5 @@
+import { TimeStudy } from "@/core/time-studies";
+
 export const AutoGlyphProcessor = {
   get scoreMode() {
     return player.reality.glyphs.filter.select;
@@ -369,7 +371,7 @@ export function staticGlyphWeights() {
     .concat(Array.range(1, 4).map(x => Array.range(1, 5).every(y => RealityUpgrade(5 * x + y).isBought)))
     .filter(x => x)
     .length;
-  const achievements = Effects.sum(Achievement(148), Achievement(166));
+  const achievements = Effects.sum(Achievement(148), Achievement(166), TimeStudy.expensive(7));
   return {
     perkShop,
     instability,

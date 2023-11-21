@@ -1,3 +1,4 @@
+import { TimeStudy } from "@/core/time-studies";
 import { DC } from "../constants";
 
 import { DimensionState } from "./dimension";
@@ -18,7 +19,9 @@ export function infinityDimensionCommonMultiplier() {
       EternityUpgrade.idMultICRecords,
       AlchemyResource.dimensionality,
       ImaginaryUpgrade(8),
-      PelleRifts.recursion.milestones[1]
+      PelleRifts.recursion.milestones[1],
+      TimeStudy.expensive(15),
+      TimeStudy.expensive(17)
     );
 
   if (Replicanti.areUnlocked && Replicanti.amount.gt(1)) {
@@ -380,6 +383,9 @@ export const InfinityDimensions = {
       }
     } else {
       InfinityDimension(1).produceCurrency(Currency.infinityPower, diff);
+      if (TimeStudy.expensive(13).isBought) {
+        InfinityDimension(1).produceDimensions(AntimatterDimension(7), diff);
+      }
     }
 
     player.requirementChecks.reality.maxID1 = player.requirementChecks.reality.maxID1
@@ -410,6 +416,6 @@ export const InfinityDimensions = {
 
   get powerConversionRate() {
     const multiplier = PelleRifts.paradox.milestones[2].effectOrDefault(1);
-    return (7 + getAdjustedGlyphEffect("infinityrate") + PelleUpgrade.infConversion.effectOrDefault(0)) * multiplier;
+    return ((7 + getAdjustedGlyphEffect("infinityrate") + PelleUpgrade.infConversion.effectOrDefault(0)) * multiplier) + TimeStudy.expensive(12).effectOrDefault(0);
   }
 };

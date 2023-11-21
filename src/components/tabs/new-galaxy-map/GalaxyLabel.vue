@@ -14,12 +14,22 @@ export default {
       treeLayout: 0,
       physicsEnabled: false,
       physicsOverride: false,
+      isIntergalactic: false,
+      replicantiGalaxies: 0,
+      tachyonGalaxies: 0,
+      generatedGalaxies: 0,
+      totalGalaxyPower: 0.0
     };
   },
   methods: {
     update() {
       this.pp = Currency.galaxies.value;
       this.amBoughtGalaxies = player.antimatterGalaxiesBought;
+      this.isIntergalactic = player.intergalactic;
+      this.replicantiGalaxies = player.replicanti.galaxies;
+      this.tachyonGalaxies = player.dilation.totalTachyonGalaxies;
+      this.generatedGalaxies = player.celestials.pelle.galaxyGenerator.generatedGalaxies;
+      this.totalGalaxyPower = Currency.galaxies.value + this.replicantiGalaxies + this.tachyonGalaxies + this.generatedGalaxies;
     },
     centerTree() {
       GalaxyNetwork.resetPosition(true);
@@ -47,8 +57,10 @@ export default {
 
 <template>
   <div class="c-perk-tab__header">
-    You have <span class="c-perk-tab__perk-points">{{ amBoughtGalaxies }}</span> {{ pluralize("Galaxy", pp) }} with a total galaxy power of <span class="c-perk-tab__perk-points">×{{ format(pp, 2, 3) }}</span>.
+    You have <span class="c-perk-tab__perk-points">{{ amBoughtGalaxies }}</span> <span v-if="replicantiGalaxies > 0">Antimatter </span>{{ pluralize("Galaxy", pp) }} with a summed up galaxy power of <span class="c-perk-tab__perk-points">×{{ format(pp, 2, 3) }}</span>.
     <br>
+    <span v-if="replicantiGalaxies > 0">You also have <span class="c-perk-tab__perk-points">{{ replicantiGalaxies }}</span> Replicanti {{ pluralize("Galaxy", replicantiGalaxies) }}<span v-if="tachyonGalaxies > 0">, <span class="c-perk-tab__perk-points">{{ tachyonGalaxies }}</span> Tachyon {{ pluralize("Galaxy", tachyonGalaxies) }}</span><span v-if="generatedGalaxies > 0">, and <span class="c-perk-tab__perk-points">{{ generatedGalaxies }}</span> generated {{ pluralize("Galaxy", generatedGalaxies) }} by the Galaxy Generator</span>. Resulting total galaxy power: <span class="c-perk-tab__perk-points">×{{ format(totalGalaxyPower, 2, 3) }}</span></span>
+    <br v-if="replicantiGalaxies > 0">
     Hover over a galaxy to see its details. Click on it to buy it. The further out the galaxy is from the center,
     <br>
     the higher the delay (NYI). The bigger the galaxy, the bigger the galaxy power and requirement. Intergalactic upgrades can modify
@@ -61,6 +73,8 @@ export default {
     <br>
     collide with each other, drastically increasing their total buff and unleashing an enormous power boost for a short time (NYI).
     <br>
+    <span v-if="isIntergalactic === false">You need to be intergalactic in order to buy galaxies.</span>
+    <br v-if="isIntergalactic === false">
     <div class="perk-settings">
       <PrimaryButton
         class="o-primary-btn"

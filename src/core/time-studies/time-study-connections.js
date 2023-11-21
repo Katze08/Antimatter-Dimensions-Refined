@@ -158,7 +158,7 @@ TimeStudy.allConnections = (function() {
 
     [TimeStudy.reality, ETS(1)],
     [ETS(1), ETS(2)],
-    /*[ETS(2), ETS(3)],
+    [ETS(2), ETS(3)],
     [ETS(3), ETS(4)],
     [ETS(4), ETS(5)],
     [ETS(5), ETS(6)],
@@ -174,7 +174,7 @@ TimeStudy.allConnections = (function() {
     [ETS(15), ETS(16)],
     [ETS(16), ETS(17)],
     [ETS(17), ETS(18)],
-    [ETS(18), ETS(19)],
+    /*[ETS(18), ETS(19)],
     [ETS(19), ETS(20)],
     [ETS(20), ETS(21)],
     [ETS(21), ETS(22)]*/

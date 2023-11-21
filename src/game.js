@@ -353,6 +353,9 @@ export function getGameSpeedupFactor(effectsToConsider, blackHolesActiveOverride
         if (!isActive) break;
         factor *= Math.pow(blackHole.power, BlackHoles.unpauseAccelerationFactor);
         factor *= VUnlocks.achievementBH.effectOrDefault(1);
+        factor *= TimeStudy.expensive(9).effectOrDefault(1);
+        factor *= TimeStudy.expensive(15).effectOrDefault(1);
+        factor *= TimeStudy.expensive(17).effectOrDefault(1);
       }
     }
   }
@@ -872,7 +875,9 @@ export function getTTPerSecond() {
     Ra.unlocks.achievementTTMult,
     Achievement(137),
     Achievement(156),
-    TimeStudy.expensive(1)
+    TimeStudy.expensive(1),
+    TimeStudy.expensive(10),
+    TimeStudy.expensive(11),
   );
   if (GlyphAlteration.isAdded("dilation")) ttMult *= getSecondaryGlyphEffect("dilationTTgen");
 

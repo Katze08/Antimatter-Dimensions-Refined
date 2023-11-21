@@ -131,7 +131,8 @@ export function getDilationGainPerSecond() {
       RealityUpgrade(1),
       AlchemyResource.dilation,
       Ra.unlocks.continuousTTBoost.effects.dilatedTime,
-      Ra.unlocks.peakGamespeedDT
+      Ra.unlocks.peakGamespeedDT,
+      TimeStudy.expensive(3)
     );
   dtRate = dtRate.times(getAdjustedGlyphEffect("dilationDT"));
   dtRate = dtRate.times(ShopPurchase.dilatedTimePurchases.currentMult);

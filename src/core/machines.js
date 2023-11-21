@@ -1,3 +1,4 @@
+import { TimeStudy } from "@/core/time-studies";
 import { DC } from "./constants";
 
 export const MachineHandler = {
@@ -12,6 +13,10 @@ export const MachineHandler = {
   },
 
   get realityMachineMultiplier() {
+    if (TimeStudy.expensive(4).isBought) {
+      return ShopPurchase.RMPurchases.currentMult * Teresa.rmMultiplier * Effects.max(1, PerkShopUpgrade.rmMult) *
+        getAdjustedGlyphEffect("effarigrm") * Achievement(167).effectOrDefault(1) * 1e3;
+    }
     return ShopPurchase.RMPurchases.currentMult * Teresa.rmMultiplier * Effects.max(1, PerkShopUpgrade.rmMult) *
       getAdjustedGlyphEffect("effarigrm") * Achievement(167).effectOrDefault(1);
   },

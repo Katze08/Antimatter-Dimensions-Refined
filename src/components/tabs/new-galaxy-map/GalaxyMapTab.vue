@@ -109,7 +109,7 @@ export const GalaxyNetwork = {
     this.network.on("click", params => {
       const id = params.nodes[0];
       if (!isFinite(id)) return;
-      if ((player.dimensions.antimatter[7].amount.toNumber()) >= (((player.galaxies + Galaxies.find(id).config.power) * 60) + 20)) {
+      if (((player.dimensions.antimatter[7].amount.toNumber()) >= (((player.galaxies + Galaxies.find(id).config.power) * 60) + 20)) && player.intergalactic === true) {
         Galaxies.find(id).purchase();
         softReset(0);
         player.galaxies += Galaxies.find(id).config.power;

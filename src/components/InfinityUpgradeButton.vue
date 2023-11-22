@@ -29,7 +29,8 @@ export default {
       isDisabled: false,
       showingCharged: false,
       hasTS31: false,
-      ts31Effect: new Decimal(0)
+      ts31Effect: new Decimal(0),
+      hintText: ""
     };
   },
   computed: {
@@ -96,6 +97,10 @@ export default {
       const worstChallengeTime = GameCache.worstChallengeTime.value;
       const worstChallengeIndex = 2 + player.challenge.normal.bestTimes.indexOf(worstChallengeTime);
       this.worstChallengeString = `(Challenge ${worstChallengeIndex}: ${timeDisplayShort(worstChallengeTime)})`;
+      this.hintText = this.getHintText();
+    },
+    getHintText() {
+      return "xd";
     }
   }
 };

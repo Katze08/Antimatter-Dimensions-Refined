@@ -266,7 +266,7 @@ export const tabs = [
       },
       {
         key: "normal",
-        name: "Challenges",
+        name: "Normal Challenges",
         symbol: "Ω",
         component: "NormalChallengesTab",
         condition: () =>
@@ -573,7 +573,7 @@ export const tabs = [
     UIClass: "o-tab-btn--galaxy",
     id: 11,
     condition: () => {
-      if (player.dimensionBoosts >= 4 || PlayerProgress.simulationUnlocked()) {
+      if (player.dimensionBoosts >= 4 || PlayerProgress.infinityUnlocked() || PlayerProgress.eternityUnlocked() || PlayerProgress.realityUnlocked() || PlayerProgress.simulationUnlocked()) {
         player.wasOnceIntergalactical = true;
       }
       return player.wasOnceIntergalactical;
@@ -582,18 +582,46 @@ export const tabs = [
     subtabs: [
       {
         key: "upgrades",
-        name: "Intergalactic Upgrades",
+        name: "Galaxy Upgrades",
         symbol: "<i class='fas fa-arrow-up'></i>",
         component: "GalaxyTab",
         id: 0,
         hidable: true
       }, {
         key: "map",
-        name: "Intergalactical Map",
+        name: "Galaxy Map",
         symbol: "<i class='fas fa-map-marked-alt'></i>",
         component: "GalaxyMapTab",
-        condition: () => PlayerProgress.simulationUnlocked() || player.unlockedGalaxyMap,
+        condition: () => PlayerProgress.infinityUnlocked() || PlayerProgress.eternityUnlocked() || PlayerProgress.realityUnlocked() || PlayerProgress.simulationUnlocked() || player.unlockedGalaxyMap,
         id: 1,
+        hidable: true
+      }, {
+        key: "extensibility",
+        name: "Galaxy Extender",
+        symbol: "<i class='fas fa-expand-arrows-alt'></i>",
+        component: "SimulationSettingsTab",
+        condition: () => {
+          if (player.galaxyUpgrades.has("extensibility") || PlayerProgress.infinityUnlocked() || PlayerProgress.eternityUnlocked() || PlayerProgress.realityUnlocked() || PlayerProgress.simulationUnlocked()) {
+            player.unlockedExtensibility = true;
+            return true;
+          }
+          return player.unlockedExtensibility;
+        },
+        id: 2,
+        hidable: true
+      }, {
+        key: "fusibility",
+        name: "Galaxy Fuser",
+        symbol: "<i class='fas fa-compress-arrows-alt'></i>",
+        component: "SimulationSettingsTab",
+        condition: () => {
+          if (player.galaxyUpgrades.has("fusibility") || PlayerProgress.infinityUnlocked() || PlayerProgress.eternityUnlocked() || PlayerProgress.realityUnlocked() || PlayerProgress.simulationUnlocked()) {
+            player.unlockedFusibility = true;
+            return true;
+          }
+          return player.unlockedFusibility;
+        },
+        id: 3,
         hidable: true
       }
     ]

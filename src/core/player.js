@@ -195,6 +195,12 @@ window.player = {
       })),
       isActive: true,
     },
+    galaxyUpgrades: {
+      all: Array.range(0, 2).map(() => ({
+        isActive: false,
+      })),
+      isActive: true,
+    },
     imaginaryUpgrades: {
       all: Array.range(0, 10).map(() => ({
         isActive: false,
@@ -248,6 +254,8 @@ window.player = {
   intergalactic: false,
   wasOnceIntergalactical: false,
   unlockedGalaxyMap: false,
+  unlockedExtensibility: false,
+  unlockedFusibility: false,
   secretUnlocks: {
     themes: new Set(),
     viewSecretTS: false,

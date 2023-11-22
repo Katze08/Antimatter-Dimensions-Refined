@@ -1,4 +1,3 @@
-import { GearTheoremAutobuyerState } from "@/core/autobuyers/gear-theorem-autobuyer";
 import { AnnihilationAutobuyerState } from "./annihilation-autobuyer";
 import { AntimatterDimensionAutobuyerState } from "./antimatter-dimension-autobuyer";
 import { BigCrunchAutobuyerState } from "./big-crunch-autobuyer";
@@ -9,6 +8,8 @@ import { DilationUpgradeAutobuyerState } from "./dilation-upgrade-autobuyer";
 import { DimBoostAutobuyerState } from "./dimboost-autobuyer";
 import { EternityAutobuyerState } from "./eternity-autobuyer";
 import { GalaxyAutobuyerState } from "./galaxy-autobuyer";
+//import { GalaxyUpgradeAutobuyerState } from "./galaxy-upgrade-autobuyer";
+import { GearTheoremAutobuyerState } from "@/core/autobuyers/gear-theorem-autobuyer";
 import { ImaginaryUpgradeAutobuyerState } from "./imaginary-upgrade-autobuyer";
 import { InfinityDimensionAutobuyerState } from "./infinity-dimension-autobuyer";
 import { EPMultAutobuyerState, IPMultAutobuyerState } from "./prestige-currency-multiplier-autobuyer";
@@ -33,6 +34,7 @@ export const Autobuyer = {
   dimboost: new DimBoostAutobuyerState(),
   eternity: new EternityAutobuyerState(),
   galaxy: new GalaxyAutobuyerState(),
+  //galaxyUpgrade: new GalaxyUpgradeAutobuyerState(),
   imaginaryUpgrade: ImaginaryUpgradeAutobuyerState.createAccessor(),
   infinityDimension: InfinityDimensionAutobuyerState.createAccessor(),
   ipMult: new IPMultAutobuyerState(),
@@ -82,6 +84,7 @@ export const Autobuyers = (function() {
   ].concat(single);
 
   const arrays = [
+    //Autobuyer.galaxyUpgrade.zeroIndexed,
     Autobuyer.replicantiUpgrade.zeroIndexed,
     Autobuyer.dilationUpgrade.zeroIndexed,
     Autobuyer.blackHolePower.zeroIndexed,
@@ -90,6 +93,7 @@ export const Autobuyers = (function() {
   ];
   const all = dimensions.concat(prestige, singleComplex, arrays);
   const multiple = [
+    //Autobuyer.galaxyUpgrade,
     Autobuyer.antimatterDimension,
     Autobuyer.infinityDimension,
     Autobuyer.timeDimension,

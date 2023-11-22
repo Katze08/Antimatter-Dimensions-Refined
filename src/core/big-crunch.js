@@ -57,16 +57,17 @@ export function bigCrunchReset(
   if (Player.canCrunch) {
     EventHub.dispatch(GAME_EVENT.BIG_CRUNCH_BEFORE);
     bigCrunchGiveRewards();
-    player.intergalactic = false;
-    player.galaxyUpgrades = new Set();
     player.galaxyRebuyables = [0, 0, 0, 0];
     player.mapGalaxies = new Set();
     //player.availableMapGalaxiesCurrentInfinity = {};
     //generateGalaxies();
     if (InfinityUpgrade.skipResetGalaxy.isBought) {
       player.antimatterGalaxiesBought = 1;
+      player.intergalactic = true;
     } else {
       player.antimatterGalaxiesBought = 0;
+      player.intergalactic = false;
+      player.galaxyUpgrades = new Set();
     }
     player.atBigCrunchButton = false;
     if (Pelle.isDoomed) PelleStrikes.infinity.trigger();

@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     update() {
-      this.isUnlocked = ((player.antimatter.exponent >= 70) || player.intergalactic);
+      this.isUnlocked = (((player.antimatter.exponent >= 70) && (player.dimensionBoosts >= 4)) || player.intergalactic);
     },
     btnClassObject(upgrade) {
       return {
@@ -61,7 +61,7 @@ export default {
   <div class="l-break-infinity-tab">
     <div v-if="!isUnlocked">
       Reach
-      {{ format(1e70, 2, 0) }} antimatter to become intergalactic (NYI, only the first 6 / 12 upgrades work as for now).
+      {{ format(1e70, 2, 0) }} antimatter and 4 dimension boosts to become intergalactic (NYI, only the first 6 / 12 upgrades work as for now).
     </div>
     <IntergalacticButton class="l-break-infinity-tab__break-btn" />
     <div

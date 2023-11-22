@@ -27,7 +27,7 @@ export default {
   methods: {
     update() {
       this.isIntergalactic = player.intergalactic;
-      this.isUnlocked = ((player.antimatter.exponent >= 70) || player.intergalactic);
+      this.isUnlocked = (((player.antimatter.exponent >= 70) && (player.dimensionBoosts >= 4)) || player.intergalactic);
     },
     clicked() {
       if (!this.isIntergalactic && this.isUnlocked) Modal.intergalactic.show();

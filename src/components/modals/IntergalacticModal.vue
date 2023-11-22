@@ -11,7 +11,7 @@ export default {
     message() {
       return `Becoming intergalacic will allow you to possess galaxies and alternating them, like increasing their size
       or fusing them together. \n The cost for galaxies and galaxy upgrades depend on the distance. \n
-      Becoming intergalactic costs ${format(1e70, 0, 0)} antimatter.`.split("\n");
+      Becoming intergalactic costs ${format(1e70, 0, 0)} antimatter and requires 4 dimension boosts.`.split("\n");
     },
   },
   methods: {

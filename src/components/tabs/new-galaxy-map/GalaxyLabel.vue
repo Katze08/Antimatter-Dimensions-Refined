@@ -57,9 +57,11 @@ export default {
 
 <template>
   <div class="c-perk-tab__header">
-    You have <span class="c-perk-tab__perk-points">{{ amBoughtGalaxies }}</span> <span v-if="replicantiGalaxies > 0">Antimatter </span>{{ pluralize("Galaxy", pp) }} with a summed up galaxy power of <span class="c-perk-tab__perk-points">×{{ format(pp, 2, 3) }}</span>.
+    You have <span class="c-perk-tab__perk-points">{{ amBoughtGalaxies }}</span> <span v-if="replicantiGalaxies > 0">Antimatter </span>{{ pluralize("Galaxy", pp) }} with a resulting galaxy power of <span class="c-perk-tab__perk-points">{{ formatX(pp, 2, 3) }}</span>.
     <br>
-    <span v-if="replicantiGalaxies > 0">You also have <span class="c-perk-tab__perk-points">{{ replicantiGalaxies }}</span> Replicanti {{ pluralize("Galaxy", replicantiGalaxies) }}<span v-if="tachyonGalaxies > 0">, <span class="c-perk-tab__perk-points">{{ tachyonGalaxies }}</span> Tachyon {{ pluralize("Galaxy", tachyonGalaxies) }}</span><span v-if="generatedGalaxies > 0">, and <span class="c-perk-tab__perk-points">{{ generatedGalaxies }}</span> generated {{ pluralize("Galaxy", generatedGalaxies) }} by the Galaxy Generator</span>. Resulting total galaxy power: <span class="c-perk-tab__perk-points">×{{ format(totalGalaxyPower, 2, 3) }}</span></span>
+    The next galaxy would cost <span class="c-perk-tab__perk-points">{{ pp * 60 + 80 }}</span> 8th Antimatter Dimensions if it had a <span class="c-perk-tab__perk-points">{{ formatX(1, 2, 3) }}</span> galaxy power.
+    <br>
+    <span v-if="replicantiGalaxies > 0">You also have <span class="c-perk-tab__perk-points">{{ replicantiGalaxies }}</span> Replicanti {{ pluralize("Galaxy", replicantiGalaxies) }}<span v-if="tachyonGalaxies > 0">, <span v-if="generatedGalaxies === 0">and </span><span class="c-perk-tab__perk-points">{{ tachyonGalaxies }}</span> Tachyon {{ pluralize("Galaxy", tachyonGalaxies) }}</span><span v-if="generatedGalaxies > 0">, and <span class="c-perk-tab__perk-points">{{ generatedGalaxies }}</span> generated {{ pluralize("Galaxy", generatedGalaxies) }} by the Galaxy Generator</span>. Resulting total galaxy power: <span class="c-perk-tab__perk-points">×{{ format(totalGalaxyPower, 2, 3) }}</span></span>
     <br v-if="replicantiGalaxies > 0">
     Hover over a galaxy to see its details. Click on it to buy it. The further out the galaxy is from the center,
     <br>

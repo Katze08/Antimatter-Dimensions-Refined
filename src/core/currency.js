@@ -249,6 +249,56 @@ Currency.antimatter = new class extends DecimalCurrency {
   }
 }();
 
+/*Currency.paperclips = new class extends DecimalCurrency {
+  get value() { return player.antimatter; }
+
+  set value(value) {
+    if (InfinityChallenges.nextIC) InfinityChallenges.notifyICUnlock(value);
+    if (GameCache.cheapestAntimatterAutobuyer.value && value.gte(GameCache.cheapestAntimatterAutobuyer.value)) {
+      // Clicking into the automation tab clears the trigger and prevents it from retriggering as long as the player
+      // stays on the tab; leaving the tab with an available autobuyer will immediately force it to trigger again
+      TabNotification.newAutobuyer.clearTrigger();
+      TabNotification.newAutobuyer.tryTrigger();
+    }
+    player.antimatter = value;
+    player.records.thisInfinity.maxAM = player.records.thisInfinity.maxAM.max(value);
+    player.records.thisEternity.maxAM = player.records.thisEternity.maxAM.max(value);
+    player.records.thisReality.maxAM = player.records.thisReality.maxAM.max(value);
+
+    if (Pelle.isDoomed) {
+      player.celestials.pelle.records.totalAntimatter = player.celestials.pelle.records.totalAntimatter.max(value);
+    }
+  }
+
+  add(amount) {
+    super.add(amount);
+    if (amount.gt(0)) {
+      player.records.totalAntimatter = player.records.totalAntimatter.add(amount);
+      player.requirementChecks.reality.noAM = false;
+    }
+  }
+
+  get productionPerSecond() {
+    return NormalChallenge(12).isRunning
+      ? AntimatterDimension(1).productionPerRealSecond.plus(AntimatterDimension(2).productionPerRealSecond)
+      : AntimatterDimension(1).productionPerRealSecond;
+  }
+
+  get startingValue() {
+    if (Pelle.isDisabled()) return new Decimal(100);
+    return Effects.max(
+      1,
+      Perk.startAM,
+      Achievement(21),
+      Achievement(37),
+      Achievement(54),
+      Achievement(55),
+      Achievement(78),
+      GalaxyUpgrade.moreAM
+    ).toDecimal();
+  }
+}();*/
+
 Currency.matter = new class extends DecimalCurrency {
   get value() { return player.matter; }
   set value(value) {

@@ -1,3 +1,5 @@
+import { paperclipDimensionCommonMultiplier } from "@/core/dimensions/paperclip-dimension";
+
 class Lazy {
   constructor(getValue) {
     this._getValue = getValue;
@@ -62,6 +64,8 @@ export const GameCache = {
     EternityChallenge(11).reward
   )),
 
+  paperclipTickSpeedMultDecrease: new Lazy(() => 1),
+
   dimensionMultDecrease: new Lazy(() => 10 - Effects.sum(
     BreakInfinityUpgrade.dimCostMult,
     EternityChallenge(6).reward
@@ -92,6 +96,7 @@ export const GameCache = {
   // The effect is defined in antimatter_dimensions.js because that's where the non-cached
   // code originally lived.
   antimatterDimensionCommonMultiplier: new Lazy(() => antimatterDimensionCommonMultiplier()),
+  paperclipDimensionCommonMultiplier: new Lazy(() => paperclipDimensionCommonMultiplier()),
 
   // 0 will cause a crash if invoked; this way the tier can be used as an index
   antimatterDimensionFinalMultipliers: Array.range(0, 9)

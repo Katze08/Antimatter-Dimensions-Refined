@@ -124,8 +124,10 @@ export default {
         return false;
       } else if (this.isDoomed) {
         return row >= 18;
-      } else {
+      } else if (player.realities > 1) {
         return row >= 17;
+      } else {
+        return row >= 13;
       }
     },
     timeDisplay,

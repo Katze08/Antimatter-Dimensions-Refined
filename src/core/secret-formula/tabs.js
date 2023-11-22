@@ -43,6 +43,16 @@ export const tabs = [
         id: 2,
         hidable: true,
       },
+      /*{
+        key: "paperclip",
+        name: "Paperclip Dimensions",
+        hideAt: 2.6,
+        symbol: "<i class=\"fa-solid fa-paperclip\"></i>",
+        component: "AntimatterDimensionsTab",
+        condition: () => player.news.specialTickerData.paperclips > 0,
+        id: 3,
+        hidable: true,
+      }*/
     ]
   },
   {
@@ -284,6 +294,19 @@ export const tabs = [
         component: "infinity-challenges-tab",
         condition: () => PlayerProgress.simulationUnlocked() || PlayerProgress.realityUnlocked() || PlayerProgress.hasBroken() || Pelle.isDoomed,
         id: 1,
+        hidable: true
+      },
+      {
+        key: "eternity",
+        name: "Eternity Challenges",
+        symbol: "Δ",
+        component: "eternity-challenges-tab",
+        condition: () =>
+          PlayerProgress.simulationUnlocked() ||
+          PlayerProgress.realityUnlocked() ||
+          player.challenge.eternity.unlocked !== 0 ||
+          EternityChallenges.all.some(ec => ec.completions > 0),
+        id: 2,
         hidable: true
       },
       {

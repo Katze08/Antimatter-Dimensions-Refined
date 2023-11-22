@@ -183,6 +183,7 @@ In this update, you can buy "expensive time studies". These studies are for the 
 <li>You could become intergalactic without the mandatory 4 dimboosts when the tab was unlocked. That's fixed. With that change, the upgrades also won't show up if you aren't meeting both requirements.</li>
 <li>When buying the 300 IP upgrade, you are intergalactic from the beginning and keep your Galaxy upgrades.</li>
 <li>Updated the changelog.</li>
+<li>All post-reality achievements are obscured if you don't have any realities.</li>
 </ul>
 `
   }

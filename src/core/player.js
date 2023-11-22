@@ -21,6 +21,11 @@ window.player = {
       costBumps: 0,
       amount: DC.D0
     })),
+    paperclip: Array.range(0, 8).map(() => ({
+      bought: 0,
+      costBumps: 0,
+      amount: DC.D0
+    })),
     infinity: Array.range(0, 8).map(tier => ({
       isUnlocked: false,
       bought: 0,
@@ -36,6 +41,7 @@ window.player = {
   },
   buyUntil10: true,
   sacrificed: DC.D0,
+  paperclipSacrificed: DC.D0,
   achievementBits: Array.repeat(0, 17),
   secretAchievementBits: Array.repeat(0, 4),
   infinityUpgrades: new Set(),
@@ -227,7 +233,9 @@ window.player = {
   infinities: DC.D0,
   infinitiesBanked: DC.D0,
   dimensionBoosts: 0,
+  paperclipDimensionBoosts: 0,
   galaxies: 0,
+  paperclipGalaxies: 0,
   news: {
     // This is properly handled in NewsHandler.addSeenNews which adds properties as needed
     seen: {},
@@ -417,6 +425,8 @@ window.player = {
   timeShards: DC.D0,
   totalTickGained: 0,
   totalTickBought: 0,
+  paperclipTotalTickGained: 0,
+  paperclipTotalTickBought: 0,
   replicanti: {
     unl: false,
     amount: DC.D0,
@@ -1024,6 +1034,10 @@ export const Player = {
 
   get tickSpeedMultDecrease() {
     return GameCache.tickSpeedMultDecrease.value;
+  },
+
+  get paperclipTickSpeedMultDecrease() {
+    return GameCache.paperclipTickSpeedMultDecrease.value;
   },
 
   get dimensionMultDecrease() {
